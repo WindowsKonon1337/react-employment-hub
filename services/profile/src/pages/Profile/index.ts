@@ -1,0 +1,1 @@
+export {LazyAbout} from './Profile.lazy';
