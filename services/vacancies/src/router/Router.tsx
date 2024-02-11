@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-import { App } from "App";
+import { App } from "@/App";
 import { LazyVacancies } from "@/pages/About/Vacancies.lazy";
 
 

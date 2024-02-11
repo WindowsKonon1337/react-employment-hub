@@ -1,9 +1,9 @@
-const About = () => {
+const Prfile = () => {
   return (
     <>
-      <h1>About</h1>
+      <h1>Prfile</h1>
     </>
   )
 }
 
-export default About
+export default Prfile

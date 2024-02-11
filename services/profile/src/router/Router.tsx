@@ -1,7 +1,9 @@
-import { App } from "@/App";
-import { LazyAbout } from "@/pages/Profile";
 import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
+
+
+import { App } from "@/App";
+import { LazyProfile } from "@/pages/Profile";
 
 const routes = [
     {
@@ -10,7 +12,7 @@ const routes = [
       children: [
         {
             path: '/profile',
-            element: <Suspense fallback={<div>Loading...</div>}><LazyAbout /></Suspense>
+            element: <Suspense fallback={<div>Loading...</div>}><LazyProfile /></Suspense>
         }
       ]
     },

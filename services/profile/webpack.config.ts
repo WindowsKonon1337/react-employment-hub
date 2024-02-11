@@ -36,7 +36,7 @@ const webpackConfig =  (env: EnvProps) => {
     name: 'profile',
     filename: 'remoteEntry.js',
     exposes: {
-      './Router': './src/router/Router.tsx'
+      './router': './src/router/Router.tsx'
     },
     shared: {
       ...packageJson.dependencies,

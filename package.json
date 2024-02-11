@@ -6,6 +6,12 @@
   "author": "OrangeSpacer <maxaev.art@yandex.ru>",
   "license": "MIT",
   "private": "true",
+  "scripts": {
+    "start": "concurrently \"npm run host\" \"npm run profile\" \"npm run vacancies\"",
+    "host": "cd services/host && npm start",
+    "profile": "cd services/profile && npm start",
+    "vacancies": "cd services/vacancies && npm start"
+  },
   "workspaces": [
     "packages/*",
     "services/*"
