@@ -61,6 +61,10 @@ const webpackConfig = (env: EnvProps) => {
 					eager: true,
 					requiredVersion: packageJson.dependencies["react-dom"],
 				},
+				"styled-components": {
+					eager: true,
+					requiredVersion: packageJson.dependencies["styled-components"],
+				},
 			},
 		}),
 	);

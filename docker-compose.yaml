@@ -1,28 +1,22 @@
 version: '3'
 services:
   host:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: orangespacer/react-employment-hub-host
     ports:
       - "5000:5000"
 
   profile:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: orangespacer/react-employment-hub-profile
     ports:
       - "5001:5001"
 
   vacancies:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: orangespacer/react-employment-hub-vacancies
     ports:
       - "5002:5002"
 
   nginx:
-    image: nginx
+    image: nginx:alpine
     ports:
       - "80:80"
     volumes:
