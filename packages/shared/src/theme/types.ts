@@ -3,6 +3,7 @@ export interface ColorsProps {
 	secondary: string;
 	secondaryLight: string;
 	active: string;
+	error: string;
 }
 
 export interface MediaProps {

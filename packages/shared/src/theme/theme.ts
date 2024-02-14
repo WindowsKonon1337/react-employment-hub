@@ -6,6 +6,7 @@ const colors: ColorsProps = {
 	secondary: "#070707",
 	secondaryLight: "#6c757d",
 	active: "#0582ca",
+	error: "#ef233c",
 };
 
 const media: MediaProps = {
@@ -20,10 +21,9 @@ export const baseTheme: ThemeProps = {
 	media,
 };
 
-
 export const GlobalStyles = createGlobalStyle`
 	* {
 		padding: 0;
 		margin: 0 auto;
 	}
-`
+`;
