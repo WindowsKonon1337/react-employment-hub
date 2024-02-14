@@ -6,6 +6,7 @@ const colors: ColorsProps = {
 	secondary: "#070707",
 	secondaryLight: "#6c757d",
 	active: "#0582ca",
+	activeHover: "#03045e",
 	error: "#ef233c",
 };
 

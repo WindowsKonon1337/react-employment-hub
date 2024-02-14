@@ -28,8 +28,6 @@
     "@storybook/react": "^7.6.15",
     "@storybook/react-webpack5": "^7.6.15",
     "@storybook/test": "^7.6.15",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "storybook": "^7.6.15",
     "prettier": "^3.2.5",
     "prop-types": "^15.8.1"
