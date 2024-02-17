@@ -6,12 +6,12 @@ export const InputWrapper = styled("div")({
 
 export const Input = styled("input")<{ isError?: boolean }>(({ theme, isError }) =>
 	css({
+		padding: "10px 8px",
 		fontSize: 18,
-		paddingBottom: 4,
-		border: "none",
+		borderRadius: 10,
+		border: "1px solid",
 		outline: "none",
-		borderBottom: "1px solid",
-		borderBottomColor: isError ? theme.colors.error : theme.colors.secondary,
+		borderColor: isError ? theme.colors.error : theme.colors.secondary,
 		color: theme.colors.secondary,
 		background: "transparent",
 		"&::placeholder": {
@@ -19,7 +19,7 @@ export const Input = styled("input")<{ isError?: boolean }>(({ theme, isError })
 			color: theme.colors.secondaryLight,
 		},
 		"&:focus-visible": {
-			borderBottomColor: theme.colors.active,
+			borderColor: theme.colors.active,
 		},
 	}),
 );
@@ -34,7 +34,7 @@ export const Label = styled("div")(({ theme }) =>
 
 export const ErrorWrapper = styled("div")({
 	position: "absolute",
-	bottom: "-17px",
+	bottom: "-20px",
 });
 
 export const ErrorText = styled("div")(({ theme }) =>

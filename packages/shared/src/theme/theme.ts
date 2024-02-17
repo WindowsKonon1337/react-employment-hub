@@ -11,9 +11,9 @@ const colors: ColorsProps = {
 };
 
 const media: MediaProps = {
-	extraLarge: "(max-wdith: 1140px)",
+	extraLarge: "(max-width: 1140px)",
 	large: "(max-width: 960px)",
-	medium: "(max-wdith: 768px)",
+	medium: "(max-width: 768px)",
 	small: "(max-width: 540px)",
 };
 

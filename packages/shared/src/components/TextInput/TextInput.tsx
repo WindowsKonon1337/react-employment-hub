@@ -9,12 +9,12 @@ export const TextInput: FC<TextInputProps> = ({
 	errorText,
 	isNotValid,
 	placeholder = "text",
-	onChange,
+	...props
 }) => {
 	return (
 		<InputWrapper>
 			<Label>{label}</Label>
-			<Input value={value} onChange={onChange} placeholder={placeholder} isError={isNotValid} />
+			<Input value={value} placeholder={placeholder} isError={isNotValid} {...props} />
 			{isNotValid && errorText && (
 				<ErrorWrapper>
 					<ErrorText>{errorText}</ErrorText>

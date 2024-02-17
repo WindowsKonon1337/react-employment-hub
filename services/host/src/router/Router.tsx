@@ -1,17 +1,26 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { App } from "@/App";
 // @ts-ignore
 import profileRoute from "profile/router";
 // @ts-ignore
 import vacanciesRoute from "vacancies/router";
+import { Layout } from "@packages/shared";
 
-const routes = [
+import { LoginPage } from "@/Page/Login";
+import { App } from "@/App";
+
+export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
 		children: [...vacanciesRoute, ...profileRoute],
 	},
-];
-
-export const router = createBrowserRouter(routes);
+	{
+		path: "login",
+		element: (
+			<Layout>
+				<LoginPage />
+			</Layout>
+		),
+	},
+]);

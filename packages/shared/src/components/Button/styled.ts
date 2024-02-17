@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ButtonWrapper = styled("button")(({ theme }) => ({
 	minWidth: 120,
+	fontSize: 15,
+	fontWeight: "bold",
 	border: "none",
 	cursor: "pointer",
 	borderRadius: 8,
