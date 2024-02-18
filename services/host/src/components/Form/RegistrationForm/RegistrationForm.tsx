@@ -1,7 +1,12 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+
+import { AuthorizationServices, RegistrationProps } from "@/api";
 
 import { FormWrapper, Input, SubmitButton } from "../LoginForm/styled";
 import { FormContent } from "../components";
+import { Error } from "global";
 
 interface ILoginInputs {
 	firstName: string;
@@ -19,8 +24,22 @@ export const RegistrationForm = () => {
 		formState: { errors },
 	} = useForm<ILoginInputs>();
 
+	const { mutate } = useMutation({
+		mutationFn: async (data: RegistrationProps) => AuthorizationServices.registration(data),
+		onSuccess(data) {
+			toast.success("authorization is successful");
+			const { data: registrationData } = data;
+			localStorage.setItem("accessToken", registrationData.accessToken);
+		},
+		onError(error) {
+			const currentError = error as Error;
+			toast.error(`${currentError.response?.data.message}`);
+		},
+	});
+
 	const onSubmit: SubmitHandler<ILoginInputs> = (data, e?: React.BaseSyntheticEvent) => {
 		e?.stopPropagation();
+		mutate(data);
 		console.log(data);
 	};
 
@@ -124,6 +143,7 @@ export const RegistrationForm = () => {
 				/>
 				<SubmitButton>login</SubmitButton>
 			</FormWrapper>
+			<Toaster />
 		</FormContent>
 	);
 };

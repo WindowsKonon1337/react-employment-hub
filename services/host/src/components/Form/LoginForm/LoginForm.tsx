@@ -1,8 +1,12 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+
+import { AuthorizationServices, LoginProps } from "@/api";
 
 import { FormContent } from "../components";
-
 import { FormWrapper, Input, SubmitButton } from "./styled";
+import { Error } from "global";
 
 interface ILoginInputs {
 	email: string;
@@ -16,8 +20,23 @@ export const LoginForm = () => {
 		formState: { errors },
 	} = useForm<ILoginInputs>();
 
+	const { mutate } = useMutation({
+		mutationFn: async (data: LoginProps) => AuthorizationServices.login(data),
+		onError(error) {
+			console.log(error);
+			const currentError = error as Error;
+			toast.error(`${currentError.response?.data.message}`);
+		},
+		onSuccess(data) {
+			toast.success("authorization is successful");
+			console.log(data.data.accessToken);
+			localStorage.setItem("accessToken", data.data.accessToken);
+		},
+	});
+
 	const onSubmit: SubmitHandler<ILoginInputs> = (data, e?: React.BaseSyntheticEvent) => {
 		e?.stopPropagation();
+		mutate(data);
 		console.log(data);
 	};
 
@@ -68,6 +87,7 @@ export const LoginForm = () => {
 				/>
 				<SubmitButton>login</SubmitButton>
 			</FormWrapper>
+			<Toaster />
 		</FormContent>
 	);
 };
