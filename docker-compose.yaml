@@ -1,17 +1,20 @@
 version: '3'
 services:
   host:
-    image: orangespacer/react-employment-hub-host
+    build: 
+      context: .
     ports:
       - "5000:5000"
 
   profile:
-    image: orangespacer/react-employment-hub-profile
+    build: 
+      context: .
     ports:
       - "5001:5001"
 
   vacancies:
-    image: orangespacer/react-employment-hub-vacancies
+    build: 
+      context: .
     ports:
       - "5002:5002"
 

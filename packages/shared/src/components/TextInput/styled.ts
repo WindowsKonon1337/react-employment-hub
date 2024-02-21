@@ -6,6 +6,7 @@ export const InputWrapper = styled("div")({
 
 export const Input = styled("input")<{ $isError?: boolean }>(({ theme, $isError }) =>
 	css({
+		position: "relative",
 		padding: "10px 8px",
 		fontSize: 18,
 		borderRadius: 10,
@@ -43,3 +44,11 @@ export const ErrorText = styled("div")(({ theme }) =>
 		color: theme.colors.error,
 	}),
 );
+
+export const VisibleTextBtn = styled("div")({
+	position: "absolute",
+	cursor: "pointer",
+	right: 5,
+	top: "50%",
+	transform: "translateY(25%)",
+});

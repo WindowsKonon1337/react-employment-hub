@@ -28,6 +28,21 @@ const config = {
       },
     },
   },
+  webpackFinal: async (config) => {
+    // Найти и изменить правило загрузки файлов, чтобы исключить SVG (если оно есть)
+    const fileLoaderRule = config.module.rules.find(rule => rule.test && rule.test.test('.svg'));
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/;
+    }
+
+    // Добавить правило для SVG
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'], // '@svgr/webpack' превращает SVG в React компоненты
+    });
+
+    return config; // Важно вернуть модифицированный конфиг
+  },
   docs: {
     autodocs: "tag",
   },

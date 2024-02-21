@@ -79,6 +79,7 @@ export const LoginForm = () => {
 						<Input
 							label="Password"
 							placeholder="password"
+							type="password"
 							isNotValid={!!errors.password?.message}
 							errorText={errors.password?.message}
 							{...field}

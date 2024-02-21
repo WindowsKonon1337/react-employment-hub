@@ -16,6 +16,14 @@ export const Primary: Story = {
 	},
 };
 
+export const PasswordInput: Story = {
+	args: {
+		value: "test",
+		label: "Label",
+		type: "password",
+	},
+};
+
 export const WithError: Story = {
 	args: {
 		value: "test",

@@ -35,7 +35,10 @@ export function BuildLoaders({mode}: BuildOptions) {
 
     const imgLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
     }
 
     const fontsLoader = {
