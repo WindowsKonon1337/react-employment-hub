@@ -1,9 +1,9 @@
-import { VacancyCard } from "@/components";
+import { Header, VacancyCard } from "@/components";
 
 const Vacnacies = () => {
 	return (
 		<>
-			<h1>Vacnacies</h1>
+			<Header />
 			<VacancyCard
 				companyTitle="CompanyTitle"
 				countCandidates={25}
