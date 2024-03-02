@@ -1,7 +1,5 @@
+import Vacnacies from "./pages/About/Vacancies";
+
 export const App = () => {
-  return (
-    <>
-      <h1>Vacancies</h1>
-    </>
-  )
-}
+	return <Vacnacies />;
+};

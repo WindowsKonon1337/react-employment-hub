@@ -5,6 +5,9 @@ export interface ColorsProps {
 	active: string;
 	activeHover: string;
 	error: string;
+	green: string;
+	violet: string;
+	blue: string;
 }
 
 export interface MediaProps {

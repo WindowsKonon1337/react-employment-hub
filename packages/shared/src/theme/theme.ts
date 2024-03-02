@@ -8,6 +8,9 @@ const colors: ColorsProps = {
 	active: "#0582ca",
 	activeHover: "#03045e",
 	error: "#ef233c",
+	blue: "#0077b6",
+	green: "#4f772d",
+	violet: "#5a189a",
 };
 
 const media: MediaProps = {
@@ -24,7 +27,8 @@ export const baseTheme: ThemeProps = {
 
 export const GlobalStyles = createGlobalStyle`
 	* {
+		box-sizing: border-box;
 		padding: 0;
-		margin: 0 auto;
+		margin: 0;
 	}
 `;

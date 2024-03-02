@@ -6,6 +6,7 @@ export const InputWrapper = styled("div")({
 
 export const Input = styled("input")<{ $isError?: boolean }>(({ theme, $isError }) =>
 	css({
+		width: "100%",
 		position: "relative",
 		padding: "10px 8px",
 		fontSize: 18,

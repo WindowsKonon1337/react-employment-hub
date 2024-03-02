@@ -1,10 +1,11 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
+import { TextInput } from "@packages/shared/src/components";
 
 import { AuthorizationServices, RegistrationProps } from "@/api";
 
-import { FormWrapper, Input, SubmitButton } from "../LoginForm/styled";
+import { FormWrapper, SubmitButton } from "../LoginForm/styled";
 import { FormContent } from "../components";
 import { Error } from "global";
 
@@ -59,7 +60,7 @@ export const RegistrationForm = () => {
 						required: "thies field is required",
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="First name"
 							placeholder="first name"
 							isNotValid={!!errors.firstName?.message}
@@ -75,7 +76,7 @@ export const RegistrationForm = () => {
 						required: "thies field is required",
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="Last name"
 							placeholder="last name"
 							isNotValid={!!errors.lastName?.message}
@@ -95,7 +96,7 @@ export const RegistrationForm = () => {
 						},
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="Email"
 							placeholder="email"
 							isNotValid={!!errors.email?.message}
@@ -111,7 +112,7 @@ export const RegistrationForm = () => {
 						required: "this field is required",
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="Password"
 							placeholder="password"
 							isNotValid={!!errors.password?.message}
@@ -132,7 +133,7 @@ export const RegistrationForm = () => {
 						},
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="Repeat your password"
 							placeholder="password"
 							isNotValid={!!errors.repeatPassword?.message}

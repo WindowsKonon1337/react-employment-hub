@@ -1,12 +1,13 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Error } from "global";
 import toast, { Toaster } from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
+import { TextInput } from "@packages/shared/src/components";
 
 import { AuthorizationServices, LoginProps } from "@/api";
 
 import { FormContent } from "../components";
-import { FormWrapper, Input, SubmitButton } from "./styled";
-import { Error } from "global";
+import { FormWrapper, SubmitButton } from "./styled";
 
 interface ILoginInputs {
 	email: string;
@@ -60,7 +61,7 @@ export const LoginForm = () => {
 						},
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="Email"
 							placeholder="email"
 							isNotValid={!!errors.email?.message}
@@ -76,7 +77,7 @@ export const LoginForm = () => {
 						required: "this field is required",
 					}}
 					render={({ field }) => (
-						<Input
+						<TextInput
 							label="Password"
 							placeholder="password"
 							type="password"

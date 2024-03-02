@@ -24,3 +24,7 @@ export const LeftSide = styled("div")(({ theme }) =>
 		},
 	}),
 );
+
+export const RightSide = styled("div")({
+	margin: "0 auto",
+});
