@@ -12,5 +12,6 @@ export const HeaderWrapper = styled("div")(({ theme }) =>
 export const HeaderTitle = styled(Title)(({ theme }) =>
 	css({
 		color: theme.colors.main,
+		marginBottom: 20,
 	}),
 );

@@ -30,5 +30,15 @@ export const GlobalStyles = createGlobalStyle`
 		box-sizing: border-box;
 		padding: 0;
 		margin: 0;
+	},
+	body::-webkit-scrollbar {
+		color: red;
+		height: 8px;
+		width: 8px;	  
+		border-radius: 8px;
+	}
+	body::-webkit-scrollbar-thumb {
+		background: gray;
+		border-radius: 8px;
 	}
 `;
