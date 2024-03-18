@@ -1,11 +1,35 @@
+import { useEffect } from "react";
 import { Title } from "@packages/shared/src/components";
+import { useQuery } from "@tanstack/react-query";
 
+import { addFilter, addFilters } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { filtersService } from "@/api/services";
 import { Filters, VacancyCard } from "@/components";
 
 import { ContentBlock, ContentWrapper, HeaderBlock, VacanciesBlock } from "./styled";
-import { FiltersType } from "@/components/Filters/types";
 
 const Vacnacies = () => {
+	const { filters } = useAppSelector((item) => item.filters);
+	const dispatch = useAppDispatch();
+
+	const { data, isSuccess } = useQuery({
+		queryKey: ["getFilters"],
+		queryFn: () => filtersService.getFilters(),
+	});
+
+	useEffect(() => {
+		if (data) {
+			dispatch(addFilters(data));
+		}
+	}, [isSuccess]);
+
+	const filtersGroupChoise = (content: { title: string; filters: any }) => {
+		dispatch(addFilter(content));
+	};
+
+	console.log(data, filters);
+
 	return (
 		<>
 			<HeaderBlock />
@@ -13,20 +37,16 @@ const Vacnacies = () => {
 				<Title>Recommended jobs</Title>
 				<ContentWrapper>
 					<div>
-						<Filters
-							title="Test"
-							filters={[
-								{ type: FiltersType.checkBox, data: { title: "test" } },
-								{ type: FiltersType.checkBox, data: { title: "test1", isCheck: true } },
-							]}
-						/>
-						<Filters
-							title="Test 2"
-							filters={[
-								{ type: FiltersType.checkBox, data: { title: "test" } },
-								{ type: FiltersType.range, data: "test" },
-							]}
-						/>
+						{isSuccess &&
+							data.length &&
+							data?.map((item, idx) => (
+								<Filters
+									title={item.title}
+									filters={item.filters}
+									key={`Filters_${idx}`}
+									onClick={filtersGroupChoise}
+								/>
+							))}
 					</div>
 					<VacanciesBlock>
 						<VacancyCard

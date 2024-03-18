@@ -13,7 +13,7 @@ export const Title = styled("div")(({ theme }) =>
 	}),
 );
 
-export const CheckContainer = styled("div")<{ $isCheck: boolean }>(({ theme, $isCheck }) =>
+export const CheckContainer = styled("div")<{ $isCheck?: boolean }>(({ theme, $isCheck }) =>
 	css({
 		cursor: "pointer",
 		width: 20,
