@@ -46,7 +46,7 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 		mutate(id);
 	};
 	return (
-		<VacnacyCardWrapper>
+		<VacnacyCardWrapper to={`${id}`}>
 			<Container>
 				<TitleBlock>
 					<Title>{vacancyTitle}</Title>

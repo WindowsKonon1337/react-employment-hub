@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 // @ts-ignore
 import profileRoute from "profile/router";
@@ -11,6 +11,10 @@ import { App } from "@/App";
 import { Suspense } from "react";
 
 export const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Navigate to="/vacancies" replace={true} />,
+	},
 	{
 		path: "/",
 		element: <App />,

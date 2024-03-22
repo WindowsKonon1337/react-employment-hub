@@ -1,12 +1,12 @@
 import { Provider } from "react-redux";
 
-import Vacnacies from "./pages/Vacancies/Vacancies";
 import { store } from "./store";
+import { Outlet } from "react-router-dom";
 
 export const App = () => {
 	return (
 		<Provider store={store}>
-			<Vacnacies />
+			<Outlet />
 		</Provider>
 	);
 };

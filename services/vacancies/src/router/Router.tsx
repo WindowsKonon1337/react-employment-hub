@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { App } from "@/App";
 import { LazyVacancies } from "@/pages";
+import { LazyVacancy } from "@/pages/Vacancy";
 
 const routes = [
 	{
@@ -14,6 +15,14 @@ const routes = [
 				element: (
 					<Suspense fallback={<div>Loading...</div>}>
 						<LazyVacancies />
+					</Suspense>
+				),
+			},
+			{
+				path: "/vacancies/:id",
+				element: (
+					<Suspense fallback={<div>Loading...</div>}>
+						<LazyVacancy />
 					</Suspense>
 				),
 			},

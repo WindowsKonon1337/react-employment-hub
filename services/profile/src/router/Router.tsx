@@ -7,7 +7,7 @@ import { LazyProfile } from "@/pages/Profile";
 
 const routes = [
     {
-      path: "/",
+      path: "/profile",
       element: <App />,
       children: [
         {

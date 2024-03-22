@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-export const VacnacyCardWrapper = styled("div")(() =>
+export const VacnacyCardWrapper = styled(Link)(() =>
 	css({
 		display: "flex",
+		textDecoration: "none",
 		flexDirection: "column",
 		gap: 10,
 		width: 250,
@@ -13,10 +15,13 @@ export const VacnacyCardWrapper = styled("div")(() =>
 	}),
 );
 
-export const Container = styled("div")({
-	display: "flex",
-	justifyContent: "space-between",
-});
+export const Container = styled("div")(({ theme }) =>
+	css({
+		display: "flex",
+		justifyContent: "space-between",
+		color: theme.colors.secondary,
+	}),
+);
 
 export const TagsWrapper = styled("div")({
 	display: "flex",
