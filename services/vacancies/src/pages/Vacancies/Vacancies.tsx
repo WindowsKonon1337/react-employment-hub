@@ -31,11 +31,13 @@ const Vacnacies = () => {
 
 	useEffect(() => {
 		mutate(filters);
+		console.log(filters);
 	}, [filters]);
 
 	const filtersGroupChoise = (content: { title: string; filters: any }) => {
 		dispatch(addFilter(content));
 	};
+
 	return (
 		<>
 			<HeaderBlock />

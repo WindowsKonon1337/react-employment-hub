@@ -4,6 +4,7 @@ export const TagWrapper = styled("div")<{ $backGround: "green" | "blue" | "viole
 	({ $backGround, theme }) =>
 		css({
 			fontSize: 15,
+			height: 25,
 			borderRadius: 15,
 			padding: "2px 8px",
 			background: theme.colors[$backGround],

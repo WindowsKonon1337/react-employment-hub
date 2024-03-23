@@ -30,6 +30,7 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 	tags,
 	id,
 	vacancyTitle,
+	className,
 }) => {
 	const [hasLiked, setHasLiked] = useState(isLiked);
 	const { amount, currency, inTime } = salary;
@@ -46,7 +47,7 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 		mutate(id);
 	};
 	return (
-		<VacnacyCardWrapper to={`${id}`}>
+		<VacnacyCardWrapper to={`/vacancy/${id}`} className={className}>
 			<Container>
 				<TitleBlock>
 					<Title>{vacancyTitle}</Title>

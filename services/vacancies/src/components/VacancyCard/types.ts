@@ -16,4 +16,5 @@ export interface VacnacyCardProps {
 	postedTime: string;
 	id: string;
 	tags: TagProps[];
+	className?: string;
 }
