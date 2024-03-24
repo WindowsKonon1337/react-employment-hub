@@ -36,12 +36,6 @@ const webpackConfig = (env: EnvProps) => {
 	config.plugins?.push(
 		new webpack.container.ModuleFederationPlugin({
 			name: "host",
-		}),
-	);
-
-	config.plugins?.push(
-		new webpack.container.ModuleFederationPlugin({
-			name: "",
 			filename: "remoteEntry.js",
 			remotes: {
 				profile: `profile@${PROFILE_REMOTE_URL}/remoteEntry.js`,

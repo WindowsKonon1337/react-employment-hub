@@ -34,7 +34,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "2",
 			postedTime: "25",
 		},
 		{
@@ -64,7 +64,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "3",
 			postedTime: "25",
 		},
 		{
@@ -79,7 +79,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "4",
 			postedTime: "25",
 		},
 		{
@@ -94,7 +94,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "5",
 			postedTime: "25",
 		},
 		{
@@ -109,7 +109,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "6",
 			postedTime: "25",
 		},
 		{
@@ -124,7 +124,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "7",
 			postedTime: "25",
 		},
 		{
@@ -139,7 +139,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "8",
 			postedTime: "25",
 		},
 		{
@@ -154,7 +154,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "9",
 			postedTime: "25",
 		},
 		{
@@ -169,7 +169,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "10",
 			postedTime: "25",
 		},
 		{
@@ -184,7 +184,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "11",
 			postedTime: "25",
 		},
 		{
@@ -199,7 +199,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "12",
 			postedTime: "25",
 		},
 		{
@@ -214,7 +214,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "13",
 			postedTime: "25",
 		},
 		{
@@ -229,7 +229,7 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "14",
 			postedTime: "25",
 		},
 		{
@@ -244,28 +244,28 @@ export const VacancyService = {
 				{ title: "test3", color: "green" },
 			],
 			vacancyTitle: "VacancyTitle",
-			id: "1",
+			id: "15",
 			postedTime: "25",
 		},
 	],
 
-	// getVacancy: async (id: string): Promise<VacancyProps> => instance.post(`/vacancy/${id}`),
-	getVacancy: async (id: string): Promise<VacancyProps> => ({
-		companyTitle: "CompanyTitle",
-		countCandidates: 25,
-		description: "test etst etstet",
-		companyFounded: "January 6, 1997",
-		location: "London, England",
-		salary: { amount: "250", inTime: "hour", currency: "rubles" },
-		tags: [
-			{ title: "test1", color: "blue" },
-			{ title: "test2", color: "violet" },
-			{ title: "test3", color: "green" },
-		],
-		vacancyTitle: "VacancyTitle",
-		id: "1",
-		postedTime: "25",
-	}),
+	getVacancy: async (id: string): Promise<VacancyProps> => instance.post(`/vacancy/${id}`),
+	// getVacancy: async (id: string): Promise<VacancyProps> => ({
+	// 	companyTitle: "CompanyTitle",
+	// 	countCandidates: 25,
+	// 	description: "test etst etstet",
+	// 	companyFounded: "January 6, 1997",
+	// 	location: "London, England",
+	// 	salary: { amount: "250", inTime: "hour", currency: "rubles" },
+	// 	tags: [
+	// 		{ title: "test1", color: "blue" },
+	// 		{ title: "test2", color: "violet" },
+	// 		{ title: "test3", color: "green" },
+	// 	],
+	// 	vacancyTitle: "VacancyTitle",
+	// 	id: "1",
+	// 	postedTime: "25",
+	// }),
 
 	liked: async (id: string): Promise<boolean> => instance.post("/vacancy/liked", { id }),
 };

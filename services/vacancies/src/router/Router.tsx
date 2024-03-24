@@ -19,7 +19,7 @@ const routes = [
 				),
 			},
 			{
-				path: "/vacancies/:id",
+				path: "/vacancy/:id",
 				element: (
 					<Suspense fallback={<div>Loading...</div>}>
 						<LazyVacancy />

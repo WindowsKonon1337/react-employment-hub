@@ -14,7 +14,7 @@ export function buildPlugins({paths, mode, isAnalyzerOpen, platform}: BuildOptio
     
 
     const plugins: Configuration['plugins'] = [
-        new HtmlWebpackPlugin({ template: paths.html, favicon: path.resolve(paths.public, 'faicon.png') }),
+        new HtmlWebpackPlugin({ template: paths.html, favicon: path.resolve(paths.public, 'faicon.png'), publicPath: '/' }),
         new DefinePlugin({
             __PLATFROM__: JSON.stringify(platform)
         }),
