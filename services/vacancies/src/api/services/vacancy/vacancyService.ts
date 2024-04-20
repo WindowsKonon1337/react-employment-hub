@@ -249,23 +249,25 @@ export const VacancyService = {
 		},
 	],
 
-	getVacancy: async (id: string): Promise<VacancyProps> => instance.post(`/vacancy/${id}`),
-	// getVacancy: async (id: string): Promise<VacancyProps> => ({
-	// 	companyTitle: "CompanyTitle",
-	// 	countCandidates: 25,
-	// 	description: "test etst etstet",
-	// 	companyFounded: "January 6, 1997",
-	// 	location: "London, England",
-	// 	salary: { amount: "250", inTime: "hour", currency: "rubles" },
-	// 	tags: [
-	// 		{ title: "test1", color: "blue" },
-	// 		{ title: "test2", color: "violet" },
-	// 		{ title: "test3", color: "green" },
-	// 	],
-	// 	vacancyTitle: "VacancyTitle",
-	// 	id: "1",
-	// 	postedTime: "25",
-	// }),
+	//getVacancy: async (id: string): Promise<VacancyProps> => instance.post(`/vacancy/${id}`),
+	getVacancy: async (id: string): Promise<VacancyProps> => ({
+		companyTitle: "CompanyTitle",
+		countCandidates: 25,
+		description: "test etst etstet",
+		companyFounded: "January 6, 1997",
+		location: "London, England",
+		salary: { amount: "250", inTime: "hour", currency: "rubles" },
+		tags: [
+			{ title: "test1", color: "blue" },
+			{ title: "test2", color: "violet" },
+			{ title: "test3", color: "green" },
+		],
+		vacancyTitle: "VacancyTitle",
+		id: "1",
+		postedTime: "25",
+	}),
 
-	liked: async (id: string): Promise<boolean> => instance.post("/vacancy/liked", { id }),
+	// liked: async (id: string): Promise<boolean> => instance.post("/vacancy/liked", { id }),
+
+	liked: async (): Promise<boolean> => instance.get("/greet/hello"),
 };

@@ -1,7 +1,8 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { TextInput } from "@packages/shared/src/components";
+import { Select, TextInput } from "@packages/shared/src/components";
 
 import { AuthorizationServices, RegistrationProps } from "@/api";
 
@@ -15,9 +16,13 @@ interface ILoginInputs {
 	email: string;
 	repeatPassword: string;
 	password: string;
+	userRole: {
+		value: string;
+	};
 }
 
 export const RegistrationForm = () => {
+	const navigate = useNavigate();
 	const {
 		handleSubmit,
 		control,
@@ -31,6 +36,9 @@ export const RegistrationForm = () => {
 			toast.success("authorization is successful");
 			const { data: registrationData } = data;
 			localStorage.setItem("accessToken", registrationData.accessToken);
+			setTimeout(() => {
+				navigate("/vacancies");
+			}, 500);
 		},
 		onError(error) {
 			const currentError = error as Error;
@@ -40,7 +48,11 @@ export const RegistrationForm = () => {
 
 	const onSubmit: SubmitHandler<ILoginInputs> = (data, e?: React.BaseSyntheticEvent) => {
 		e?.stopPropagation();
-		mutate(data);
+		const currentData = {
+			...data,
+			userRole: data.userRole.value,
+		};
+		mutate(currentData);
 		console.log(data);
 	};
 
@@ -138,6 +150,24 @@ export const RegistrationForm = () => {
 							placeholder="password"
 							isNotValid={!!errors.repeatPassword?.message}
 							errorText={errors.repeatPassword?.message}
+							{...field}
+						/>
+					)}
+				/>
+				<Controller
+					name="userRole"
+					control={control}
+					rules={{
+						required: "this field is required",
+					}}
+					render={({ field }) => (
+						<Select
+							label="Choise account role"
+							placeholder="Choise your role"
+							data={[
+								{ value: "COMPANY_OWNER", label: "company owner" },
+								{ value: "APPLICANT", label: "applicant" },
+							]}
 							{...field}
 						/>
 					)}

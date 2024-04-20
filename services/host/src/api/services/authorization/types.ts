@@ -3,6 +3,7 @@ interface AuthorizationProps {
 	password: string;
 	firstName: string;
 	lastName: string;
+	userRole: string;
 }
 
 interface TokenResposne {
@@ -10,7 +11,7 @@ interface TokenResposne {
 	refreshToken: string;
 }
 
-export type LoginProps = Omit<AuthorizationProps, "firstName" | "lastName">;
+export type LoginProps = Omit<AuthorizationProps, "firstName" | "lastName" | "userRole">;
 export type RegistrationProps = AuthorizationProps;
 export interface ResponseData {
 	data: TokenResposne;

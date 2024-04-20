@@ -1,9 +1,14 @@
-const Prfile = () => {
+import { Container, ProfileWrapper } from "./styled"
+
+const Profile = () => {
   return (
-    <>
-      <h1>Prfile</h1>
-    </>
+    <ProfileWrapper>
+      <Container>test</Container>
+      <Container>
+        Profile
+      </Container>
+    </ProfileWrapper>
   )
 }
 
-export default Prfile
+export default Profile

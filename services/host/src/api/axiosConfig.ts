@@ -2,9 +2,26 @@ import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 export const instance = axios.create({
-	baseURL: "http://127.0.0.1:8081/api",
+	baseURL: "http://127.0.0.1:8081/api/v1",
 	withCredentials: true,
+	headers: {
+		// "Access-Control-Allow-Origin": "*",
+		// "Content-type": "Application/json",
+	},
 });
+
+instance.interceptors.request.use(
+	(config) => {
+		const token = localStorage.getItem("accessToken");
+		if (token) {
+			config.headers.Authorization = token ? `Bearer ${token}` : "";
+		}
+		return config;
+	},
+	(error) => {
+		Promise.reject(error);
+	},
+);
 
 const fetchNewToken = async () => {
 	try {

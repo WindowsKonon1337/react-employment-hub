@@ -6,6 +6,12 @@ export const instance = axios.create({
 	withCredentials: true,
 });
 
+instance.interceptors.request.use(function (config) {
+	const token = localStorage.getItem("accessToken");
+	config.headers.Authorization = token ? `Bearer ${token}` : "";
+	return config;
+});
+
 const fetchNewToken = async () => {
 	try {
 		const refreshResult = await instance.get("auth/refresh", {

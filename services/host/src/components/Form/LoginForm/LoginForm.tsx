@@ -1,6 +1,7 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Error } from "global";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { TextInput } from "@packages/shared/src/components";
 
@@ -15,6 +16,7 @@ interface ILoginInputs {
 }
 
 export const LoginForm = () => {
+	const navigation = useNavigate();
 	const {
 		handleSubmit,
 		control,
@@ -32,7 +34,12 @@ export const LoginForm = () => {
 			toast.success("authorization is successful");
 			console.log(data.data.accessToken);
 			localStorage.setItem("accessToken", data.data.accessToken);
+			// navigation("/vacancies");
 		},
+	});
+
+	const { mutate: test } = useMutation({
+		mutationFn: async () => AuthorizationServices.test(),
 	});
 
 	const onSubmit: SubmitHandler<ILoginInputs> = (data, e?: React.BaseSyntheticEvent) => {
@@ -90,6 +97,7 @@ export const LoginForm = () => {
 				<SubmitButton>login</SubmitButton>
 			</FormWrapper>
 			<Toaster />
+			<button onClick={() => test()}>test</button>
 		</FormContent>
 	);
 };

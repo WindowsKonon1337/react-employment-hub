@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Loader, Title } from "@packages/shared/src/components";
 
+import ErrorImg from "public/img/error/error.png";
 import { Tag } from "@/components";
 import { VacancyService } from "@/api/services";
 import { useAppSelector } from "@/hooks/redux";
@@ -24,6 +25,7 @@ import {
 	SalaryBlock,
 	ApplyBtnBlock,
 	ApplyBtn,
+	EmptyBlock,
 } from "./styled";
 import { useEffect } from "react";
 
@@ -60,7 +62,7 @@ const Vacancy = () => {
 			</VacanciesContainer>
 			{isPending ? (
 				<Loader />
-			) : (
+			) : vacancyData ? (
 				<VacancyInfoConainer>
 					<LeftContentBlock>
 						<TitleBlock>
@@ -105,6 +107,11 @@ const Vacancy = () => {
 						</ApplyBtnBlock>
 					</RightContentBlock>
 				</VacancyInfoConainer>
+			) : (
+				<EmptyBlock>
+					<img src={ErrorImg} alt="errorImage" width="350px" />
+					<InfoTitle>Something went wrong when uploading the data</InfoTitle>
+				</EmptyBlock>
 			)}
 		</VacancyContainer>
 	);

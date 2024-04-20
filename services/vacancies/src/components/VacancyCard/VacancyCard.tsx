@@ -36,15 +36,16 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 	const { amount, currency, inTime } = salary;
 
 	const { mutate } = useMutation({
-		mutationFn: async (id: string) => VacancyService.liked(id),
+		mutationFn: async () => VacancyService.liked(),
 		onError: () => {
 			toast.error("что-то пошло не так");
 		},
 	});
 
-	const handleLiked = () => {
+	const handleLiked = (e: any) => {
+		e.preventDefault();
 		setHasLiked((prev) => !prev);
-		mutate(id);
+		mutate();
 	};
 	return (
 		<VacnacyCardWrapper to={`/vacancy/${id}`} className={className}>

@@ -6,7 +6,7 @@ export const Header = () => {
 		<HeaderContainer>
 			<div>logo</div>
 			<HeaderLink linkPath="vacancies" linkTitle="vacancies" />
-			<div>profile</div>
+			<HeaderLink linkPath="profile" linkTitle="profile" />
 		</HeaderContainer>
 	);
 };

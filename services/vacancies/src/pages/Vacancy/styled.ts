@@ -5,16 +5,16 @@ import { Button } from "@packages/shared/src/components";
 
 export const VacancyContainer = styled("div")({
 	display: "grid",
-	padding: 20,
+	padding: "20px 20px 0 20px",
 	gridTemplateColumns: "270px 1fr",
 	gap: 20,
-	height: "100vh",
 });
 
 export const VacanciesContainer = styled("div")({
 	display: "flex",
 	flexDirection: "column",
 	overflowY: "scroll",
+	height: "85vh",
 	gap: 15,
 	"&::-webkit-scrollbar": {
 		height: 8,
@@ -25,6 +25,12 @@ export const VacanciesContainer = styled("div")({
 		background: "gray",
 		borderRadius: 8,
 	},
+});
+
+export const EmptyBlock = styled("div")({
+	display: "flex",
+	flexDirection: "column",
+	alignItems: "center",
 });
 
 export const VacancyInfoConainer = styled("div")(({ theme }) =>
