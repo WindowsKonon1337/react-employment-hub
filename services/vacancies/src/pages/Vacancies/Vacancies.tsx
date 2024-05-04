@@ -1,42 +1,33 @@
-import { useEffect } from "react";
 import { Loader, Title } from "@packages/shared/src/components";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
-import { addFilter, addFilters } from "@/store";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { VacancyService, filtersService } from "@/api/services";
+import { VacancyService } from "@/api/services";
 import { Filters, VacancyCard } from "@/components";
-
-import { ContentBlock, ContentWrapper, HeaderBlock, VacanciesBlock } from "./styled";
 import { FiltersProps } from "@/components/Filters/types";
 
-const Vacnacies = () => {
-	const { filters } = useAppSelector((item) => item.filters);
-	const dispatch = useAppDispatch();
+import { ContentBlock, ContentWrapper, HeaderBlock, VacanciesBlock } from "./styled";
+import { useFiltersQuery } from "./utils";
+import { useFiltersContext } from "@/state";
+import { useEffect } from "react";
 
-	const { data, isSuccess, isLoading } = useQuery({
-		queryKey: ["getFilters"],
-		queryFn: () => filtersService.getFilters(),
-	});
+const Vacnacies = () => {
+	const { filters, addFilters } = useFiltersContext();
+
+	const { data, isLoading } = useFiltersQuery();
 
 	const { mutate, isPending } = useMutation({
 		mutationFn: (filtersData: FiltersProps[] | []) => VacancyService.getVacancies(filtersData),
 	});
 
-	useEffect(() => {
-		if (data) {
-			dispatch(addFilters(data));
-		}
-	}, [isSuccess]);
+	// useEffect(() => {
+	// 	if (isLoading === false && addFilters) {
+	// 		addFilters([...data]);
+	// 	}
+	// }, [isLoading]);
 
 	useEffect(() => {
-		mutate(filters);
 		console.log(filters);
 	}, [filters]);
-
-	const filtersGroupChoise = (content: { title: string; filters: any }) => {
-		dispatch(addFilter(content));
-	};
 
 	return (
 		<>
@@ -48,14 +39,14 @@ const Vacnacies = () => {
 					<Title>Recommended jobs</Title>
 					<ContentWrapper>
 						<div>
-							{isSuccess &&
+							{data &&
 								data.length &&
 								data?.map((item, idx) => (
 									<Filters
 										title={item.title}
 										filters={item.filters}
 										key={`Filters_${idx}`}
-										onClick={filtersGroupChoise}
+										onClick={() => console.log("click")}
 									/>
 								))}
 						</div>

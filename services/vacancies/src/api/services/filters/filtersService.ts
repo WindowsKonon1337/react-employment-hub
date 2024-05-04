@@ -1,14 +1,19 @@
-import { instance } from "@/api/axiosConfig";
-import { FiltersProps, FiltersType, FiltersTypeData } from "@/components/Filters/types";
+// import { instance } from "@/api/axiosConfig";
+import { FiltersData, FiltersProps, FiltersType } from "@/components/Filters/types";
 
 export const filtersService = {
 	// getFilters: (pageName: string): Promise<FiltersProps[]> => instance.get(`/filters/${pageName}`),
-	getFilters: (): FiltersProps[] => [
+	getFilters: (): FiltersData[] => [
 		{
 			title: "Test",
 			filters: [
-				{ type: FiltersType.checkBox, data: { title: "test" } },
-				{ type: FiltersType.checkBox, data: { title: "test1", isCheck: true } },
+				{
+					type: FiltersType.checkBox,
+					data: [
+						{ title: "test", isCheck: false },
+						{ title: "test23", isCheck: false },
+					],
+				},
 			],
 		},
 		{

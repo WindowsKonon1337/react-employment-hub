@@ -1,15 +1,15 @@
-import { Provider } from "react-redux";
-
-import { store } from "./store";
 import { Outlet } from "react-router-dom";
 import { Layout } from "@packages/shared";
+import { FiltersContext } from "./state";
+import { useFilters } from "./state/useFilters";
 
 export const App = () => {
+	const filters = useFilters();
 	return (
 		<Layout>
-			<Provider store={store}>
+			<FiltersContext.Provider value={{ ...filters }}>
 				<Outlet />
-			</Provider>
+			</FiltersContext.Provider>
 		</Layout>
 	);
 };

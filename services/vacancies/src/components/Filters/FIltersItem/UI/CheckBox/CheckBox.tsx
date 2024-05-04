@@ -1,19 +1,26 @@
 import { FC, useState } from "react";
 
-import { FiltersType } from "@/components/Filters/types";
-
 import { CheckBoxProps } from "./types";
 import { CheckContainer, Container, Title } from "./styled";
+import { FiltersType } from "@/components/Filters/types";
 
 export const CheckBox: FC<CheckBoxProps> = ({ handleCheck, data, className }) => {
 	const { title, isCheck } = data;
-	const [hasCheck, setHasCheck] = useState(isCheck);
+	const [hasCheck, setHasCheck] = useState(Boolean(isCheck));
 
 	const onCheck = () => {
 		const currentCheck = !hasCheck;
 		setHasCheck(currentCheck);
 		if (handleCheck) {
-			handleCheck({ data: { type: FiltersType.checkBox, data: { title, isCheck: currentCheck } } });
+			handleCheck({
+				type: FiltersType.checkBox,
+				data: [
+					{
+						title,
+						isCheck: currentCheck,
+					},
+				],
+			});
 		}
 	};
 

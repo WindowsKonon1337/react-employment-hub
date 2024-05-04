@@ -5,7 +5,7 @@ import { Loader, Title } from "@packages/shared/src/components";
 import ErrorImg from "public/img/error/error.png";
 import { Tag } from "@/components";
 import { VacancyService } from "@/api/services";
-import { useAppSelector } from "@/hooks/redux";
+// import { useAppSelector } from "@/hooks/redux";
 import { TagsWrapper } from "@/components/VacancyCard/styled";
 
 import {
@@ -32,11 +32,11 @@ import { useEffect } from "react";
 const Vacancy = () => {
 	const location = useLocation();
 	const id = location.pathname.split("/")[2];
-	const { filters } = useAppSelector((state) => state.filters);
+	// const { filters } = useAppSelector((state) => state.filters);
 
 	const { data, isLoading } = useQuery({
 		queryKey: ["getSimilarVacancy"],
-		queryFn: () => VacancyService.getVacancies(filters),
+		queryFn: () => VacancyService.getVacancies([]),
 	});
 
 	const {

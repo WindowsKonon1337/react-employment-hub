@@ -1,4 +1,6 @@
-import { GetFiltersValueProps } from "../../../utils";
+// import { GetFiltersValueProps } from "../../../utils";
+
+import { FiltersTypeData } from "@/components/Filters/types";
 
 export interface RangeData {
 	from: string;
@@ -11,5 +13,6 @@ export interface RangeProps {
 		from: string;
 		to: string;
 	};
-	handleChangeValue?: (data: GetFiltersValueProps) => void;
+	// handleChangeValue?: (data: GetFiltersValueProps) => void;
+	handleChangeValue?: (data: FiltersTypeData) => void;
 }

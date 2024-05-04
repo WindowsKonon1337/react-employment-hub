@@ -6,7 +6,7 @@ export enum FiltersType {
 }
 
 export type FiltersTypeData =
-	| GenericData<FiltersType.checkBox, CheckBoxData>
+	| GenericData<FiltersType.checkBox, CheckBoxData[]>
 	| GenericData<FiltersType.range, RangeData>;
 
 export interface ClickData {
@@ -14,8 +14,12 @@ export interface ClickData {
 	filters: any;
 }
 
-export interface FiltersProps {
+export interface FiltersData {
 	title: string;
 	filters: FiltersTypeData[];
+	filterId?: string;
+}
+
+export interface FiltersProps extends FiltersData {
 	onClick?: (data: ClickData) => void;
 }

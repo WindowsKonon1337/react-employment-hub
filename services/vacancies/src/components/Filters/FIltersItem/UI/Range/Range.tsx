@@ -24,7 +24,8 @@ export const Range: FC<RangeProps> = ({ data, handleChangeValue, description }) 
 			const timerId = setTimeout(() => {
 				setIsTyping(true);
 				handleChangeValue({
-					data: { type: FiltersType.range, data: { from: fromValue, to: toValue } },
+					type: FiltersType.range,
+					data: { from: fromValue, to: toValue },
 				});
 			}, 500);
 			return () => clearTimeout(timerId);

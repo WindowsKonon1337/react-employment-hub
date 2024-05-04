@@ -1,4 +1,4 @@
-import { GetFiltersValueProps } from "@/components/Filters/utils/types";
+import { FiltersTypeData } from "@/components/Filters/types";
 
 export interface CheckBoxData {
 	title: string;
@@ -7,6 +7,6 @@ export interface CheckBoxData {
 
 export interface CheckBoxProps {
 	data: CheckBoxData;
-	handleCheck?: (data: GetFiltersValueProps) => void;
+	handleCheck?: (data: FiltersTypeData) => void;
 	className?: string;
 }
