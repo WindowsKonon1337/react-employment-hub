@@ -1,7 +1,7 @@
 import { FiltersData } from "@/components/Filters/types";
 
 type GenericPayload = {
-	filterId: string;
+	title: string;
 };
 
 export enum FiltersActionType {

@@ -24,7 +24,7 @@ export const useFiltersQuery = () => {
 		data?.forEach((item, idx) => {
 			const isFIltersExistIdx = filters.filters.findIndex((filter) => filter.title === item.title);
 			if (isFIltersExistIdx > -1) {
-				item.filters.forEach((fltr, index) => {
+				item.filters.forEach((fltr) => {
 					if (fltr.type === FiltersType.checkBox) {
 						const filtersData = [...fltr.data];
 
@@ -32,14 +32,14 @@ export const useFiltersQuery = () => {
 							const isValueFilterExist = filters.filters[isFIltersExistIdx].filters.findIndex(
 								(f) =>
 									f.type === FiltersType.checkBox &&
-									f.data.findIndex((itemTitle) => itemTitle.title === fl.title),
+									f.data.findIndex((itemTitle) => itemTitle.title === fl.title) > -1,
 							);
 							if (isValueFilterExist > -1) {
 								filtersData[inx] = {
 									title: fl.title,
 									isCheck: true,
 								};
-								newData[index] = {
+								newData[idx] = {
 									title: newData[idx].title,
 									filters: [
 										{
@@ -47,6 +47,15 @@ export const useFiltersQuery = () => {
 											data: filtersData,
 										},
 									],
+								};
+							}
+						});
+					} else if (fltr.type === FiltersType.range) {
+						filters.filters[isFIltersExistIdx].filters.forEach((fl) => {
+							if (fl.type === FiltersType.range) {
+								newData[idx] = {
+									title: newData[idx].title,
+									filters: [{ ...fl }],
 								};
 							}
 						});

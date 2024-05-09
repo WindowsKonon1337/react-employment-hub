@@ -10,7 +10,6 @@ export const getParams = (urlWithParams: string): FiltersData[] => {
 
 		console.log(currentFilters);
 		return currentFilters as FiltersData[];
-		return [];
 	}
 	return [];
 };

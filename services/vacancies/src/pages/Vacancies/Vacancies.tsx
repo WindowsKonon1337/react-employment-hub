@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Loader, Title } from "@packages/shared/src/components";
 import { useMutation } from "@tanstack/react-query";
 
@@ -8,22 +9,15 @@ import { FiltersProps } from "@/components/Filters/types";
 import { ContentBlock, ContentWrapper, HeaderBlock, VacanciesBlock } from "./styled";
 import { useFiltersQuery } from "./utils";
 import { useFiltersContext } from "@/state";
-import { useEffect } from "react";
 
 const Vacnacies = () => {
-	const { filters, addFilters } = useFiltersContext();
+	const { filters } = useFiltersContext();
 
 	const { data, isLoading } = useFiltersQuery();
 
 	const { mutate, isPending } = useMutation({
 		mutationFn: (filtersData: FiltersProps[] | []) => VacancyService.getVacancies(filtersData),
 	});
-
-	// useEffect(() => {
-	// 	if (isLoading === false && addFilters) {
-	// 		addFilters([...data]);
-	// 	}
-	// }, [isLoading]);
 
 	useEffect(() => {
 		console.log(filters);

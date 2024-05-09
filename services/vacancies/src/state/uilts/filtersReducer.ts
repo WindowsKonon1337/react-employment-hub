@@ -23,7 +23,7 @@ export const filtersReducer = (state: FiltersState, action: FiltersAction): Filt
 
 		case FiltersActionType.DELETE: {
 			const { payload } = action;
-			const updatedFilters = state.filters.filter((filter) => filter.filterId !== payload.filterId);
+			const updatedFilters = state.filters.filter((filter) => filter.title !== payload.title);
 			return {
 				filters: updatedFilters,
 			};

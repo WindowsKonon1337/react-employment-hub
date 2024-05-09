@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { FiltersComponents, FiltersTitle, FiltersWrapper } from "./styled";
 import { FiltersProps, FiltersType, FiltersTypeData } from "./types";
@@ -6,75 +6,133 @@ import { FiltersItem } from "./FIltersItem";
 import { useFiltersContext } from "@/state";
 
 export const Filters: FC<FiltersProps> = ({ filters, title }) => {
-	const [currentFilters, setCurrentfitlers] = useState<FiltersTypeData[] | []>(filters);
+	const [currentFilters, setCurrentfitlers] = useState<FiltersTypeData[] | []>([]);
 	const { updateCurrentFilter } = useFiltersContext();
 
+	useEffect(() => {
+		filters.forEach((filter) => {
+			if (filter.type === FiltersType.checkBox) {
+				const filtersCheck: any = [];
+				filter.data.forEach((fl) => {
+					if (fl.isCheck) {
+						// @ts-ignore
+						filtersCheck.push(fl);
+					}
+				});
+				setCurrentfitlers([
+					{
+						type: FiltersType.checkBox,
+						data: filtersCheck,
+					},
+				]);
+				console.log(filtersCheck);
+			}
+			switch (filter.type) {
+				// case FiltersType.checkBox:
+				// 	filter.data.forEach((fl, index) => {
+				// 		if (fl.isCheck) {
+				// 			// @ts-ignore
+				// 			setCurrentfitlers((prev: any) => [
+				// 				{
+				// 					type: FiltersType.checkBox,
+				// 					data:
+				// 						prev && prev.data !== undefined
+				// 							? [...prev.data, filter.data[index]]
+				// 							: [filter.data[index]],
+				// 				},
+				// 			]);
+				// 		}
+				// 	});
+				// 	break;
+				case FiltersType.range:
+					break;
+			}
+		});
+	}, []);
+
+	useEffect(() => {
+		console.log("FILTERS", currentFilters);
+	}, [currentFilters]);
+
 	const handleUpdateFilters = (updatedFilters: FiltersTypeData) => {
+		console.log(updatedFilters);
 		if (updatedFilters.type === FiltersType.checkBox) {
 			if (currentFilters.length > 0 && currentFilters[0].type === FiltersType.checkBox) {
-				const currenFiltersIdx = currentFilters[0].data.findIndex(
-					(filter) => filter.title === updatedFilters.data[0].title,
-				);
-				const newFiltersData = [...currentFilters[0].data];
+				let currenFiltersIdx = -1;
 
-				newFiltersData[currenFiltersIdx] = updatedFilters.data[0];
+				currentFilters.forEach((fl) => {
+					if (fl.type === FiltersType.checkBox) {
+						fl.data.forEach((f, i) => {
+							if (f.title === updatedFilters.data[0].title) {
+								currenFiltersIdx = i;
+							}
+						});
+					}
+				});
 
-				console.log(currentFilters);
+				const filtersData = [...currentFilters[0].data];
 
+				console.log("упал сюда", currenFiltersIdx);
 				if (currenFiltersIdx > -1 && updateCurrentFilter) {
-					if (updatedFilters.data[0].isCheck) {
+					if (!updatedFilters.data[0].isCheck) {
+						if (currentFilters.length >= 1) {
+							console.log(filtersData, "моя дата", currenFiltersIdx);
+							filtersData.splice(currenFiltersIdx, 1);
+							setCurrentfitlers([
+								{
+									type: FiltersType.checkBox,
+									// @ts-ignore
+									data: [...filtersData],
+								},
+							]);
+							updateCurrentFilter({
+								title,
+								filters: [
+									// @ts-ignore
+									{
+										type: FiltersType.checkBox,
+										// @ts-ignore
+										data: filtersData,
+									},
+								],
+							});
+						} else {
+							setCurrentfitlers([]);
+							updateCurrentFilter({ filters: [], title });
+						}
+					}
+				} else {
+					filtersData.push(updatedFilters.data[0]);
+					if (updateCurrentFilter) {
 						updateCurrentFilter({
 							title,
 							filters: [
 								{
 									type: FiltersType.checkBox,
-									data: newFiltersData,
+									data: filtersData,
 								},
 							],
 						});
-						// @ts-ignore
 						setCurrentfitlers([
 							{
 								type: FiltersType.checkBox,
-								data: newFiltersData,
+								data: [...filtersData],
 							},
 						]);
-					} else {
-						if (newFiltersData.length === 1) {
-							updateCurrentFilter({
-								title,
-								filters: [],
-							});
-							setCurrentfitlers([]);
-						} else {
-							newFiltersData.splice(currenFiltersIdx, 1);
-							updateCurrentFilter({
-								title,
-								filters: [
-									{
-										type: FiltersType.checkBox,
-										data: newFiltersData,
-									},
-								],
-							});
-							// @ts-ignore
-							setCurrentfitlers([
-								{
-									type: FiltersType.checkBox,
-									data: newFiltersData,
-								},
-							]);
-						}
 					}
 				}
 			} else {
+				setCurrentfitlers([updatedFilters]);
 				if (updateCurrentFilter) {
 					updateCurrentFilter({
 						title,
-						filters: [updatedFilters],
+						filters: [
+							{
+								type: FiltersType.checkBox,
+								data: [...updatedFilters.data],
+							},
+						],
 					});
-					// @ts-ignore
-					setCurrentfitlers([updatedFilters]);
 				}
 			}
 		}
@@ -97,23 +155,3 @@ export const Filters: FC<FiltersProps> = ({ filters, title }) => {
 		</FiltersWrapper>
 	);
 };
-
-// const newFilterTitle = updatedFilters.data[0].title;
-// const isFilterExist = currentFilters.findIndex(
-// 	(item) =>
-// 		(item.type === FiltersType.checkBox &&
-// 			item.data.find((itm) => itm.title === newFilterTitle)) ||
-// 		updatedFilters.data[0].isCheck === false,
-// );
-// let currentUpdatedFilters: any = [];
-// if (isFilterExist > -1) {
-// 	currentUpdatedFilters = currentFilters;
-// 	currentUpdatedFilters.splice(isFilterExist, 1);
-// 	setCurrentfitlers(() => currentUpdatedFilters);
-// } else {
-// 	currentUpdatedFilters = [...currentFilters, updatedFilters];
-// 	setCurrentfitlers(() => currentUpdatedFilters);
-// }
-// if (updateCurrentFilter) {
-// 	updateCurrentFilter({ title, filters: currentUpdatedFilters });
-// }

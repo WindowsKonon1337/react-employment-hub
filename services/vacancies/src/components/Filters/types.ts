@@ -17,7 +17,6 @@ export interface ClickData {
 export interface FiltersData {
 	title: string;
 	filters: FiltersTypeData[];
-	filterId?: string;
 }
 
 export interface FiltersProps extends FiltersData {

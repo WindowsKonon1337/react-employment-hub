@@ -2,9 +2,13 @@ import { FiltersType } from "@/components/Filters/types";
 
 export const getFilterFromString = (param: string) => {
 	const currentParam = param.split("=");
-	if (currentParam[1].indexOf("{") > -1) {
-		const regex = /\d+/g;
-		const result = currentParam[1]?.match(regex)?.map(Number);
+	if (currentParam[0].indexOf("_") > -1) {
+		currentParam[0] = currentParam[0].replace("_", " ");
+		console.log("зашел сюда");
+	}
+	if (currentParam[1].indexOf("%2C") > -1) {
+		const result = currentParam[1].split("%2C");
+		console.log(result);
 		return {
 			title: currentParam[0],
 			filters: [
@@ -19,7 +23,7 @@ export const getFilterFromString = (param: string) => {
 		};
 	}
 	if (currentParam[1].indexOf("{") === -1) {
-		const checkBoxValues = currentParam[1].split(";");
+		const checkBoxValues = currentParam[1].split("%3B");
 		return {
 			title: currentParam[0],
 			filters: [
