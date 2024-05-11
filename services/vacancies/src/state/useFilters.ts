@@ -1,11 +1,14 @@
 import { useEffect, useReducer } from "react";
-
-import { filtersReducer } from "./uilts";
-import { FiltersActionType } from "./uilts/types";
-import { FiltersData } from "@/components/Filters/types";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { getFiltersInit } from "./uilts/getInitFilters";
-import { getConvertFiltersToString } from "./uilts/getConvertFiltersToString/getCOnvertFiltersToString";
+
+import { FiltersData } from "@/components/Filters/types";
+
+import {
+	getFiltersInit,
+	getConvertFiltersToString,
+	filtersReducer,
+	FiltersActionType,
+} from "./uilts";
 
 export const useFilters = () => {
 	const { search } = useLocation();

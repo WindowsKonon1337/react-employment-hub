@@ -1,5 +1,5 @@
-import { FiltersState } from "../types";
-import { getParams } from "./getParams/getParams";
+import { FiltersState } from "../../types";
+import { getParams } from "../getParams/getParams";
 
 export const getFiltersInit = (url: string): FiltersState => {
 	const currentParams = getParams(url);

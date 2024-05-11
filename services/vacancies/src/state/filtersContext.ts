@@ -1,5 +1,7 @@
-import { FiltersData } from "@/components/Filters/types";
 import { createContext, useContext } from "react";
+
+import { FiltersData } from "@/components/Filters/types";
+
 import { FiltersState } from "./types";
 
 interface FiltersContextProps {

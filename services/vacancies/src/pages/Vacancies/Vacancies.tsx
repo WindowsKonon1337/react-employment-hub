@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { Loader, Title } from "@packages/shared/src/components";
 import { useMutation } from "@tanstack/react-query";
 
+import { useFiltersContext } from "@/state";
 import { VacancyService } from "@/api/services";
 import { Filters, VacancyCard } from "@/components";
-import { FiltersProps } from "@/components/Filters/types";
+import { FiltersProps } from "@/components/Filters";
 
 import { ContentBlock, ContentWrapper, HeaderBlock, VacanciesBlock } from "./styled";
 import { useFiltersQuery } from "./utils";
-import { useFiltersContext } from "@/state";
 
 const Vacnacies = () => {
 	const { filters } = useFiltersContext();

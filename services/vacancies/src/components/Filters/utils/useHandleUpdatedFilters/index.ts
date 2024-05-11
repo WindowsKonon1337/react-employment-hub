@@ -1,0 +1,1 @@
+export { useHandleUpdatedFiletrs } from "./useHandleUpdatedFilters";

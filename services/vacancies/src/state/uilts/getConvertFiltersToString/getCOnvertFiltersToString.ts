@@ -12,7 +12,6 @@ export const getConvertFiltersToString = ({ filters }: FiltersState) => {
 		filter.filters.forEach((fl) => {
 			if (fl.type === FiltersType.checkBox) {
 				fl.data.forEach((item, idx) => {
-					console.log("МОИ фильтры", item.title, idx, fl.data.length);
 					const filterData = `${item.title}` + `${idx === fl.data.length - 1 ? "" : ";"}`;
 					filtersString[title] = filtersString[title] ? filtersString[title] + filterData : filterData;
 				});

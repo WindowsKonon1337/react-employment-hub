@@ -1,6 +1,6 @@
-import { FiltersState } from "../types";
+import { FiltersState } from "../../types";
+import { FiltersAction, FiltersActionType } from "../types";
 import { getFiltersUpdate } from "./getUpdateFilters";
-import { FiltersAction, FiltersActionType } from "./types";
 
 export const filtersReducer = (state: FiltersState, action: FiltersAction): FiltersState => {
 	switch (action.type) {
@@ -8,7 +8,6 @@ export const filtersReducer = (state: FiltersState, action: FiltersAction): Filt
 			const { payload } = action;
 			const updatedFilters = payload;
 
-			console.log("я упал сюда", payload);
 			return {
 				filters: updatedFilters,
 			};

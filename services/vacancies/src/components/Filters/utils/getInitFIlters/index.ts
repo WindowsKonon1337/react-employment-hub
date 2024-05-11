@@ -1,0 +1,1 @@
+export { getInitFilters } from "./getInitFIlters";
