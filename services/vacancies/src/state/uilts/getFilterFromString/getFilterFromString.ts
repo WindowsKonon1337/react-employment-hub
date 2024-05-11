@@ -1,10 +1,22 @@
-import { FiltersType } from "@/components/Filters/types";
+import { FiltersType } from "@/state";
 
 export const getFilterFromString = (param: string) => {
 	const currentParam = param.split("=");
 	if (currentParam[0].indexOf("_") > -1) {
 		currentParam[0] = currentParam[0].replace("_", " ");
 	}
+
+	// if (currentParam[0] === "Search") {
+	// 	return {
+	// 		title: currentParam[0],
+	// 		filters: [
+	// 			{
+	// 				type: FiltersType.search,
+	// 				data: currentParam[1],
+	// 			},
+	// 		],
+	// 	};
+	// }
 
 	if (currentParam[1].indexOf("%2C") > -1) {
 		const result = currentParam[1].split("%2C");

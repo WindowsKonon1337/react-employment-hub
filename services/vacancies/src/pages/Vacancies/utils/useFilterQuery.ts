@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useFiltersContext } from "@/state";
+import { FiltersType, useFiltersContext } from "@/state";
 import { filtersService } from "@/api/services";
-import { FiltersType } from "@/components/Filters/types";
 
 const useGetFilters = () => {
 	const { data, isLoading } = useQuery({

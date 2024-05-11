@@ -1,4 +1,4 @@
-import { FiltersTypeData } from "@/components/Filters/types";
+import { FiltersTypeData } from "@/state";
 
 export interface CheckBoxData {
 	title: string;

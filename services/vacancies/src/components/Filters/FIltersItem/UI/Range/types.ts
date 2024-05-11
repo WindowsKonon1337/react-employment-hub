@@ -1,6 +1,6 @@
 // import { GetFiltersValueProps } from "../../../utils";
 
-import { FiltersTypeData } from "@/components/Filters/types";
+import { FiltersTypeData } from "@/state";
 
 export interface RangeData {
 	from: string;

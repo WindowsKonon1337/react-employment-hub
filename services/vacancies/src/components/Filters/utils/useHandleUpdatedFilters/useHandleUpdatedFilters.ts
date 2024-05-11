@@ -1,6 +1,5 @@
-import { useFiltersContext } from "@/state";
+import { FiltersType, useFiltersContext, FiltersTypeData } from "@/state";
 
-import { FiltersType } from "../../types";
 import { HandleUpdatedFiltersProps, UseHandleUpdatedFiltersProps } from "./types";
 
 export const useHandleUpdatedFiletrs = ({
@@ -17,6 +16,7 @@ export const useHandleUpdatedFiletrs = ({
 
 				currentFilters.forEach((fl) => {
 					if (fl.type === FiltersType.checkBox) {
+						// @ts-ignore
 						fl.data.forEach((f, i) => {
 							if (f.title === updatedFilters.data[0].title) {
 								currenFiltersIdx = i;

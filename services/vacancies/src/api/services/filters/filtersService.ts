@@ -1,5 +1,6 @@
 // import { instance } from "@/api/axiosConfig";
-import { FiltersData, FiltersProps, FiltersType } from "@/components/Filters/types";
+import { FiltersData } from "@/components/Filters/types";
+import { FiltersType } from "@/state";
 
 export const filtersService = {
 	// getFilters: (pageName: string): Promise<FiltersProps[]> => instance.get(`/filters/${pageName}`),

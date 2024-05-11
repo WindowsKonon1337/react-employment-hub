@@ -4,11 +4,13 @@ import { FiltersData } from "@/components/Filters/types";
 export enum FiltersType {
 	checkBox = "checkBox",
 	range = "range",
+	search = "search",
 }
 
 export type FiltersTypeData =
 	| GenericData<FiltersType.checkBox, CheckBoxData[]>
 	| GenericData<FiltersType.range, RangeData>;
+// | GenericData<FiltersType.search, string>;
 
 export interface FiltersState {
 	filters: FiltersData[];

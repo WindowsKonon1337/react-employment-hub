@@ -1,7 +1,9 @@
 import { FC, useEffect, useState } from "react";
 
+import { FiltersTypeData } from "@/state";
+
 import { FiltersComponents, FiltersTitle, FiltersWrapper } from "./styled";
-import { FiltersProps, FiltersTypeData } from "./types";
+import { FiltersProps } from "./types";
 import { FiltersItem } from "./FIltersItem";
 import { getInitFilters, useHandleUpdatedFiletrs } from "./utils";
 

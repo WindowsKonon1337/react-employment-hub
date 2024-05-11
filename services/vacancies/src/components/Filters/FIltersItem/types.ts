@@ -1,4 +1,4 @@
-import { FiltersTypeData } from "../types";
+import { FiltersTypeData } from "@/state";
 
 export interface ComponentsProps {
 	data: FiltersTypeData;

@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 
-import { FiltersType } from "../../../types";
+import { FiltersType } from "@/state";
+
 import { RangeProps } from "./types";
 import { Description, RangeContainer, RangeWrapper } from "./styled";
 

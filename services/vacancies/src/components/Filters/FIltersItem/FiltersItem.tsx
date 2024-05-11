@@ -1,6 +1,7 @@
 import { FC } from "react";
 
-import { FiltersType } from "../types";
+import { FiltersType } from "@/state";
+
 import { ComponentsProps } from "./types";
 import { CheckBox, Range } from "./UI";
 

@@ -1,5 +1,4 @@
-import { FiltersType } from "@/components/Filters/types";
-import { FiltersState } from "@/state/types";
+import { FiltersState, FiltersType } from "@/state/types";
 
 export const getConvertFiltersToString = ({ filters }: FiltersState) => {
 	const filtersString: any = {};

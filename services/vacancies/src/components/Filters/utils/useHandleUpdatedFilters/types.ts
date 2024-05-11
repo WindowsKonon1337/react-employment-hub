@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { FiltersTypeData } from "../../types";
+import { FiltersTypeData } from "@/state";
 
 export interface UseHandleUpdatedFiltersProps {
 	setCurrentfitlers: Dispatch<SetStateAction<FiltersTypeData[]>>;
