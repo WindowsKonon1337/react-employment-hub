@@ -17,10 +17,10 @@ export const useFiltersQuery = () => {
 
 	const { data, isLoading } = useGetFilters();
 
-	const newData = data ? [...data] : [];
+	const newData = data ? [...data.filters] : [];
 
 	if (filters.filters.length > 0) {
-		data?.forEach((item, idx) => {
+		data?.filters.forEach((item, idx) => {
 			const isFIltersExistIdx = filters.filters.findIndex((filter) => filter.title === item.title);
 			if (isFIltersExistIdx > -1) {
 				item.filters.forEach((fltr) => {

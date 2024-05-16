@@ -6,17 +6,17 @@ export const getFilterFromString = (param: string) => {
 		currentParam[0] = currentParam[0].replace("_", " ");
 	}
 
-	// if (currentParam[0] === "Search") {
-	// 	return {
-	// 		title: currentParam[0],
-	// 		filters: [
-	// 			{
-	// 				type: FiltersType.search,
-	// 				data: currentParam[1],
-	// 			},
-	// 		],
-	// 	};
-	// }
+	if (currentParam[0] === "Search") {
+		return {
+			title: currentParam[0],
+			filters: [
+				{
+					type: FiltersType.search,
+					data: currentParam[1],
+				},
+			],
+		};
+	}
 
 	if (currentParam[1].indexOf("%2C") > -1) {
 		const result = currentParam[1].split("%2C");

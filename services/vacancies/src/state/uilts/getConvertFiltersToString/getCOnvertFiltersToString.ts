@@ -19,6 +19,9 @@ export const getConvertFiltersToString = ({ filters }: FiltersState) => {
 				const filterData = `${fl.data.from},${fl.data.to}`;
 				filtersString[title] = filtersString[title] ? filtersString[title] + filterData : filterData;
 			}
+			if (fl.type === FiltersType.search) {
+				filtersString[title] = fl.data;
+			}
 		});
 	});
 

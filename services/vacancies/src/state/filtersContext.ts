@@ -7,7 +7,7 @@ import { FiltersState } from "./types";
 interface FiltersContextProps {
 	filters: FiltersState;
 	addFilters?: (filters: FiltersData[]) => void;
-	deleteFilter?: (filterId: string) => void;
+	deleteFilter?: (title: string) => void;
 	deleteAllFilters?: () => void;
 	updateCurrentFilter?: (filter: FiltersData) => void;
 }

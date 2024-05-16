@@ -9,8 +9,8 @@ export enum FiltersType {
 
 export type FiltersTypeData =
 	| GenericData<FiltersType.checkBox, CheckBoxData[]>
-	| GenericData<FiltersType.range, RangeData>;
-// | GenericData<FiltersType.search, string>;
+	| GenericData<FiltersType.range, RangeData>
+	| GenericData<FiltersType.search, string>;
 
 export interface FiltersState {
 	filters: FiltersData[];
