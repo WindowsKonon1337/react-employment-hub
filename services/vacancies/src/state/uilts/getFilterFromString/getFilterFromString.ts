@@ -18,6 +18,18 @@ export const getFilterFromString = (param: string) => {
 		};
 	}
 
+	if (currentParam[0] === "Location") {
+		return {
+			title: currentParam[0],
+			filters: [
+				{
+					type: FiltersType.location,
+					data: currentParam[1],
+				},
+			],
+		};
+	}
+
 	if (currentParam[1].indexOf("%2C") > -1) {
 		const result = currentParam[1].split("%2C");
 		return {

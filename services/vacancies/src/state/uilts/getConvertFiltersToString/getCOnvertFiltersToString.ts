@@ -22,6 +22,9 @@ export const getConvertFiltersToString = ({ filters }: FiltersState) => {
 			if (fl.type === FiltersType.search) {
 				filtersString[title] = fl.data;
 			}
+			if (fl.type === FiltersType.location) {
+				filtersString[title] = fl.data;
+			}
 		});
 	});
 
