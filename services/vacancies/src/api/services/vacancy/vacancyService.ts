@@ -8,7 +8,7 @@ export const VacancyService = {
 	// 	instance.post("/vacancies", { filters }),
 	getVacancies: async (filters: FiltersProps[] | []): Promise<VacnacyCardProps[] | []> => [
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle1",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -23,7 +23,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle2",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -38,7 +38,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle3",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -53,7 +53,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle4",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -68,7 +68,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle5",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -83,7 +83,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle6",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -98,7 +98,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle7",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -113,7 +113,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle8",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -128,7 +128,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle9",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -143,7 +143,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle10",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -158,7 +158,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle11",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -173,7 +173,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle12",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -188,7 +188,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle13",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -203,7 +203,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle14",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -218,7 +218,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle15",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,
@@ -233,7 +233,7 @@ export const VacancyService = {
 			postedTime: "25",
 		},
 		{
-			companyTitle: "CompanyTitle",
+			companyTitle: "CompanyTitle16",
 			countCandidates: 25,
 			description: "test etst etstet",
 			isLiked: true,

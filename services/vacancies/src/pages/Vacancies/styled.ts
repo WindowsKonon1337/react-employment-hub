@@ -17,6 +17,7 @@ export const ContentWrapper = styled("div")({
 
 export const VacanciesBlock = styled("div")({
 	display: "flex",
+	flexDirection: "column",
 	justifyContent: "center",
 	flexWrap: "wrap",
 	gap: 10,
