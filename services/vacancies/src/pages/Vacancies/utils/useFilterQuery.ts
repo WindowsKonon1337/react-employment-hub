@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { FiltersType, useFiltersContext } from "@/state";
 import { filtersService } from "@/api/services";
+import { FiltersResponseData } from "@/api/services/filters/types";
 
 const useGetFilters = () => {
 	const { data, isLoading } = useQuery({
@@ -64,5 +65,10 @@ export const useFiltersQuery = () => {
 		});
 	}
 
-	return { data: newData, isLoading };
+	const currentData: FiltersResponseData = {
+		pageInfo: data?.pageInfo,
+		filters: newData,
+	};
+
+	return { data: currentData, isLoading };
 };

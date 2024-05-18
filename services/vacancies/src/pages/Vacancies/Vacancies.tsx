@@ -42,8 +42,8 @@ const Vacnacies = () => {
 					<ContentWrapper>
 						<div>
 							{data &&
-								data.length &&
-								data?.map((item, idx) => (
+								data.filters.length &&
+								data?.filters.map((item, idx) => (
 									<Filters
 										title={item.title}
 										filters={item.filters}

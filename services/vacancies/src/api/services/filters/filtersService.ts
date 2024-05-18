@@ -1,12 +1,22 @@
 // import { instance } from "@/api/axiosConfig";
 
+import { FiltersResponseData } from "./types";
 import { FiltersType } from "@/state";
 
-import { FiltersResponseData } from "./types";
-
 export const filtersService = {
-	// getFilters: (pageName: string): Promise<FiltersData> => instance.get(`/filters/${pageName}`),
+	// getFilters: (pageName: string): Promise<FiltersResponseData> =>
+	// 	instance.get(`/filters/${pageName}`),
 	getFilters: (): FiltersResponseData => ({
+		pageInfo: {
+			page: 0,
+			size: 16,
+			sorts: [
+				{
+					code: "title",
+					direction: "ASC",
+				},
+			],
+		},
 		filters: [
 			{
 				title: "Test",
