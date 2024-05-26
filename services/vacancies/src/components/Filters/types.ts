@@ -1,4 +1,4 @@
-import { FiltersTypeData } from "@/state/types";
+import { FiltersTypeData } from "@/state";
 
 export interface ClickData {
 	title: string;

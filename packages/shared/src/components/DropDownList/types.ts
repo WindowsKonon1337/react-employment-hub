@@ -1,6 +1,6 @@
 export interface DropDownListProps {
 	title: string;
-	listValues: string[];
+	listValues: { value: string; title: string }[];
 	isOpen?: boolean;
-	handleChange?: (value?: string) => void;
+	handleChange?: (value?: any) => void;
 }

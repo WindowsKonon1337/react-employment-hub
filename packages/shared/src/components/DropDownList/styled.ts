@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const DropDownContainer = styled("div")({
+	width: 150,
 	position: "relative",
 	display: "flex",
 	flexDirection: "column",
@@ -17,6 +18,8 @@ export const DropDownLists = styled("div")(({ theme: { colors } }) =>
 	css({
 		position: "absolute",
 		top: "100%",
+		right: 0,
+		width: 150,
 		display: "flex",
 		flexDirection: "column",
 		background: colors.main,
@@ -27,6 +30,7 @@ export const DropDownLists = styled("div")(({ theme: { colors } }) =>
 export const DropDownItem = styled("div")<{ $isChecked?: boolean }>(
 	({ theme: { colors }, $isChecked }) =>
 		css({
+			cursor: "pointer",
 			color: colors.secondary,
 			background: $isChecked ? colors.blue : colors.main,
 			borderRadius: 8,
@@ -34,6 +38,7 @@ export const DropDownItem = styled("div")<{ $isChecked?: boolean }>(
 			transition: "all 0,3s ease",
 			"&:hover": {
 				transition: "all 0,3s ease",
+				color: colors.main,
 				background: colors.activeHover,
 			},
 		}),

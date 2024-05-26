@@ -36,7 +36,7 @@ const Vacancy = () => {
 
 	const { data, isLoading } = useQuery({
 		queryKey: ["getSimilarVacancy"],
-		queryFn: () => VacancyService.getVacancies([]),
+		queryFn: () => VacancyService.getVacancies({ filters: [] }),
 	});
 
 	const {

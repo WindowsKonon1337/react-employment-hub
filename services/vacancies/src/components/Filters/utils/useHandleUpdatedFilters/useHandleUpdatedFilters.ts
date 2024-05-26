@@ -1,4 +1,4 @@
-import { FiltersType, useFiltersContext, FiltersTypeData } from "@/state";
+import { FiltersType, useFiltersContext } from "@/state";
 
 import { HandleUpdatedFiltersProps, UseHandleUpdatedFiltersProps } from "./types";
 

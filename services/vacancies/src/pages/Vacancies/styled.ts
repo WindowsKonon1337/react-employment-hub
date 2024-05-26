@@ -9,6 +9,12 @@ export const HeaderBlock = styled(Header)({
 	marginBottom: 20,
 });
 
+export const TopBlock = styled("div")({
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "space-between",
+});
+
 export const ContentWrapper = styled("div")({
 	display: "grid",
 	marginTop: 20,

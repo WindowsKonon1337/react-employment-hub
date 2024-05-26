@@ -1,18 +1,22 @@
-import { useEffect } from "react";
-import { Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
+import { useEffect, useState } from "react";
+import { DropDownList, Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
 import { useMutation } from "@tanstack/react-query";
 
-import { useFiltersContext } from "@/state";
-import { VacancyService } from "@/api/services";
-import { Filters, VacancyCard } from "@/components";
-import { FiltersProps } from "@/components/Filters";
-
-import { ContentBlock, ContentWrapper, HeaderBlock, VacanciesBlock } from "./styled";
-import { useFiltersQuery } from "./utils";
+import { FiltersResponseData } from "@/api/services/filters/types";
 import { useVirtualizedScroll } from "@/hooks";
+import { VacancyService } from "@/api/services";
+import { useFiltersContext } from "@/state";
+import { SortsType, usePageInfo } from "@/reducer";
+import { Filters, VacancyCard } from "@/components";
+
+import { ContentBlock, ContentWrapper, HeaderBlock, TopBlock, VacanciesBlock } from "./styled";
+import { useFiltersQuery } from "./utils";
+import { SortsData } from "./data";
 
 const Vacnacies = () => {
 	const { filters } = useFiltersContext();
+	const { pageInfo, handleUpdateCurrentPage, handleChangeCurrentSorts } = usePageInfo();
+	const [currentSort, setCurrentSort] = useState<SortsType>("ASC");
 
 	const { data, isLoading } = useFiltersQuery();
 
@@ -21,15 +25,26 @@ const Vacnacies = () => {
 		isPending,
 		data: vacancies,
 	} = useMutation({
-		mutationFn: (filtersData: FiltersProps[] | []) => VacancyService.getVacancies(filtersData),
+		mutationFn: (filtersData: FiltersResponseData) => VacancyService.getVacancies(filtersData),
 	});
 
 	const { visibleItems } = useVirtualizedScroll({ items: vacancies ? vacancies : [] });
 
+	const handleSetSorts = (value: SortsType) => {
+		setCurrentSort(value);
+		handleChangeCurrentSorts([
+			{
+				code: "title",
+				direction: currentSort,
+			},
+		]);
+	};
+
 	useEffect(() => {
 		console.log(filters);
-		mutate(filters.filters);
-	}, [filters]);
+		console.log(pageInfo);
+		mutate({ filters: filters.filters, pageInfo: pageInfo.pageInfo });
+	}, [filters, pageInfo]);
 
 	return (
 		<>
@@ -38,7 +53,10 @@ const Vacnacies = () => {
 				<Loader />
 			) : (
 				<ContentBlock>
-					<Title>Recommended jobs</Title>
+					<TopBlock>
+						<Title>Recommended jobs</Title>
+						<DropDownList listValues={SortsData} title="Choise sorts" handleChange={handleSetSorts} />
+					</TopBlock>
 					<ContentWrapper>
 						<div>
 							{data &&
@@ -60,7 +78,7 @@ const Vacnacies = () => {
 									{visibleItems.map((item, idx) => (
 										<VacancyCard {...item} key={`VacnyCard_${idx}`} />
 									))}
-									<UplaodMoreBtn handleClick={() => console.log("upload more")} />
+									<UplaodMoreBtn handleClick={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)} />
 								</>
 							)}
 						</VacanciesBlock>

@@ -1,0 +1,1 @@
+export { SortsData } from "./sortsData";

@@ -1,12 +1,12 @@
 import { instance } from "@/api/axiosConfig";
-import { FiltersProps } from "@/components/Filters/types";
 import { VacnacyCardProps } from "@/components/VacancyCard/types";
 import { VacancyProps } from "./types";
+import { FiltersResponseData } from "../filters/types";
 
 export const VacancyService = {
 	// getVacancies: async (filters: FiltersProps[] | []): Promise<VacnacyCardProps[] | []> =>
 	// 	instance.post("/vacancies", { filters }),
-	getVacancies: async (filters: FiltersProps[] | []): Promise<VacnacyCardProps[] | []> => [
+	getVacancies: async (filters: FiltersResponseData): Promise<VacnacyCardProps[] | []> => [
 		{
 			companyTitle: "CompanyTitle1",
 			countCandidates: 25,

@@ -22,10 +22,10 @@ export const DropDownList: FC<DropDownListProps> = ({
 		}
 	};
 
-	const handleCompleteValue = (value: string) => {
-		setCurrentTitle(value);
+	const handleCompleteValue = (item: { value: string; title: string }) => {
+		setCurrentTitle(item.title);
 		if (handleChange) {
-			handleChange(value);
+			handleChange(item.value);
 		}
 		setIsDropDownOpen(false);
 	};
@@ -43,11 +43,11 @@ export const DropDownList: FC<DropDownListProps> = ({
 				<DropDownLists>
 					{listValues.map((item) => (
 						<DropDownItem
-							key={`DropDownItem_${item}`}
+							key={`DropDownItem_${item.title}`}
 							onClick={() => handleCompleteValue(item)}
-							$isChecked={item === currentTitle}
+							$isChecked={item.title === currentTitle}
 						>
-							{item}
+							{item.title}
 						</DropDownItem>
 					))}
 				</DropDownLists>

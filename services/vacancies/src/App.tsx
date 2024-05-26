@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Layout } from "@packages/shared";
-import { FiltersContext } from "./state";
-import { useFilters } from "./state/useFilters";
+import { FiltersContext, useFilters } from "./state";
 
 export const App = () => {
 	const filters = useFilters();
