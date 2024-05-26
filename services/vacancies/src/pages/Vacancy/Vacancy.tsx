@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Loader, Title } from "@packages/shared/src/components";
+import { Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
 
 import ErrorImg from "public/img/error/error.png";
 import { Tag } from "@/components";
@@ -27,16 +27,31 @@ import {
 	ApplyBtn,
 	EmptyBlock,
 } from "./styled";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useFiltersContext } from "@/state";
+import { useVirtualizedScroll } from "@/hooks";
+import { usePageInfo } from "@/reducer";
 
 const Vacancy = () => {
 	const location = useLocation();
 	const id = location.pathname.split("/")[2];
-	// const { filters } = useAppSelector((state) => state.filters);
+	const { filters } = useFiltersContext();
+	const {
+		pageInfo: { pageInfo },
+		handleUpdateCurrentPage,
+	} = usePageInfo();
+
+	const vacanciesContainer = useRef<HTMLDivElement>(null);
 
 	const { data, isLoading } = useQuery({
 		queryKey: ["getSimilarVacancy"],
-		queryFn: () => VacancyService.getVacancies({ filters: [] }),
+		queryFn: () => VacancyService.getVacancies({ filters: filters.filters, pageInfo: pageInfo }),
+	});
+
+	const { visibleItems } = useVirtualizedScroll({
+		items: data ? data : [],
+		itemHeight: 146,
+		container: vacanciesContainer,
 	});
 
 	const {
@@ -55,10 +70,14 @@ const Vacancy = () => {
 
 	return (
 		<VacancyContainer>
-			<VacanciesContainer>
-				{data?.map((item, idx) => (
+			<VacanciesContainer ref={vacanciesContainer}>
+				{visibleItems?.map((item, idx) => (
 					<VacancyCardItem $isCheck={item.id == id} {...item} key={`VacanciesItem_${idx}`} />
 				))}
+				<UplaodMoreBtn
+					handleClick={() => handleUpdateCurrentPage(pageInfo.page + 1)}
+					title="upload more"
+				/>
 			</VacanciesContainer>
 			{isPending ? (
 				<Loader />

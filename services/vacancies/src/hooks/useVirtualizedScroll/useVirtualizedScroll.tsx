@@ -22,6 +22,8 @@ export const useVirtualizedScroll = ({
 				? container.current.scrollTop
 				: container.current?.scrollY ?? 0;
 
+		console.log(containerHeight, containerScroll, container);
+
 		const startIndex = Math.ceil(containerScroll / itemHeight);
 
 		const endIndex = startIndex + Math.ceil(containerHeight / itemHeight);
@@ -39,9 +41,9 @@ export const useVirtualizedScroll = ({
 	}, [items]);
 
 	useEffect(() => {
-		window.addEventListener("scroll", handleVirtualizeScroll);
+		container?.current?.addEventListener("scroll", handleVirtualizeScroll);
 
-		return () => window.removeEventListener("scroll", handleVirtualizeScroll);
+		return () => container?.current?.removeEventListener("scroll", handleVirtualizeScroll);
 	}, [handleVirtualizeScroll]);
 
 	return { visibleItems };
