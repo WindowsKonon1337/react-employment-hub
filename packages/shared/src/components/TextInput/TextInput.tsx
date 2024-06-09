@@ -3,7 +3,9 @@ import React, { FC, forwardRef, ForwardedRef, useState } from "react";
 import { TextInputProps } from "./types";
 import { ErrorText, ErrorWrapper, Input, InputWrapper, Label, VisibleTextBtn } from "./styled";
 
+// @ts-ignore
 import Eye from "../../assets/input/eye.svg";
+// @ts-ignore
 import SlashEye from "../../assets/input/eye-slash.svg";
 
 export const TextInput: FC<TextInputProps> = forwardRef(

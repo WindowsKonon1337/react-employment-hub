@@ -1,11 +1,29 @@
-import styled from "styled-components";
+import { Loader } from "@packages/shared/src/components";
+import styled, { css } from "styled-components";
 
-export const Container = styled("div")({
-    display: "flex",
-    flexDirection: "column"
-})
+export const Container = styled("div")<{ isLoading: boolean }>(({ isLoading }) =>
+	css({
+		padding: 20,
+		display: "flex",
+		position: "relative",
+		flexDirection: "column",
+		overflow: isLoading ? "hidden" : "auto",
+	}),
+);
 
-export const ProfileWrapper = styled("div")({
-    display: "grid",
-    gridTemplateColumns: "320px 1fr",
-})
+export const LoaderWrapper = styled("div")({
+	top: 0,
+	left: 0,
+	zIndex: 100,
+	position: "fixed",
+	width: "100%",
+	height: "110vh",
+	background: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))",
+});
+
+export const LoaderItem = styled(Loader)({
+	position: "absolute",
+	left: "50%",
+	top: "50%",
+	transform: "translate(-50%, -50%)",
+});

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import { RotatingLines } from "react-loader-spinner";
-import { LoaderBlock } from "./styled";
 
-export const Loader = () => {
+import { LoaderBlock } from "./styled";
+import { LoaderProps } from "./types";
+
+export const Loader: FC<LoaderProps> = ({ className }) => {
 	return (
-		<LoaderBlock>
+		<LoaderBlock className={className}>
 			<RotatingLines
 				visible={true}
 				width="25"

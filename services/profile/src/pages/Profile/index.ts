@@ -1,1 +1,1 @@
-export {LazyProfile} from './Profile.lazy';
+export { LazyProfile } from "./Profile.lazy";
