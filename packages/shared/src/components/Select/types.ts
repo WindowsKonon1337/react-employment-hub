@@ -1,5 +1,6 @@
 export interface SelectProps {
 	data: SelectData[];
+	isMulti?: boolean;
 	label?: string;
 	onChange?: () => void;
 	placeholder?: string;

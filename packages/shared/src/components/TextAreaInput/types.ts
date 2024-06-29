@@ -1,9 +1,8 @@
 import { HTMLAttributes } from "react";
 
-export interface TextInputProps extends HTMLAttributes<HTMLInputElement> {
+export interface TextAreaInputProps extends HTMLAttributes<HTMLTextAreaElement> {
 	value?: string;
 	label?: string;
-	type?: "text" | "password";
 	placeholder?: string;
 	errorText?: string;
 	isNotValid?: boolean;

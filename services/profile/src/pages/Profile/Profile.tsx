@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -6,7 +7,6 @@ import { Error } from "global";
 
 import { Container, LoaderItem, LoaderWrapper } from "./styled";
 import { ProfileForm } from "./components";
-import { useMemo } from "react";
 
 const Profile = () => {
 	const { data, isLoading } = useQuery({

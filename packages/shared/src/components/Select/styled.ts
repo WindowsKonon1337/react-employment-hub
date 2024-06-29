@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const SelectWrapper = styled("div")({
 	display: "flex",
+	width: "100%",
 	flexDirection: "column",
 });
 

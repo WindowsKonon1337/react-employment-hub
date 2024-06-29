@@ -1,16 +1,23 @@
 import React, { FC } from "react";
-import ReactSelect from "react-select";
+import ReactSelect from "react-select/creatable";
 
 import { SelectProps } from "./types";
 import { Label, SelectWrapper } from "./styled";
 
-export const Select: FC<SelectProps> = ({ data, className, placeholder, label, onChange }) => {
+export const Select: FC<SelectProps> = ({
+	data,
+	className,
+	placeholder,
+	label,
+	isMulti = false,
+	onChange,
+}) => {
 	return (
 		<SelectWrapper>
 			{label && <Label>{label}</Label>}
 			<ReactSelect
 				options={data}
-				isMulti={false}
+				isMulti={isMulti}
 				className={className}
 				placeholder={placeholder}
 				onChange={onChange}
