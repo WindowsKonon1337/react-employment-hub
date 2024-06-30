@@ -43,7 +43,7 @@ const Profile = () => {
 	);
 
 	return (
-		<Container isLoading={hasLoading}>
+		<Container $isLoading={hasLoading}>
 			{hasLoading && LoadingBlock}
 			{data && <ProfileForm data={data} handleApplyData={handleUpdateProfile} />}
 			<Toaster />

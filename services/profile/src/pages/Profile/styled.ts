@@ -1,13 +1,13 @@
 import { Loader } from "@packages/shared/src/components";
 import styled, { css } from "styled-components";
 
-export const Container = styled("div")<{ isLoading: boolean }>(({ isLoading }) =>
+export const Container = styled("div")<{ $isLoading: boolean }>(({ $isLoading }) =>
 	css({
 		padding: 20,
 		display: "flex",
 		position: "relative",
 		flexDirection: "column",
-		overflow: isLoading ? "hidden" : "auto",
+		overflow: $isLoading ? "hidden" : "auto",
 	}),
 );
 
