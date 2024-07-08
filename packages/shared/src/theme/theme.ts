@@ -7,6 +7,8 @@ const colors: ColorsProps = {
 	secondaryLight: "#6c757d",
 	active: "#0582ca",
 	activeHover: "#03045e",
+	negativeHover: "#780000",
+	negative: "#c1121f",
 	error: "#ef233c",
 	blue: "#0077b6",
 	green: "#4f772d",

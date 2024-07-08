@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 // @ts-ignore
@@ -8,21 +8,30 @@ import { CloseBtn, ContentBlock, ModalWrapper } from "./styled";
 import { ModalContainerProps } from "./types";
 
 export const ModalContainer: FC<ModalContainerProps> = ({
-	setModalClose,
 	isModalOpen,
+	setCloseModal,
 	children,
 }) => {
-	const [isOpen, setIsOpen] = useState(isModalOpen);
+	const modalRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		setIsOpen(isModalOpen);
-	}, [isModalOpen]);
+		const handleClickOutsie = (e: MouseEvent) => {
+			if (modalRef?.current && e?.target && !modalRef.current.contains(e?.target as HTMLElement)) {
+				console.log("click inside");
+				setCloseModal?.(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutsie);
+
+		return () => document.removeEventListener("mousedown", handleClickOutsie);
+	}, []);
 
 	return (
 		<>
 			{createPortal(
-				<ModalWrapper $isOpen={isOpen}>
-					<CloseBtn onClick={() => setModalClose?.(false)}>
+				<ModalWrapper $isOpen={isModalOpen} ref={modalRef}>
+					<CloseBtn onClick={() => setCloseModal?.(false)}>
 						<CloseIcon />
 					</CloseBtn>
 					<ContentBlock>{children}</ContentBlock>

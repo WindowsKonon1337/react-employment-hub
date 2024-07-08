@@ -7,6 +7,8 @@ export interface ColorsProps {
 	error: string;
 	green: string;
 	violet: string;
+	negativeHover: string;
+	negative: string;
 	blue: string;
 }
 

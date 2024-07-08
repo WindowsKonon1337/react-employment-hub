@@ -10,10 +10,14 @@ import SlashEye from "../../assets/input/eye-slash.svg";
 
 export const TextInput: FC<TextInputProps> = forwardRef(
 	(
-		{ value, label, errorText, isNotValid, type = "text", placeholder = "text", className, ...props },
+		{ label, errorText, isNotValid, type = "text", placeholder = "text", className, ...props },
 		ref: ForwardedRef<HTMLInputElement>,
 	) => {
 		const [currentType, setCurrentType] = useState(type);
+
+		// console.log(value);
+
+		console.log(props);
 
 		const handleChangeType = () => {
 			if (currentType === "text") {
@@ -27,7 +31,7 @@ export const TextInput: FC<TextInputProps> = forwardRef(
 			<InputWrapper className={className}>
 				<Label>{label}</Label>
 				<Input
-					defaultValue={value}
+					// defaultValue={value}
 					placeholder={placeholder}
 					$isError={isNotValid}
 					type={currentType}

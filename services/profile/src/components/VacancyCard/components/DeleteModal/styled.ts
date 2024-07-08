@@ -7,6 +7,11 @@ export const Container = styled("div")({
 	flexDirection: "column",
 });
 
+export const Title = styled("span")({
+	fontSize: 18,
+	fontWeight: "bold",
+});
+
 export const Text = styled("div")(({ theme }) =>
 	css({
 		fontSize: 18,

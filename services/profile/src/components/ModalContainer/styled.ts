@@ -4,6 +4,7 @@ const MODAL_MIN_WIDTH = 250;
 
 export const ModalWrapper = styled("div")<{ $isOpen: boolean }>(({ $isOpen, theme }) =>
 	css({
+		zIndex: 200,
 		border: "1px solid",
 		borderColor: theme.colors.secondary,
 		borderRadius: 8,
@@ -15,6 +16,7 @@ export const ModalWrapper = styled("div")<{ $isOpen: boolean }>(({ $isOpen, them
 		left: "50%",
 		transform: "translate(-50%)",
 		flexDirection: "column",
+		background: theme.colors.main,
 	}),
 );
 

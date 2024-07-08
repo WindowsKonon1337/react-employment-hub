@@ -5,19 +5,20 @@ import { SelectProps } from "./types";
 import { Label, SelectWrapper } from "./styled";
 
 export const Select: FC<SelectProps> = forwardRef(
-	({ data, className, placeholder, label, isMulti = false, onChange }, ref: ForwardedRef<any>) => {
+	({ data, className, placeholder, label, isMulti = false, ...props }, ref: ForwardedRef<any>) => {
 		return (
 			<SelectWrapper ref={ref}>
 				{label && <Label>{label}</Label>}
 				<ReactSelect
 					options={data}
 					isMulti={isMulti}
-					className={className}
 					placeholder={placeholder}
-					onChange={onChange}
+					isClearable={false}
 					styles={{
 						control: (baseStyles) => ({
 							...baseStyles,
+							maxWidth: 350,
+							display: "flex",
 							borderColor: "black",
 							borderRadius: 10,
 							":hover": {
@@ -25,6 +26,8 @@ export const Select: FC<SelectProps> = forwardRef(
 							},
 						}),
 					}}
+					className={className}
+					{...props}
 				/>
 			</SelectWrapper>
 		);

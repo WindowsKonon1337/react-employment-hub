@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { TextInput } from "@packages/shared/src/components";
@@ -6,11 +6,10 @@ import { TextInput } from "@packages/shared/src/components";
 import { VacanciesService } from "@/api/services";
 import { ModalContainer } from "@/components/ModalContainer";
 
-import { Container, DeleteBtn, Text } from "./styled";
-import { DeleteModalValues } from "./types";
+import { Container, DeleteBtn, Text, Title } from "./styled";
+import { DeleteModalProps, DeleteModalValues } from "./types";
 
-export const DeleteModal = () => {
-	// const [isOpen, setIsOpen] = useState(false);
+export const DeleteModal: FC<DeleteModalProps> = ({ id, setShowModal, isOpen, title }) => {
 	const {
 		control,
 		register,
@@ -24,14 +23,17 @@ export const DeleteModal = () => {
 
 	const handleDelete = () => {
 		if (isValid) {
-			mutate("test");
+			mutate(id);
+			setShowModal?.(false);
 		}
 	};
 
 	return (
-		<ModalContainer isModalOpen={true}>
+		<ModalContainer isModalOpen={isOpen} setCloseModal={setShowModal}>
 			<Container>
-				<Text>Enter "delete" to delete the vacancy</Text>
+				<Text>
+					Enter "delete" to delete the <Title>{title}</Title>
+				</Text>
 				<form onSubmit={handleSubmit(handleDelete)}>
 					<Controller
 						name="deleteValue"
@@ -53,7 +55,9 @@ export const DeleteModal = () => {
 							/>
 						)}
 					/>
-					<DeleteBtn onClick={handleDelete}>Delete</DeleteBtn>
+					<DeleteBtn isDleteBtn onClick={handleDelete}>
+						Delete
+					</DeleteBtn>
 				</form>
 			</Container>
 		</ModalContainer>
