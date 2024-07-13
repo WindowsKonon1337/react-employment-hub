@@ -3,11 +3,19 @@ import { useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 
 import { CreateCompanyService, CreateCompanyFormData } from "@/api/services";
-import { Button, Select, TexAreaInput, TextInput } from "@packages/shared/src/components";
+import {
+	Button,
+	InputImageFile,
+	Select,
+	SetFileParams,
+	TexAreaInput,
+	TextInput,
+} from "@packages/shared/src/components";
 import { Error } from "global";
 
-import { Container, ContentContainer, FormBlock } from "./styled";
+import { Container, ContentContainer, FormBlock, ImageContainer } from "./styled";
 import { CreateCompanyFormValues } from "./types";
+import { useState } from "react";
 
 export const CreateCompanyForm = () => {
 	const {
@@ -17,6 +25,8 @@ export const CreateCompanyForm = () => {
 		getValues,
 		control,
 	} = useForm<CreateCompanyFormValues>();
+
+	const [companyImg, setCompanyImg] = useState<SetFileParams>({ file: null, filePath: null });
 
 	const { mutate } = useMutation({
 		mutationFn: async (data: CreateCompanyFormData) => CreateCompanyService.createCompany(data),
@@ -33,10 +43,19 @@ export const CreateCompanyForm = () => {
 		const currentData = getValues();
 		const updatedData: CreateCompanyFormData = {
 			...currentData,
-			tags: currentData.tags.map((tag) => tag.value),
+			tags: currentData?.tags?.map((tag) => tag.value),
+			companyImg: companyImg.file,
 		};
 		if (isValid) {
-			mutate(updatedData);
+			const formData = new FormData();
+
+			const newData = Object.entries(updatedData);
+
+			newData.forEach((newDataItem) => {
+				formData.append(newDataItem[0], newDataItem[1]);
+			});
+
+			mutate(formData as unknown as CreateCompanyFormData);
 		}
 	};
 
@@ -44,32 +63,33 @@ export const CreateCompanyForm = () => {
 		<>
 			<Container>
 				<FormBlock onSubmit={handleSubmit(handleSubmitForm)}>
+					<ImageContainer>
+						<InputImageFile setFile={setCompanyImg} />
+					</ImageContainer>
 					<ContentContainer>
 						<Controller
 							control={control}
 							name="companyTitle"
-							render={({ field }) => (
+							render={() => (
 								<TextInput
 									label="Company title"
 									placeholder="your title"
 									errorText={errors.companyTitle?.message}
 									isNotValid={!!errors.companyTitle}
 									{...register("companyTitle", { required: "this fieild is requried" })}
-									{...field}
 								/>
 							)}
 						/>
 						<Controller
 							control={control}
 							name="location"
-							render={({ field }) => (
+							render={() => (
 								<TextInput
 									label="Company location"
 									placeholder="location"
 									errorText={errors.location?.message}
 									isNotValid={!!errors.location}
 									{...register("location", { required: "this fieild is requried" })}
-									{...field}
 								/>
 							)}
 						/>
@@ -98,7 +118,7 @@ export const CreateCompanyForm = () => {
 							)}
 						/>
 					</ContentContainer>
-					<Button>submit</Button>
+					<Button clickFuntcion={handleSubmitForm}>submit</Button>
 				</FormBlock>
 			</Container>
 			<Toaster />

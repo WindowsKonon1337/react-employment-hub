@@ -13,7 +13,7 @@ export const Button: FC<ButtonProps> = ({
 	return (
 		<ButtonWrapper
 			disabled={isDisabled}
-			isDelete={isDleteBtn}
+			$isDelete={isDleteBtn}
 			className={className}
 			onClick={clickFuntcion}
 		>

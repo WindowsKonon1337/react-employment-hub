@@ -1,7 +1,11 @@
-export interface ProfileInfoData {
+export interface ProfileRequestInfoData {
 	name: string;
 	lastName: string;
 	email: string;
-	profileImg?: Blob | null;
+	profileImg?: File | null;
 	phone?: string;
+}
+
+export interface ProfileResponsetInfoData extends Omit<ProfileRequestInfoData, "profileImg"> {
+	profileImg?: string | null;
 }

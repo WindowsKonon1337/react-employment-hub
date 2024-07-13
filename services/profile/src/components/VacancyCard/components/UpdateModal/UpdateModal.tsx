@@ -1,10 +1,9 @@
 import { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button, Select, TexAreaInput, TextInput } from "@packages/shared/src/components";
-import { useMutation } from "@tanstack/react-query";
 
 import { ModalContainer } from "@/components/ModalContainer";
-import { VacanciesService, VacancyQueryCardData } from "@/api/services";
+import { VacancyQueryCardData } from "@/api/services";
 
 import { SalaryData, VacnacyCardFormValues } from "../../types";
 import { UpdateModalProps } from "./types";
@@ -18,6 +17,7 @@ export const UpdateModal: FC<UpdateModalProps> = ({
 	salary,
 	isOpen,
 	setShowModal,
+	handleUpdate,
 	className,
 }) => {
 	const {
@@ -29,14 +29,9 @@ export const UpdateModal: FC<UpdateModalProps> = ({
 		reset,
 	} = useForm<VacnacyCardFormValues>();
 
-	const { mutate } = useMutation({
-		mutationFn: async (data: VacancyQueryCardData) => VacanciesService.update(data),
-	});
-
 	const onSubmit = () => {
 		if (isValid) {
 			const formData = getValues();
-			console.log("ЗП", formData.salary);
 			const data: VacancyQueryCardData = {
 				title: formData.title,
 				tags: formData.tags.map((tag) => tag.value),
@@ -50,8 +45,7 @@ export const UpdateModal: FC<UpdateModalProps> = ({
 					: null,
 				id,
 			};
-			console.log(data);
-			mutate(data);
+			handleUpdate(id, data);
 		}
 	};
 

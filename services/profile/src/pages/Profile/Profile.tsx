@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 
-import { ProfileInfoData, ProfileInfoService } from "@/api/services";
+import { ProfileRequestInfoData, ProfileInfoService } from "@/api/services";
 import { Error } from "global";
 
 import { Container, LoaderItem, LoaderWrapper } from "./styled";
@@ -15,7 +15,7 @@ const Profile = () => {
 	});
 
 	const { mutate: handleUpdateData, isPending } = useMutation({
-		mutationFn: (data: ProfileInfoData) => ProfileInfoService.updatedInfo(data),
+		mutationFn: (data: ProfileRequestInfoData) => ProfileInfoService.updatedInfo(data),
 		onSuccess: () => {
 			toast.success("your data has been successfully updated");
 		},
@@ -25,7 +25,7 @@ const Profile = () => {
 		},
 	});
 
-	const handleUpdateProfile = (profileData: ProfileInfoData) => {
+	const handleUpdateProfile = (profileData: ProfileRequestInfoData) => {
 		if (profileData) {
 			handleUpdateData(profileData);
 		}

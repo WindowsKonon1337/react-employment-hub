@@ -6,7 +6,7 @@ export interface DeleteModalValues {
 
 export interface DeleteModalProps {
 	title: string;
-	id: string;
 	isOpen: boolean;
+	handleDlete?: () => void;
 	setShowModal: Dispatch<SetStateAction<boolean>>;
 }

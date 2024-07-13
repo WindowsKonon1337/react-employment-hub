@@ -3,4 +3,5 @@ export interface CreateCompanyFormData {
 	companyDescription: string;
 	tags: string[];
 	location: string;
+	companyImg?: File | null;
 }

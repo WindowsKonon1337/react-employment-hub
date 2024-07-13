@@ -1,7 +1,7 @@
-import { ProfileInfoData } from "@/api/services";
+import { ProfileRequestInfoData, ProfileResponsetInfoData } from "@/api/services";
 
 export interface ProfileFormProps {
-	data: ProfileInfoData;
-	handleApplyData: (data: ProfileInfoData) => void;
+	data: ProfileResponsetInfoData;
+	handleApplyData: (data: ProfileRequestInfoData) => void;
 	handleResetData?: () => void;
 }

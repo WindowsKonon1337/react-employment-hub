@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import { VacancyCardData } from "../../types";
+
+import { VacancyQueryCardData } from "@/api/services";
 
 export interface SalaryCardSelectData {
 	currency: string;
@@ -7,8 +8,9 @@ export interface SalaryCardSelectData {
 	inTime: string;
 }
 
-export interface UpdateModalProps extends VacancyCardData {
+export interface UpdateModalProps extends VacancyQueryCardData {
 	className?: string;
 	isOpen: boolean;
+	handleUpdate: (id: string, data: VacancyQueryCardData) => void;
 	setShowModal: Dispatch<SetStateAction<boolean>>;
 }

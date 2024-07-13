@@ -9,11 +9,15 @@ const meta: Meta<DropDownListProps> = {
 export default meta;
 type Story = StoryObj<DropDownListProps>;
 
-const dropDownList = ["test1", "test2", "test3"];
+const dropDownList = [
+	{ title: "test1", value: "test1" },
+	{ title: "test1", value: "test1" },
+	{ title: "test1", value: "test1" },
+];
 
 export const WithLists: Story = {
 	args: {
-		title: dropDownList[0],
+		title: dropDownList[0].title,
 		listValues: dropDownList,
 	},
 };

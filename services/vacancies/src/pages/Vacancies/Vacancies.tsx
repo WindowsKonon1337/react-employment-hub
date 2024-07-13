@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { DropDownList, Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
+import { useVirtualizedScroll } from "@packages/shared/src/hooks";
 import { useMutation } from "@tanstack/react-query";
 
 import { FiltersResponseData } from "@/api/services/filters/types";
-import { useVirtualizedScroll } from "@/hooks";
 import { VacancyService } from "@/api/services";
 import { useFiltersContext } from "@/state";
 import { SortsType, usePageInfo } from "@/reducer";
@@ -12,6 +12,7 @@ import { Filters, VacancyCard } from "@/components";
 import { ContentBlock, ContentWrapper, HeaderBlock, TopBlock, VacanciesBlock } from "./styled";
 import { useFiltersQuery } from "./utils";
 import { SortsData } from "./data";
+import { VacnacyCardProps } from "@/components/VacancyCard/types";
 
 const Vacnacies = () => {
 	const { filters } = useFiltersContext();
@@ -28,7 +29,9 @@ const Vacnacies = () => {
 		mutationFn: (filtersData: FiltersResponseData) => VacancyService.getVacancies(filtersData),
 	});
 
-	const { visibleItems } = useVirtualizedScroll({ items: vacancies ? vacancies : [] });
+	const { visibleItems } = useVirtualizedScroll<VacnacyCardProps>({
+		items: vacancies ? vacancies : [],
+	});
 
 	const handleSetSorts = (value: SortsType) => {
 		setCurrentSort(value);

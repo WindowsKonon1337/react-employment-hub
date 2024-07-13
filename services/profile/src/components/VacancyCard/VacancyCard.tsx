@@ -1,17 +1,58 @@
 import { FC, useState } from "react";
-
+import { useMutation } from "@tanstack/react-query";
+import toast, { Toaster } from "react-hot-toast";
 import { Title } from "@packages/shared/src/components";
 // @ts-ignore
 import TrashCacnon from "@packages/shared/src/assets/delete/trash.svg";
+
+import { Error } from "@/global";
+import { VacanciesService, VacancyQueryCardData } from "@/api/services";
 
 import { Container, ContentBlock, DeleteBtn, Text, UpdatedBtn } from "./styled";
 import { VacancyCardProps } from "./types";
 import { DeleteModal, UpdateModal } from "./components";
 
-export const VacancyCard: FC<VacancyCardProps> = ({ data, className }) => {
+export const VacancyCard: FC<VacancyCardProps> = ({
+	data,
+	className,
+	handleDelete,
+	handleUpdate,
+}) => {
 	const { description, id, title } = data;
 	const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+	const { mutate: updateModal } = useMutation({
+		mutationKey: ["updatedVacancy"],
+		mutationFn: async ({ id, cardData }: { id: string; cardData: VacancyQueryCardData }) =>
+			VacanciesService.update(id, cardData),
+		onSuccess: (data) => {
+			toast.success("Your vacancy succes updated");
+			handleUpdate?.(id, data);
+		},
+		onError: (error: Error) => {
+			toast.error(error.response?.data.message ?? "Something went wrong");
+		},
+	});
+
+	const { mutate: deleteModal } = useMutation({
+		mutationFn: async (id: string) => VacanciesService.delete(id),
+		onSuccess: () => {
+			toast.success("Your vacancy succes delete");
+			handleDelete?.(id);
+		},
+		onError: (error: Error) => {
+			toast.error(error.response?.data.message ?? "Something went wrong");
+		},
+	});
+
+	const onDelete = () => {
+		deleteModal(id);
+	};
+
+	const onUpdate = (id: string, cardData: VacancyQueryCardData) => {
+		updateModal({ id, cardData });
+	};
 
 	return (
 		<Container className={className}>
@@ -27,9 +68,15 @@ export const VacancyCard: FC<VacancyCardProps> = ({ data, className }) => {
 				title={title}
 				isOpen={isDeleteModalOpen}
 				setShowModal={setIsDeleteModalOpen}
-				id={id}
+				handleDlete={onDelete}
 			/>
-			<UpdateModal isOpen={isUpdateModalOpen} setShowModal={setIsUpdateModalOpen} {...data} />
+			<UpdateModal
+				isOpen={isUpdateModalOpen}
+				setShowModal={setIsUpdateModalOpen}
+				handleUpdate={onUpdate}
+				{...data}
+			/>
+			<Toaster />
 		</Container>
 	);
 };

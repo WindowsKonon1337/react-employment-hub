@@ -19,3 +19,7 @@ export const ContentContainer = styled("div")({
 	display: "flex",
 	gap: 20,
 });
+
+export const ImageContainer = styled(ContentContainer)({
+	justifyContent: "center",
+});
