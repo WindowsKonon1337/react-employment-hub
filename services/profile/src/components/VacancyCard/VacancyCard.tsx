@@ -9,7 +9,7 @@ import { Error } from "@/global";
 import { VacanciesService, VacancyQueryCardData } from "@/api/services";
 
 import { Container, ContentBlock, DeleteBtn, Text, UpdatedBtn } from "./styled";
-import { VacancyCardProps } from "./types";
+import { VacancyCardData, VacancyCardProps } from "./types";
 import { DeleteModal, UpdateModal } from "./components";
 
 export const VacancyCard: FC<VacancyCardProps> = ({
@@ -28,7 +28,11 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 			VacanciesService.update(id, cardData),
 		onSuccess: (data) => {
 			toast.success("Your vacancy succes updated");
-			handleUpdate?.(id, data);
+			const newData: VacancyCardData = {
+				...data,
+				tags: data.tags.map((tag) => ({ label: tag, value: tag })),
+			};
+			handleUpdate?.(id, newData);
 		},
 		onError: (error: Error) => {
 			toast.error(error.response?.data.message ?? "Something went wrong");

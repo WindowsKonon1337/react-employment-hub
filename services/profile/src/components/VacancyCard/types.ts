@@ -1,5 +1,3 @@
-import { VacancyQueryCardData } from "@/api/services";
-
 export interface SalaryData {
 	currency: "rubles" | "dollars" | "euros";
 	amount: string;
@@ -11,7 +9,7 @@ export interface VacancyCardData {
 	description: string;
 	id: string;
 	tags: { label: string; value: string }[];
-	salary?: SalaryData;
+	salary?: SalaryData | null;
 }
 
 export interface VacnacyCardFormValues {
@@ -27,8 +25,8 @@ export interface VacnacyCardFormValues {
 }
 
 export interface VacancyCardProps {
-	data: VacancyQueryCardData;
+	data: VacancyCardData;
 	handleDelete?: (id: string) => void;
-	handleUpdate?: (id: string, data: VacancyQueryCardData) => void;
+	handleUpdate?: (id: string, data: VacancyCardData) => void;
 	className?: string;
 }
