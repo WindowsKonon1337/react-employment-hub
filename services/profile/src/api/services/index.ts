@@ -1,4 +1,4 @@
 export * from "./authorization";
 export * from "./profileInfo";
-export * from "./createCompany";
+export * from "./company";
 export * from "./vacancies";

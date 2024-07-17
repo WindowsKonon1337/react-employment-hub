@@ -1,4 +1,4 @@
-export interface CreateCompanyFormData {
+export interface CreateCompanyQueryData {
 	companyTitle: string;
 	companyDescription: string;
 	tags: string[];

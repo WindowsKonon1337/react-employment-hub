@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import { Title } from "@packages/shared/src/components";
 // @ts-ignore
-import TrashCacnon from "@packages/shared/src/assets/delete/trash.svg";
+import TrashCan from "@packages/shared/src/assets/delete/trash.svg";
 
 import { Error } from "@/global";
 import { VacanciesService, VacancyQueryCardData } from "@/api/services";
@@ -63,23 +63,28 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 			<ContentBlock>
 				<Title size="m">{title}</Title>
 				<DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
-					<TrashCacnon />
+					<TrashCan />
 				</DeleteBtn>
 			</ContentBlock>
 			<Text>{description}</Text>
 			<UpdatedBtn clickFuntcion={() => setIsUpdateModalOpen(true)}>update</UpdatedBtn>
-			<DeleteModal
-				title={title}
-				isOpen={isDeleteModalOpen}
-				setShowModal={setIsDeleteModalOpen}
-				handleDlete={onDelete}
-			/>
-			<UpdateModal
-				isOpen={isUpdateModalOpen}
-				setShowModal={setIsUpdateModalOpen}
-				handleUpdate={onUpdate}
-				{...data}
-			/>
+			{isDeleteModalOpen && (
+				<DeleteModal
+					title={title}
+					isOpen={isDeleteModalOpen}
+					setShowModal={setIsDeleteModalOpen}
+					handleDlete={onDelete}
+				/>
+			)}
+			{isUpdateModalOpen && (
+				<UpdateModal
+					isOpen={isUpdateModalOpen}
+					setShowModal={setIsUpdateModalOpen}
+					handleUpdate={onUpdate}
+					{...data}
+				/>
+			)}
+
 			<Toaster />
 		</Container>
 	);

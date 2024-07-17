@@ -14,8 +14,8 @@ export const linkData: MenuLinkProps[] = [
 		linkPath: "/vacancy",
 	},
 	{
-		title: "create vacancy",
-		linkPath: "/create/vacancy",
+		title: "my companies",
+		linkPath: "/companies",
 	},
 	{
 		title: "confirm",

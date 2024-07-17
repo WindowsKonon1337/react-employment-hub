@@ -2,6 +2,7 @@ import { Button } from "@packages/shared/src/components";
 import styled, { css } from "styled-components";
 
 export const Container = styled("div")({
+	zIndex: 1000,
 	display: "flex",
 	gap: 15,
 	flexDirection: "column",
@@ -20,5 +21,5 @@ export const Text = styled("div")(({ theme }) =>
 );
 
 export const DeleteBtn = styled(Button)({
-	marginTop: 10,
+	marginTop: 25,
 });

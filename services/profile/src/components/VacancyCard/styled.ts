@@ -1,7 +1,7 @@
 import { Button } from "@packages/shared/src/components";
 import styled, { css } from "styled-components";
 
-const CARD_WIDTH = 760;
+const CARD_WIDTH = 550;
 const BTN_WIDTH = 180;
 
 export const Container = styled("div")(({ theme }) =>

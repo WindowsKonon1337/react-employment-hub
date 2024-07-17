@@ -1,23 +1,33 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useVirtualizedScroll } from "@packages/shared/src/hooks";
 import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
+import toast, { Toaster } from "react-hot-toast";
 
 import { VacanciesService } from "@/api/services";
 import { VacancyCard, VacancyCardData } from "@/components";
+import { Error } from "@/global";
 
 import { VacanciesContainer } from "./styled";
+import { VacancyProps } from "./types";
 
-const Vacancy = () => {
+export const Vacancy: FC<VacancyProps> = ({ companyId, className }) => {
 	const [currentPage, setCurrentPage] = useState(0);
 
 	const [currentData, setCurrentData] = useState<VacancyCardData[] | []>([]);
 
 	const { isPending, mutate } = useMutation({
 		mutationKey: ["localVacancy"],
-		mutationFn: async (page: number) => VacanciesService.getAll(page),
+		mutationFn: async (page: number) => VacanciesService.getVacancyiesForCompany(companyId, page),
 		onSuccess: (data) => {
-			setCurrentData(data);
+			if (currentData.length) {
+				setCurrentData((prev) => (data.length ? [...prev, ...data] : [...prev]));
+			} else {
+				setCurrentData(data);
+			}
+		},
+		onError: (error: Error) => {
+			toast.error(error.response?.data.message ?? "Something went wrong");
 		},
 	});
 
@@ -55,17 +65,18 @@ const Vacancy = () => {
 	}
 
 	return (
-		<VacanciesContainer>
-			{visibleItems?.map((vacancyItem) => (
-				<VacancyCard
-					data={{ ...vacancyItem }}
-					handleUpdate={handleUpdateData}
-					handleDelete={handleDleteItem}
-				/>
-			))}
+		<>
+			<VacanciesContainer className={className}>
+				{visibleItems?.map((vacancyItem) => (
+					<VacancyCard
+						data={{ ...vacancyItem }}
+						handleUpdate={handleUpdateData}
+						handleDelete={handleDleteItem}
+					/>
+				))}
+				<Toaster />
+			</VacanciesContainer>
 			{isPending ? <Loader /> : <UplaodMoreBtn handleClick={handleChangeValue} />}
-		</VacanciesContainer>
+		</>
 	);
 };
-
-export default Vacancy;

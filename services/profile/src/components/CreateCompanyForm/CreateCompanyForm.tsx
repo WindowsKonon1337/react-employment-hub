@@ -2,7 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 
-import { CreateCompanyService, CreateCompanyFormData } from "@/api/services";
+import { CompanyService, CreateCompanyQueryData } from "@/api/services";
 import {
 	Button,
 	InputImageFile,
@@ -29,7 +29,7 @@ export const CreateCompanyForm = () => {
 	const [companyImg, setCompanyImg] = useState<SetFileParams>({ file: null, filePath: null });
 
 	const { mutate } = useMutation({
-		mutationFn: async (data: CreateCompanyFormData) => CreateCompanyService.createCompany(data),
+		mutationFn: async (data: CreateCompanyQueryData) => CompanyService.createCompany(data),
 		onSuccess: () => {
 			toast.success("Your company succes create");
 		},
@@ -39,9 +39,10 @@ export const CreateCompanyForm = () => {
 		},
 	});
 
+	// вынест в отдельную утилиту формирование данных и переиспользовать
 	const handleSubmitForm = () => {
 		const currentData = getValues();
-		const updatedData: CreateCompanyFormData = {
+		const updatedData: CreateCompanyQueryData = {
 			...currentData,
 			tags: currentData?.tags?.map((tag) => tag.value),
 			companyImg: companyImg.file,
@@ -55,7 +56,7 @@ export const CreateCompanyForm = () => {
 				formData.append(newDataItem[0], newDataItem[1]);
 			});
 
-			mutate(formData as unknown as CreateCompanyFormData);
+			mutate(formData as unknown as CreateCompanyQueryData);
 		}
 	};
 
