@@ -12,7 +12,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -21,7 +21,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -30,7 +30,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -39,7 +39,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -48,7 +48,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -57,7 +57,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -66,7 +66,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -75,7 +75,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -84,7 +84,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -93,7 +93,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -102,7 +102,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -111,7 +111,7 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -120,12 +120,33 @@ export const CompanyService = {
 			companyTitle: "title",
 			companyDescription: "test",
 			location: "Russia/Moscow",
-			tags: [{ value: "test" }],
+			tags: [{ value: "test", label: "test" }],
 			companyImg:
 				"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
 	],
+	// updateCompany: async (id: string, data: CreateCompanyQueryData): Promise<CompanyCardData> =>
+	// 	instance.post(`/create/company/update/${id}`, data),
+	updateCompany: async (id: string, data: CreateCompanyQueryData): Promise<CompanyCardData> => ({
+		id: "test1",
+		companyTitle: "title23",
+		companyDescription: "test",
+		location: "Russia/Moscow",
+		tags: [{ value: "test", label: "test" }],
+		companyImg:
+			"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+	}),
 	createCompany: async (data: CreateCompanyQueryData) => instance.post("/create/company", data),
 	deleteCompany: async (id: string) => instance.delete(`/delete/company/${id}`),
-	getCompany: async (id: string): Promise<any> => instance.get(`/companies/company/${id}`),
+	// getCompany: async (id: string): Promise<CompanyCardData> =>
+	// 	instance.get(`/companies/company/${id}`),
+	getCompany: async (id: string): Promise<CompanyCardData> => ({
+		id: "test1",
+		companyTitle: "title",
+		companyDescription: "test",
+		location: "Russia/Moscow",
+		tags: [{ value: "test", label: "test" }],
+		companyImg:
+			"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+	}),
 };

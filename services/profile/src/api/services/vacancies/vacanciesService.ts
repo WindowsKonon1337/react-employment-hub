@@ -238,7 +238,7 @@ export const VacanciesService = {
 			salary: { amount: "200", currency: "euros", inTime: "hour" },
 		},
 		{
-			description: "test etste",
+			description: "LAST",
 			id: "test",
 			tags: [{ value: "test", label: "test" }],
 			title: "test",

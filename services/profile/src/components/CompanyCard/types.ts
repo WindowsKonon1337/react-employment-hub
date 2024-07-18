@@ -2,7 +2,7 @@ export interface CompanyCardData {
 	id: string;
 	companyTitle: string;
 	companyDescription: string;
-	tags: { value: string }[];
+	tags: { value: string; label: string }[];
 	location: string;
 	companyImg?: string;
 }

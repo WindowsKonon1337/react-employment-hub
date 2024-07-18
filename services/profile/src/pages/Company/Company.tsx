@@ -1,30 +1,31 @@
 import { useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { Button, Loader, Title } from "@packages/shared/src/components";
+
+import { CompanyService } from "@/api/services";
 
 import { UpdateCompanyForm, Vacancy } from "./components";
 import { CompanyContainer, VacancyBlockInfo } from "./styled";
-import { Button, Title } from "@packages/shared/src/components";
 
 const Company = () => {
 	const { pathname } = useLocation();
 
 	const companyId = pathname.split("/")[2];
 
+	const { data: companyData, isLoading } = useQuery({
+		queryKey: ["getCompanyFormData"],
+		queryFn: async () => CompanyService.getCompany(companyId),
+	});
+
 	return (
 		<CompanyContainer>
+			<Title>Your Company</Title>
 			<div>
-				<UpdateCompanyForm
-					data={{
-						companyTitle: "test",
-						companyDescription: "test",
-						location: "Russioa/Mscow",
-						tags: [
-							{ label: "test", value: "test" },
-							{ label: "test", value: "test" },
-						],
-						companyImg:
-							"https://images.unsplash.com/photo-1718103377026-df9e40c78141?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-					}}
-				/>
+				{isLoading || !companyData ? (
+					<Loader />
+				) : (
+					<UpdateCompanyForm data={companyData} id={companyId} />
+				)}
 			</div>
 			<div>
 				<VacancyBlockInfo>

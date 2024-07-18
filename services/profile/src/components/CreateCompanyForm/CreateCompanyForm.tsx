@@ -44,7 +44,6 @@ export const CreateCompanyForm = () => {
 		const currentData = getValues();
 		const updatedData: CreateCompanyQueryData = {
 			...currentData,
-			tags: currentData?.tags?.map((tag) => tag.value),
 			companyImg: companyImg.file,
 		};
 		if (isValid) {

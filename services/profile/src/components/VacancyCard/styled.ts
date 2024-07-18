@@ -1,17 +1,16 @@
 import { Button } from "@packages/shared/src/components";
 import styled, { css } from "styled-components";
 
-const CARD_WIDTH = 550;
-const BTN_WIDTH = 180;
+import { BTN_WIDTH, CARD_WIDTH, GAP } from "./constants";
 
 export const Container = styled("div")(({ theme }) =>
 	css({
-		width: "100%",
-		maxWidth: CARD_WIDTH,
+		// width: "100%",
+		width: CARD_WIDTH,
 		padding: 10,
 		display: "flex",
 		flexDirection: "column",
-		gap: 15,
+		gap: GAP,
 		border: "1px solid",
 		borderRadius: 8,
 		borderColor: theme.colors.secondary,

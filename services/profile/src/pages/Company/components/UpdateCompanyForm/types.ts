@@ -7,4 +7,5 @@ export interface UpdateCompanyFormData extends Omit<CreateCompanyQueryData, "com
 
 export interface UpdateCompanyFormProps {
 	data: UpdateCompanyFormData;
+	id: string;
 }

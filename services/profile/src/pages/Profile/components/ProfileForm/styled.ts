@@ -15,7 +15,7 @@ export const RowContainer = styled("div")({
 });
 
 export const NotificationBlock = styled(Notification)({
-	position: "absolute",
+	position: "fixed",
 	width: "100%",
 	left: "0",
 	bottom: "0",
