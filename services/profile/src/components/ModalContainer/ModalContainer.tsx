@@ -11,6 +11,7 @@ export const ModalContainer: FC<ModalContainerProps> = ({
 	isModalOpen,
 	setCloseModal,
 	children,
+	className,
 }) => {
 	const modalRef = useRef<HTMLDivElement>(null);
 
@@ -30,7 +31,7 @@ export const ModalContainer: FC<ModalContainerProps> = ({
 	return (
 		<>
 			{createPortal(
-				<ModalWrapper $isOpen={isModalOpen} ref={modalRef}>
+				<ModalWrapper $isOpen={isModalOpen} ref={modalRef} className={className}>
 					<CloseBtn onClick={() => setCloseModal?.(false)}>
 						<CloseIcon />
 					</CloseBtn>

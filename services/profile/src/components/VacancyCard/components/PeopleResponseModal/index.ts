@@ -1,0 +1,1 @@
+export { PeopleResponseModal } from "./PeopleResponseModal";

@@ -88,7 +88,7 @@ export const Vacancy: FC<VacancyProps> = ({ companyId, className }) => {
 
 	return (
 		<>
-			<VacanciesContainer className={className} ref={containerRef} itemsInRow={currentItemInRow}>
+			<VacanciesContainer className={className} ref={containerRef} $itemsInRow={currentItemInRow}>
 				{visibleItems?.map((vacancyItem, idx) => (
 					<VacancyCard
 						key={idx}

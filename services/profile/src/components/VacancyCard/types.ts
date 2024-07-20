@@ -10,6 +10,7 @@ export interface VacancyCardData {
 	id: string;
 	tags: { label: string; value: string }[];
 	salary?: SalaryData | null;
+	countOfResponse?: number;
 }
 
 export interface VacnacyCardFormValues {
@@ -26,6 +27,8 @@ export interface VacnacyCardFormValues {
 
 export interface VacancyCardProps {
 	data: VacancyCardData;
+	// используется,если нужно получить только общую информацию
+	isOnlyRead?: boolean;
 	handleDelete?: (id: string) => void;
 	handleUpdate?: (id: string, data: VacancyCardData) => void;
 	className?: string;

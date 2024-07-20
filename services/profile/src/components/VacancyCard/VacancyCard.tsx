@@ -10,17 +10,19 @@ import { VacanciesService, VacancyQueryCardData } from "@/api/services";
 
 import { Container, ContentBlock, DeleteBtn, Text, UpdatedBtn } from "./styled";
 import { VacancyCardData, VacancyCardProps } from "./types";
-import { DeleteModal, UpdateModal } from "./components";
+import { DeleteModal, PeopleResponseModal, UpdateModal } from "./components";
 
 export const VacancyCard: FC<VacancyCardProps> = ({
 	data,
 	className,
 	handleDelete,
 	handleUpdate,
+	isOnlyRead = false,
 }) => {
-	const { description, id, title } = data;
+	const { description, id, title, countOfResponse } = data;
 	const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+	const [isPeopleResponseModalOpen, setIsPeopleResponseModalOpen] = useState(false);
 
 	const { mutate: updateModal } = useMutation({
 		mutationKey: ["updatedVacancy"],
@@ -58,17 +60,32 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 		updateModal({ id, cardData });
 	};
 
+	const isIDsabledBtn = (countOfResponse && countOfResponse < 1) || !countOfResponse;
+
 	return (
 		<Container className={className}>
 			<ContentBlock>
 				<Title size="m">{title}</Title>
-				<DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
-					<TrashCan />
-				</DeleteBtn>
+				{!isOnlyRead && (
+					<DeleteBtn onClick={() => setIsDeleteModalOpen(true)}>
+						<TrashCan />
+					</DeleteBtn>
+				)}
 			</ContentBlock>
 			<Text>{description}</Text>
-			<UpdatedBtn clickFuntcion={() => setIsUpdateModalOpen(true)}>update</UpdatedBtn>
-			{isDeleteModalOpen && (
+			{!isOnlyRead && (
+				<ContentBlock>
+					<UpdatedBtn clickFuntcion={() => setIsUpdateModalOpen(true)}>update</UpdatedBtn>
+					<UpdatedBtn
+						clickFuntcion={() => setIsPeopleResponseModalOpen(true)}
+						isDisabled={isIDsabledBtn}
+					>
+						responses {countOfResponse}
+					</UpdatedBtn>
+				</ContentBlock>
+			)}
+
+			{!isOnlyRead && isDeleteModalOpen && (
 				<DeleteModal
 					title={title}
 					isOpen={isDeleteModalOpen}
@@ -76,7 +93,7 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 					handleDlete={onDelete}
 				/>
 			)}
-			{isUpdateModalOpen && (
+			{!isOnlyRead && isUpdateModalOpen && (
 				<UpdateModal
 					isOpen={isUpdateModalOpen}
 					setShowModal={setIsUpdateModalOpen}
@@ -84,7 +101,9 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 					{...data}
 				/>
 			)}
-
+			{!isOnlyRead && isPeopleResponseModalOpen && (
+				<PeopleResponseModal vacancyId={id} setCloseModal={setIsPeopleResponseModalOpen} />
+			)}
 			<Toaster />
 		</Container>
 	);

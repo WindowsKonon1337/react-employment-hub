@@ -22,7 +22,7 @@ export const ModalWrapper = styled("div")<{ $isOpen: boolean }>(({ $isOpen, them
 
 export const ContentBlock = styled("div")({
 	display: "flex",
-	alignItems: "column",
+	flexDirection: "column",
 });
 
 export const CloseBtn = styled("button")({

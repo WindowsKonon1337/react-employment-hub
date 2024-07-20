@@ -2,6 +2,7 @@ import { instance } from "@/api/axiosConfig";
 
 import { VacancyQueryCardData } from "./types";
 import { VacancyCardData } from "@/components/VacancyCard/types";
+import { CreateVacancyParams } from "@/pages/Company/components/CreateVacancyFormModal/types";
 
 export const VacanciesService = {
 	// getAll: async (page: number) => instance.get("/vacancies/all", { params: [{ page }] }),
@@ -120,6 +121,7 @@ export const VacanciesService = {
 	// 	},
 	// ],
 	delete: async (id: string) => instance.post("/vacancies/delete", id),
+	create: async (data: CreateVacancyParams) => instance.post("/vacancies/create", data),
 	// update: async (id: string, data: VacancyQueryCardData): Promise<VacancyQueryCardData> =>
 	// 	instance.post("/vacancies/update", data, { params: [{ id }] }),
 	update: async (id: string, data: VacancyQueryCardData): Promise<VacancyQueryCardData> => ({
@@ -137,6 +139,7 @@ export const VacanciesService = {
 			id: "test1",
 			tags: [{ value: "test", label: "test" }],
 			title: "test1",
+			countOfResponse: 10,
 			salary: { amount: "200", currency: "euros", inTime: "hour" },
 		},
 		{

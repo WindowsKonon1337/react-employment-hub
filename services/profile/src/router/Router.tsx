@@ -2,9 +2,7 @@ import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 import { App } from "@/App";
-import { LazyCreateCompany, LazyProfile } from "@/pages";
-import { CompaniesLazy } from "@/pages/Companies";
-import { CompanyLazy } from "@/pages/Company";
+import { LazyCreateCompany, LazyProfile, CompanyLazy, CompaniesLazy, LazyResponse } from "@/pages";
 
 const routes = [
 	{
@@ -30,6 +28,20 @@ const routes = [
 				element: (
 					<Suspense fallback={<div>Loading...</div>}>
 						<LazyCreateCompany />
+					</Suspense>
+				),
+			},
+		],
+	},
+	{
+		path: "/responses",
+		element: <App />,
+		children: [
+			{
+				path: "/responses",
+				element: (
+					<Suspense fallback={<div>Loading...</div>}>
+						<LazyResponse />
 					</Suspense>
 				),
 			},

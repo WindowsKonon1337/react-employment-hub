@@ -10,15 +10,11 @@ export const linkData: MenuLinkProps[] = [
 		linkPath: "/create/company",
 	},
 	{
-		title: "vacancy",
-		linkPath: "/vacancy",
-	},
-	{
 		title: "my companies",
 		linkPath: "/companies",
 	},
 	{
-		title: "confirm",
-		linkPath: "/confirm",
+		title: "responses",
+		linkPath: "/responses",
 	},
 ];

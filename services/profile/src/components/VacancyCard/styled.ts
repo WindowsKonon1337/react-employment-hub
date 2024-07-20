@@ -5,8 +5,8 @@ import { BTN_WIDTH, CARD_WIDTH, GAP } from "./constants";
 
 export const Container = styled("div")(({ theme }) =>
 	css({
-		// width: "100%",
-		width: CARD_WIDTH,
+		maxWidth: CARD_WIDTH,
+		width: "100%",
 		padding: 10,
 		display: "flex",
 		flexDirection: "column",

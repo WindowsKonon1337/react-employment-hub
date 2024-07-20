@@ -74,7 +74,6 @@ export const CompanyCard: FC<CompanyCardProps> = ({ data, className }) => {
 				<ContentRow>
 					<Text>{companyDescription}</Text>
 				</ContentRow>
-
 				<Toaster />
 			</CompanyContainer>
 			{isDeleteModalOpen && (

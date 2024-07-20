@@ -1,0 +1,1 @@
+export { getResponseStatusColor } from "./getResponseStatusColor";

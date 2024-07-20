@@ -1,2 +1,4 @@
 export { VacancyCard } from "./VacancyCard";
-export type { VacancyCardData } from "./types";
+export { InputBlock, TitleInput } from "./components";
+export type { VacancyCardData, VacnacyCardFormValues } from "./types";
+export * from "./constants";
