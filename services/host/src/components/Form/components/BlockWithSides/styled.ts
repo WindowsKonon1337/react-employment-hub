@@ -8,6 +8,8 @@ export const BlockWithSidesWrapper = styled("div")(({ theme }) =>
 		background: theme.colors.main,
 		[`@media ${theme.media.medium}`]: {
 			gridTemplateColumns: "1fr",
+			height: "100vh",
+			padding: 20,
 		},
 	}),
 );
@@ -18,6 +20,7 @@ export const LeftSide = styled("div")(({ theme }) =>
 		alignItems: "center",
 		width: "100%",
 		height: "100vh",
+		justifyContent: "center",
 		background: theme.colors.active,
 		[`@media ${theme.media.medium}`]: {
 			display: "none",

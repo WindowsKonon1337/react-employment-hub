@@ -1,14 +1,10 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { Select, TextInput } from "@packages/shared/src/components";
-
-import { AuthorizationServices, RegistrationProps } from "@/api";
+import { Toaster } from "react-hot-toast";
+import { TextInput } from "@packages/shared/src/components";
 
 import { FormWrapper, SubmitButton } from "../LoginForm/styled";
 import { FormContent } from "../components";
-import { Error } from "global";
+import { useData } from "./utils";
 
 interface ILoginInputs {
 	firstName: string;
@@ -16,13 +12,10 @@ interface ILoginInputs {
 	email: string;
 	repeatPassword: string;
 	password: string;
-	userRole: {
-		value: string;
-	};
 }
 
 export const RegistrationForm = () => {
-	const navigate = useNavigate();
+	const { handleRegistration } = useData();
 	const {
 		handleSubmit,
 		control,
@@ -30,29 +23,12 @@ export const RegistrationForm = () => {
 		formState: { errors },
 	} = useForm<ILoginInputs>();
 
-	const { mutate } = useMutation({
-		mutationFn: async (data: RegistrationProps) => AuthorizationServices.registration(data),
-		onSuccess(data) {
-			toast.success("authorization is successful");
-			const { data: registrationData } = data;
-			localStorage.setItem("accessToken", registrationData.accessToken);
-			setTimeout(() => {
-				navigate("/vacancies");
-			}, 500);
-		},
-		onError(error) {
-			const currentError = error as Error;
-			toast.error(`${currentError.response?.data.message}`);
-		},
-	});
-
 	const onSubmit: SubmitHandler<ILoginInputs> = (data, e?: React.BaseSyntheticEvent) => {
 		e?.stopPropagation();
 		const currentData = {
 			...data,
-			userRole: data.userRole.value,
 		};
-		mutate(currentData);
+		handleRegistration(currentData);
 		console.log(data);
 	};
 
@@ -127,6 +103,7 @@ export const RegistrationForm = () => {
 						<TextInput
 							label="Password"
 							placeholder="password"
+							type="password"
 							isNotValid={!!errors.password?.message}
 							errorText={errors.password?.message}
 							{...field}
@@ -148,26 +125,9 @@ export const RegistrationForm = () => {
 						<TextInput
 							label="Repeat your password"
 							placeholder="password"
+							type="password"
 							isNotValid={!!errors.repeatPassword?.message}
 							errorText={errors.repeatPassword?.message}
-							{...field}
-						/>
-					)}
-				/>
-				<Controller
-					name="userRole"
-					control={control}
-					rules={{
-						required: "this field is required",
-					}}
-					render={({ field }) => (
-						<Select
-							label="Choise account role"
-							placeholder="Choise your role"
-							data={[
-								{ value: "COMPANY_OWNER", label: "company owner" },
-								{ value: "APPLICANT", label: "applicant" },
-							]}
 							{...field}
 						/>
 					)}

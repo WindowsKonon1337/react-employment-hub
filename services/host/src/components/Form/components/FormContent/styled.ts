@@ -17,7 +17,6 @@ export const PageTitle = styled(Title)({
 	marginBottom: 12,
 });
 
-// Создать компонент subtitle
 export const PageSubtitle = styled(Title)(({ theme }) =>
 	css({
 		textAlign: "center",

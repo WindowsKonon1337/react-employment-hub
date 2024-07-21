@@ -1,2 +1,2 @@
 export { AuthorizationServices } from "./authorizationService";
-export type { LoginProps, RegistrationProps } from "./types";
+export type { LoginParams, AuthorizationParams } from "./types";

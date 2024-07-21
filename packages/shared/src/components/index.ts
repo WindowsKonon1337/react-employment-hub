@@ -7,3 +7,4 @@ export * from "./UploadMoreBtn";
 export * from "./DropDownList";
 export * from "./TextAreaInput";
 export * from "./InputImageFile";
+export * from "./Text";

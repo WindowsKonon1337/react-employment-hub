@@ -9,5 +9,5 @@ export const FormWrapper = styled("form")({
 });
 
 export const SubmitButton = styled(Button)({
-	width: 350,
+	width: "100%",
 });
