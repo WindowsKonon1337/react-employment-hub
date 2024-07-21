@@ -55,7 +55,7 @@ export const Vacancy: FC<VacancyProps> = ({ companyId, className }) => {
 	const { visibleItems } = useVirtualizedScroll<VacancyCardData>({
 		items: currentData,
 		itemHeight: 115,
-		itemInRow: currentItemInRow,
+		itemsInRow: currentItemInRow,
 	});
 
 	useEffect(() => {

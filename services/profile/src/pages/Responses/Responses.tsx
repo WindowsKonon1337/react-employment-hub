@@ -3,7 +3,6 @@ import { Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
 import { useVirtualizedScroll } from "@packages/shared/src/hooks";
 
 import { Container } from "@/components";
-import { UpdatedBtn } from "@/components/VacancyCard/styled";
 
 import { ContentContainer } from "./styled";
 import { useData } from "./utils";

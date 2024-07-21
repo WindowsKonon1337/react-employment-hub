@@ -9,11 +9,10 @@ export const useVirtualizedScroll = <D,>({
 }: UseVirtualizedScrollProps<D>): { visibleItems: D[] | [] } => {
 	const currentItemLength = useRef(items.length);
 	const [visibleItems, setVisibleItems] = useState<D[]>(items);
-
-	console.log(visibleItems);
+	const [currentItemsInRow, setCurrentItemsInRow] = useState(itemInRow);
 
 	const handleVirtualizeScroll = useCallback(() => {
-		const currentItemHeight = Math.floor(itemHeight / itemInRow);
+		const currentItemHeight = Math.floor(itemHeight / currentItemsInRow);
 
 		const containerHeight =
 			container.current instanceof HTMLElement
@@ -25,16 +24,18 @@ export const useVirtualizedScroll = <D,>({
 				? container.current.scrollTop
 				: container.current?.scrollY ?? 0;
 
-		console.log(containerHeight, containerScroll, container);
-
 		const startIndex = Math.ceil(containerScroll / currentItemHeight);
 
 		const endIndex = startIndex + Math.floor(containerHeight / currentItemHeight);
 
-		const currentVisibleItems = items.slice(0, endIndex + itemInRow);
+		console.log(endIndex, itemInRow);
 
-		setVisibleItems(currentVisibleItems);
-	}, [items]);
+		const currentVisibleItems = items.slice(0, endIndex + currentItemsInRow);
+
+		console.log(currentVisibleItems);
+
+		setVisibleItems(items);
+	}, [items, currentItemsInRow]);
 
 	useEffect(() => {
 		if (items.length > currentItemLength.current) {
@@ -42,6 +43,13 @@ export const useVirtualizedScroll = <D,>({
 		}
 		handleVirtualizeScroll();
 	}, [items]);
+
+	useEffect(() => {
+		if (itemInRow >= 1) {
+			setCurrentItemsInRow(itemInRow);
+		}
+		handleVirtualizeScroll();
+	}, [itemInRow]);
 
 	useEffect(() => {
 		container?.current?.addEventListener("scroll", handleVirtualizeScroll);

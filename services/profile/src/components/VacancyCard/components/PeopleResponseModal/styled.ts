@@ -16,6 +16,7 @@ export const ModalWrapper = styled(ModalContainer)({
 export const ContentBlock = styled("div")({
 	marginTop: 20,
 	display: "flex",
+	gap: 15,
 	maxHeight: HEIGHT_CONTENT_BLOCK,
 	overflow: "auto",
 	flexDirection: "column",
