@@ -16,10 +16,10 @@ const colors: ColorsProps = {
 };
 
 const media: MediaProps = {
-	extraLarge: "(max-width: 1140px)",
-	large: "(max-width: 960px)",
-	medium: "(max-width: 768px)",
-	small: "(max-width: 540px)",
+	extraLarge: "@media screen and (max-width: 1140px)",
+	large: "@media screen and (max-width: 960px)",
+	medium: "@media screen and (max-width: 768px)",
+	small: "@media screen and (max-width: 540px)",
 };
 
 export const baseTheme: ThemeProps = {

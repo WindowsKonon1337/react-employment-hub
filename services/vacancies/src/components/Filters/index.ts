@@ -1,2 +1,2 @@
 export { Filters } from "./Filters";
-export type { FiltersProps } from "./types";
+export type { FiltersProps, FiltersData } from "./types";

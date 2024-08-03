@@ -10,6 +10,9 @@ export const SearchWrapper = styled("div")(({ theme }) =>
 		gap: 30,
 		background: theme.colors.main,
 		borderRadius: 30,
+		[`${theme.media.medium}`]: {
+			gridTemplateColumns: "1fr",
+		},
 	}),
 );
 
@@ -27,6 +30,15 @@ export const InputWrapper = styled("div")(({ theme }) =>
 				background: theme.colors.secondaryLight,
 				width: 1,
 				height: "100%",
+			},
+		},
+		[`${theme.media.medium}`]: {
+			"&:nth-child(1)": {
+				"&:after": {
+					width: "100%",
+					height: 1,
+					bottom: -15,
+				},
 			},
 		},
 	}),

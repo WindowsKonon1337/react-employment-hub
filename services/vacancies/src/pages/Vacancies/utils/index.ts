@@ -1,1 +1,2 @@
-export { useFiltersQuery } from "./useFilterQuery";
+export * from "./useFilterQuery";
+export * from "./useData";
