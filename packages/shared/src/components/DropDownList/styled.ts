@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const DropDownContainer = styled("div")({
 	width: 150,
+	zIndex: 99,
 	position: "relative",
 	display: "flex",
 	flexDirection: "column",

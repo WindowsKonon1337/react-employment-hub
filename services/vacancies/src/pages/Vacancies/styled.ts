@@ -9,11 +9,19 @@ export const HeaderBlock = styled(Header)({
 	marginBottom: 20,
 });
 
-export const TopBlock = styled("div")({
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
-});
+export const TopBlock = styled("div")(({ theme }) =>
+	css({
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "space-between",
+		[`${theme.media.medium}`]: {
+			gap: 10,
+			textAlign: "center",
+			flexDirection: "column",
+			alignItems: "center",
+		},
+	}),
+);
 
 export const ContentWrapper = styled("div")(({ theme }) =>
 	css({

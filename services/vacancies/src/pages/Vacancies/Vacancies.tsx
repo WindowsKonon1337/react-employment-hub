@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { DropDownList, Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
+import { DropDownList, Loader, Title } from "@packages/shared/src/components";
 import { useVirtualizedScroll } from "@packages/shared/src/hooks";
 
 import { useFiltersContext } from "@/state";
 import { SortsType, usePageInfo } from "@/reducer";
-import { Filters, VacancyCard, VacnacyCardProps } from "@/components";
+import { Filters, VacnacyCardProps } from "@/components";
 
 import { ContentBlock, ContentWrapper, HeaderBlock, TopBlock, VacanciesBlock } from "./styled";
 import { SortsData } from "./data";
 import { useData, useFiltersQuery } from "./utils";
+import { VacancyContent } from "./components";
 
 const Vacnacies = () => {
 	const { filters } = useFiltersContext();
@@ -19,11 +20,9 @@ const Vacnacies = () => {
 
 	const { handleGetVacancies, isPending, vacancies } = useData();
 
-	// const { visibleItems } = useVirtualizedScroll<VacnacyCardProps>({
-	// 	items: vacancies ? vacancies : [],
-	// });
-
-	// console.log("Видимые элементы", visibleItems);
+	const { visibleItems } = useVirtualizedScroll<VacnacyCardProps>({
+		items: vacancies ? vacancies : [],
+	});
 
 	const handleSetSorts = (value: SortsType) => {
 		setCurrentSort(value);
@@ -37,11 +36,11 @@ const Vacnacies = () => {
 
 	useEffect(() => {
 		handleGetVacancies({ filters: filters.filters, pageInfo: pageInfo.pageInfo });
-	}, []);
+	}, [filters, pageInfo]);
 
 	return (
 		<>
-			{/* <HeaderBlock />
+			<HeaderBlock />
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -56,17 +55,16 @@ const Vacnacies = () => {
 							{isPending ? (
 								<Loader />
 							) : (
-								<>
-									{visibleItems.map((item, idx) => (
-										<VacancyCard {...item} key={`VacnyCard_${idx}`} />
-									))}
-									<UplaodMoreBtn handleClick={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)} />
-								</>
+								<VacancyContent
+									vacancyItems={visibleItems}
+									isEmptyData={!!visibleItems}
+									handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
+								/>
 							)}
 						</VacanciesBlock>
 					</ContentWrapper>
 				</ContentBlock>
-			)} */}
+			)}
 		</>
 	);
 };

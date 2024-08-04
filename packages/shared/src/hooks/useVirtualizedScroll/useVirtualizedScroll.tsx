@@ -32,14 +32,14 @@ export const useVirtualizedScroll = <D,>({
 		const currentVisibleItems = items.slice(0, endIndex + currentItemsInRow);
 
 		setVisibleItems(currentVisibleItems);
-	}, [items, currentItemsInRow]);
+	}, [items.length, currentItemsInRow]);
 
 	useEffect(() => {
 		if (items.length > currentItemLength.current) {
 			currentItemLength.current = items.length;
 		}
 		handleVirtualizeScroll();
-	}, [items]);
+	}, [items.length]);
 
 	useEffect(() => {
 		if (itemsInRow >= 1) {
