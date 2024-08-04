@@ -1,4 +1,4 @@
-import { FiltersData } from "@/components/Filters/types";
+import { FiltersData } from "@/components";
 
 export const getFiltersUpdate = ({
 	currentFilters,

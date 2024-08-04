@@ -1,15 +1,5 @@
-import { FiltersTypeData } from "@/state";
+import { FiltersData } from "./components/FiltersContent/types";
 
-export interface ClickData {
-	title: string;
-	filters: any;
-}
-
-export interface FiltersData {
-	title: string;
-	filters: FiltersTypeData[];
-}
-
-export interface FiltersProps extends FiltersData {
-	onClick?: (data: ClickData) => void;
+export interface FiltersProps {
+	data: FiltersData[];
 }

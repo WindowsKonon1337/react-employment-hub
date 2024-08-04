@@ -17,6 +17,7 @@ export const LoginForm = () => {
 	const {
 		handleSubmit,
 		control,
+		register,
 		formState: { errors },
 	} = useForm<ILoginInputs>();
 
@@ -38,37 +39,35 @@ export const LoginForm = () => {
 				<Controller
 					name="email"
 					control={control}
-					rules={{
-						required: "thies field is required",
-						pattern: {
-							value: /\S+@\S+\.\S+/,
-							message: "Entered value does not match email format",
-						},
-					}}
-					render={({ field }) => (
+					render={() => (
 						<TextInput
 							label="Email"
 							placeholder="email"
 							isNotValid={!!errors.email?.message}
 							errorText={errors.email?.message}
-							{...field}
+							{...register("email", {
+								required: "thies field is required",
+								pattern: {
+									value: /\S+@\S+\.\S+/,
+									message: "Entered value does not match email format",
+								},
+							})}
 						/>
 					)}
 				/>
 				<Controller
 					name="password"
 					control={control}
-					rules={{
-						required: "this field is required",
-					}}
-					render={({ field }) => (
+					render={() => (
 						<TextInput
 							label="Password"
 							placeholder="password"
 							type="password"
 							isNotValid={!!errors.password?.message}
 							errorText={errors.password?.message}
-							{...field}
+							{...register("password", {
+								required: "thies field is required",
+							})}
 						/>
 					)}
 				/>

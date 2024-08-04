@@ -31,7 +31,6 @@ export const TextInput: FC<TextInputProps> = forwardRef(
 			<InputWrapper className={className}>
 				<Label>{label}</Label>
 				<Input
-					// defaultValue={value}
 					placeholder={placeholder}
 					$isError={isNotValid}
 					type={currentType}

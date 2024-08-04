@@ -1,5 +1,6 @@
-import { FiltersData } from "@/components/Filters/types";
-import { getFilterFromString } from "../getFilterFromString/getFilterFromString";
+import { FiltersData } from "@/components";
+
+import { getFilterFromString } from "../getFilterFromString";
 
 export const getParams = (urlWithParams: string): FiltersData[] => {
 	if (urlWithParams) {

@@ -1,5 +1,5 @@
 import { Header } from "@/components";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ContentBlock = styled("div")({
 	padding: "0 20px",
@@ -15,11 +15,17 @@ export const TopBlock = styled("div")({
 	justifyContent: "space-between",
 });
 
-export const ContentWrapper = styled("div")({
-	display: "grid",
-	marginTop: 20,
-	gridTemplateColumns: "300px 1fr",
-});
+export const ContentWrapper = styled("div")(({ theme }) =>
+	css({
+		position: "relative",
+		display: "grid",
+		marginTop: 20,
+		gridTemplateColumns: "300px 1fr",
+		[`${theme.media.medium}`]: {
+			gridTemplateColumns: "1fr",
+		},
+	}),
+);
 
 export const VacanciesBlock = styled("div")({
 	display: "flex",

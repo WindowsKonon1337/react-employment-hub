@@ -19,9 +19,11 @@ const Vacnacies = () => {
 
 	const { handleGetVacancies, isPending, vacancies } = useData();
 
-	const { visibleItems } = useVirtualizedScroll<VacnacyCardProps>({
-		items: vacancies ? vacancies : [],
-	});
+	// const { visibleItems } = useVirtualizedScroll<VacnacyCardProps>({
+	// 	items: vacancies ? vacancies : [],
+	// });
+
+	// console.log("Видимые элементы", visibleItems);
 
 	const handleSetSorts = (value: SortsType) => {
 		setCurrentSort(value);
@@ -34,14 +36,12 @@ const Vacnacies = () => {
 	};
 
 	useEffect(() => {
-		console.log(filters);
-		console.log(pageInfo);
 		handleGetVacancies({ filters: filters.filters, pageInfo: pageInfo.pageInfo });
-	}, [filters, pageInfo]);
+	}, []);
 
 	return (
 		<>
-			<HeaderBlock />
+			{/* <HeaderBlock />
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -51,18 +51,7 @@ const Vacnacies = () => {
 						<DropDownList listValues={SortsData} title="Choise sorts" handleChange={handleSetSorts} />
 					</TopBlock>
 					<ContentWrapper>
-						<div>
-							{data &&
-								data.filters.length &&
-								data?.filters.map((item, idx) => (
-									<Filters
-										title={item.title}
-										filters={item.filters}
-										key={`Filters_${idx}`}
-										onClick={() => console.log("click")}
-									/>
-								))}
-						</div>
+						<div>{data && data.filters.length && <Filters data={data.filters} />}</div>
 						<VacanciesBlock>
 							{isPending ? (
 								<Loader />
@@ -77,7 +66,7 @@ const Vacnacies = () => {
 						</VacanciesBlock>
 					</ContentWrapper>
 				</ContentBlock>
-			)}
+			)} */}
 		</>
 	);
 };

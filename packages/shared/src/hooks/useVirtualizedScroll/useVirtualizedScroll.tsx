@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import { UseVirtualizedScrollProps } from "./types";
 
 export const useVirtualizedScroll = <D,>({
@@ -30,9 +31,7 @@ export const useVirtualizedScroll = <D,>({
 
 		const currentVisibleItems = items.slice(0, endIndex + currentItemsInRow);
 
-		console.log(currentVisibleItems);
-
-		setVisibleItems(items);
+		setVisibleItems(currentVisibleItems);
 	}, [items, currentItemsInRow]);
 
 	useEffect(() => {

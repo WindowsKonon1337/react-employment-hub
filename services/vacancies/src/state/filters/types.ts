@@ -1,5 +1,4 @@
-import { CheckBoxData, RangeData } from "@/components/Filters/FIltersItem";
-import { FiltersData } from "@/components/Filters/types";
+import { CheckBoxData, FiltersData, RangeData } from "@/components";
 
 export enum FiltersType {
 	checkBox = "checkBox",

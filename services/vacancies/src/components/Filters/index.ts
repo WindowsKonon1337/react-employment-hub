@@ -1,2 +1,3 @@
 export { Filters } from "./Filters";
-export type { FiltersProps, FiltersData } from "./types";
+export type { FiltersProps } from "./types";
+export type { FiltersData, CheckBoxData, RangeData } from "./components";

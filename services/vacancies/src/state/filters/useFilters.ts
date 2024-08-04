@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 
-import { FiltersData } from "@/components/Filters/types";
+import { FiltersData } from "@/components";
 
 import {
 	getFiltersInit,

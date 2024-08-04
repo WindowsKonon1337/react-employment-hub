@@ -1,37 +1,36 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import { useOutsideClick } from "@packages/shared/src/hooks";
 
-import { FiltersTypeData } from "@/state";
+import FiltersIcon from "public/img/filters/filters.svg";
+import CloseIcon from "public/img/filters/close.svg";
 
-import { FiltersComponents, FiltersTitle, FiltersWrapper } from "./styled";
+import {
+	FiltersCloseWrapper,
+	FiltersContentWrapper,
+	FiltersIconWrapper,
+	FiltersWrapper,
+} from "./styled";
 import { FiltersProps } from "./types";
-import { FiltersItem } from "./FIltersItem";
-import { getInitFilters, useHandleUpdatedFiletrs } from "./utils";
+import { FiltersContent } from "./components";
 
-export const Filters: FC<FiltersProps> = ({ filters, title }) => {
-	const [currentFilters, setCurrentfitlers] = useState<FiltersTypeData[] | []>([]);
-	const { handleUpdateFilters } = useHandleUpdatedFiletrs({
-		currentFilters,
-		setCurrentfitlers,
-		titleFilter: title,
+export const Filters: FC<FiltersProps> = ({ data }) => {
+	const { isOpen, refContainer, setIsOpen } = useOutsideClick<HTMLDivElement>({
+		isOpenValue: false,
 	});
 
-	useEffect(() => {
-		getInitFilters(filters, setCurrentfitlers);
-	}, []);
-
-	const handleFiltersUpdate = (updatedFilters: FiltersTypeData) => {
-		handleUpdateFilters({ updatedFilters });
-	};
-
 	return (
-		<FiltersWrapper>
-			<FiltersTitle>{title}</FiltersTitle>
-			<FiltersComponents>
-				{filters.length &&
-					filters.map((filter, idx) => (
-						<FiltersItem data={filter} key={`FiltersItem_${idx}`} handleCheck={handleFiltersUpdate} />
-					))}
-			</FiltersComponents>
+		<FiltersWrapper $isOpen={isOpen}>
+			<FiltersContentWrapper $isOpen={isOpen} ref={refContainer}>
+				{data.map((filter, idx) => (
+					<FiltersContent filters={filter.filters} title={filter.title} key={idx} />
+				))}
+				<FiltersCloseWrapper onClick={() => setIsOpen(false)}>
+					<CloseIcon />
+				</FiltersCloseWrapper>
+			</FiltersContentWrapper>
+			<FiltersIconWrapper onClick={() => setIsOpen(true)}>
+				<FiltersIcon />
+			</FiltersIconWrapper>
 		</FiltersWrapper>
 	);
 };

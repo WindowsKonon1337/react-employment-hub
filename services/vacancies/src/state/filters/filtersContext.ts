@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import { FiltersData } from "@/components/Filters/types";
+import { FiltersData } from "@/components";
 
 import { FiltersState } from "./types";
 
