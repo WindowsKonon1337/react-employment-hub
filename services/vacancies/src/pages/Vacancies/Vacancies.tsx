@@ -57,7 +57,7 @@ const Vacnacies = () => {
 							) : (
 								<VacancyContent
 									vacancyItems={visibleItems}
-									isEmptyData={!!visibleItems}
+									isEmptyData={!visibleItems.length}
 									handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
 								/>
 							)}

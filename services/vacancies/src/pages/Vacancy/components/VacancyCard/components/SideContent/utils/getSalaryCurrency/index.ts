@@ -1,0 +1,1 @@
+export { getSalaryCurrency } from "./getSalaryCurrency";

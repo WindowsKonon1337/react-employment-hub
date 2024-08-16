@@ -1,11 +1,10 @@
 import { FC } from "react";
 import { UplaodMoreBtn } from "@packages/shared/src/components";
 
-import EmptyDataIcon from "public/img/VacancyCard/emptyData.svg";
 import { VacancyCard } from "@/components";
 
 import { VacancyContentProps } from "./types";
-import { EmptyDataPlug, PlugText } from "./styled";
+import { EmptySection } from "./components";
 
 export const VacancyContent: FC<VacancyContentProps> = ({
 	handleUpdateCurrentPage,
@@ -13,12 +12,7 @@ export const VacancyContent: FC<VacancyContentProps> = ({
 	isEmptyData,
 }) => {
 	if (isEmptyData) {
-		return (
-			<EmptyDataPlug>
-				<EmptyDataIcon />
-				<PlugText>Nothing was found for your query</PlugText>
-			</EmptyDataPlug>
-		);
+		return <EmptySection />;
 	}
 
 	return (

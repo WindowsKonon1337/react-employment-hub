@@ -1,2 +1,3 @@
 export { VacancyCard } from "./VacancyCard";
-export type { VacnacyCardProps } from "./types";
+export { TagsWrapper } from "./styled";
+export type { VacnacyCardProps, SalaryCurrency, SalaryData } from "./types";

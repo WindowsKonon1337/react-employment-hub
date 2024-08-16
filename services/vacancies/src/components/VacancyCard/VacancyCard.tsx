@@ -60,7 +60,7 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 			</Container>
 			<TagsWrapper>
 				{tags.map((tag, idx) => (
-					<Tag key={`Tag_${idx}`} color={tag.color} title={tag.title} />
+					<Tag key={`Tag_${idx}`} data={tag} />
 				))}
 			</TagsWrapper>
 			<Container>{description}</Container>

@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { Loader } from "@packages/shared/src/components";
 
-import { App } from "@/App";
 import { LazyVacancies } from "@/pages";
 import { LazyVacancy } from "@/pages/Vacancy";
+import { App } from "@/App";
 
 const routes = [
 	{
@@ -13,7 +14,7 @@ const routes = [
 			{
 				path: "/vacancies",
 				element: (
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<Loader />}>
 						<LazyVacancies />
 					</Suspense>
 				),
@@ -21,7 +22,7 @@ const routes = [
 			{
 				path: "/vacancy/:id",
 				element: (
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<Loader />}>
 						<LazyVacancy />
 					</Suspense>
 				),

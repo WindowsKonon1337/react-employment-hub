@@ -1,9 +1,13 @@
-import { TagProps } from "../UI";
+import { TagData } from "../UI";
 
-interface SalaryProps {
-	currency: "rubles" | "dollars" | "euros";
+export type SalaryCurrency = "rubles" | "dollars" | "euros";
+
+type SalaryInTime = "hour" | "year";
+
+export interface SalaryData {
+	currency: SalaryCurrency;
 	amount: string;
-	inTime: "hour" | "year";
+	inTime: SalaryInTime;
 }
 
 export interface VacnacyCardProps {
@@ -11,10 +15,10 @@ export interface VacnacyCardProps {
 	companyTitle: string;
 	countCandidates: number;
 	isLiked: boolean;
-	salary: SalaryProps;
+	salary: SalaryData;
 	description: string;
 	postedTime: string;
 	id: string;
-	tags: TagProps[];
+	tags: TagData[];
 	className?: string;
 }
