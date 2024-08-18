@@ -11,5 +11,7 @@ export const useData = () => {
 		mutationFn: (filtersData: FiltersResponseData) => VacancyService.getVacancies(filtersData),
 	});
 
-	return { handleGetVacancies, isPending, vacancies };
+	const isEmpty = !vacancies || !vacancies.length;
+
+	return { handleGetVacancies, isPending, vacancies, isEmpty };
 };

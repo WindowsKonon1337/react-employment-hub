@@ -6,6 +6,7 @@ import { VacancyService } from "@/api/services";
 import Heart from "../../../public/img/VacancyCard/heart.svg";
 import HeartLiked from "../../../public/img/VacancyCard/heart-liked.svg";
 
+import { Tag } from "../UI";
 import {
 	BottomContent,
 	Container,
@@ -18,7 +19,7 @@ import {
 	TagsWrapper,
 } from "./styled";
 import { VacnacyCardProps } from "./types";
-import { Tag } from "../UI";
+import { getSalaryCurrency } from "./utils";
 
 export const VacancyCard: FC<VacnacyCardProps> = ({
 	companyTitle,
@@ -67,7 +68,7 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 			<BottomContent>
 				<Title>
 					<Amount>
-						{currency === "rubles" ? "₽" : currency === "dollars" ? "$" : "€"}
+						{getSalaryCurrency(currency)}
 						{amount}
 					</Amount>{" "}
 					/ {inTime}

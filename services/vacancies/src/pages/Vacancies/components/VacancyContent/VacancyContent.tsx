@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { UplaodMoreBtn } from "@packages/shared/src/components";
 
-import { VacancyCard } from "@/components";
+import { TypeOfVirtualized, VacancyCard, VirtualizedComponent } from "@/components";
 
 import { VacancyContentProps } from "./types";
 import { EmptySection } from "./components";
@@ -11,15 +11,23 @@ export const VacancyContent: FC<VacancyContentProps> = ({
 	vacancyItems,
 	isEmptyData,
 }) => {
-	if (isEmptyData) {
+	if (isEmptyData || !vacancyItems?.length) {
 		return <EmptySection />;
 	}
 
 	return (
 		<>
-			{vacancyItems.map((item) => (
-				<VacancyCard {...item} key={`VacnyCard_${item.id}`} />
-			))}
+			<VirtualizedComponent
+				settings={{
+					type: TypeOfVirtualized.window,
+					data: {
+						items: vacancyItems,
+						elementhsHeight: 200,
+						elemntsLenght: vacancyItems.length,
+						ComponentForRender: VacancyCard,
+					},
+				}}
+			/>
 			<UplaodMoreBtn handleClick={handleUpdateCurrentPage} />
 		</>
 	);

@@ -4,7 +4,7 @@ export const VacancyContainer = styled("div")({
 	marginTop: 50,
 	display: "grid",
 	padding: "20px 20px 0 20px",
-	gridTemplateColumns: "270px 1fr",
+	gridTemplateColumns: "300px 1fr",
 	gap: 20,
 });
 

@@ -1,5 +1,4 @@
-import { FC, useRef } from "react";
-import { useVirtualizedScroll } from "@packages/shared/src/hooks";
+import { FC } from "react";
 import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
 
 import { EmptySection } from "@/pages/Vacancies/components/VacancyContent/components";
@@ -7,27 +6,41 @@ import { EmptySection } from "@/pages/Vacancies/components/VacancyContent/compon
 import { VacanciesContainer, VacancyCardItem } from "./styled";
 import { VacanciesContentProps } from "./types";
 import { useData } from "./utils";
+import { TypeOfVirtualized, useGetScrollElement, VirtualizedComponent } from "@/components";
 
+// 146
 export const VacanciesContents: FC<VacanciesContentProps> = ({ id }) => {
-	const vacanciesContainer = useRef<HTMLDivElement>(null);
-
 	const { data, handleUpdateCurrentPage, isPending, pageInfo } = useData();
 
-	const { visibleItems } = useVirtualizedScroll({
-		items: data ? data : [],
-		itemHeight: 146,
-		container: vacanciesContainer,
-	});
+	const heightContainer = (window.innerHeight * 85) / 100;
+
+	const { scrollTop, setScrollTop, handleOnScroll } = useGetScrollElement<HTMLDivElement>();
+
+	console.log(scrollTop);
 
 	if (!data.length && !isPending) {
 		return <EmptySection />;
 	}
 
 	return (
-		<VacanciesContainer ref={vacanciesContainer}>
-			{visibleItems?.map((item, idx) => (
-				<VacancyCardItem $isCheck={item.id == id} {...item} key={`VacanciesItem_${idx}`} />
-			))}
+		<VacanciesContainer onScroll={handleOnScroll}>
+			<VirtualizedComponent
+				settings={{
+					type: TypeOfVirtualized.customContainer,
+					data: {
+						containerHeight: heightContainer,
+						ComponentForRender: VacancyCardItem,
+						items: data,
+						elemntsLenght: data.length,
+						elementhsHeight: 200,
+						scrollTop: scrollTop,
+						setScrollTop: setScrollTop,
+						customProps: (index: number) => ({
+							$isCheck: data[index].id === id,
+						}),
+					},
+				}}
+			/>
 			{isPending ? (
 				<Loader />
 			) : (

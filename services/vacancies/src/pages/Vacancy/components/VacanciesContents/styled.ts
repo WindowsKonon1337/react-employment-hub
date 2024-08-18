@@ -5,7 +5,8 @@ import { VacancyCard } from "@/components";
 export const VacanciesContainer = styled("div")({
 	display: "flex",
 	flexDirection: "column",
-	overflowY: "scroll",
+	overflowY: "auto",
+	overflowX: "hidden",
 	height: "85vh",
 	gap: 15,
 	"&::-webkit-scrollbar": {

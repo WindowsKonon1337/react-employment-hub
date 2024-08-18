@@ -1,4 +1,7 @@
+import { FC } from "react";
 import { Text } from "@packages/shared/src/components";
+
+import { getSalaryCurrency } from "@/components";
 
 import {
 	CompanyInfoTitle,
@@ -8,8 +11,6 @@ import {
 	SalaryBlock,
 	SideContentBlock,
 } from "./styled";
-import { getSalaryCurrency } from "./utils";
-import { FC } from "react";
 import { SideContentsProps } from "./types";
 
 export const SideContent: FC<SideContentsProps> = ({

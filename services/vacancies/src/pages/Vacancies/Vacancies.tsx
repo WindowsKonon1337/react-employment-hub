@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { DropDownList, Loader, Title } from "@packages/shared/src/components";
-import { useVirtualizedScroll } from "@packages/shared/src/hooks";
 
 import { useFiltersContext } from "@/state";
 import { SortsType, usePageInfo } from "@/reducer";
-import { Filters, VacnacyCardProps } from "@/components";
+import { Filters } from "@/components";
 
 import { ContentBlock, ContentWrapper, HeaderBlock, TopBlock, VacanciesBlock } from "./styled";
 import { SortsData } from "./data";
@@ -18,11 +17,7 @@ const Vacnacies = () => {
 
 	const { data, isLoading } = useFiltersQuery();
 
-	const { handleGetVacancies, isPending, vacancies } = useData();
-
-	const { visibleItems } = useVirtualizedScroll<VacnacyCardProps>({
-		items: vacancies ? vacancies : [],
-	});
+	const { handleGetVacancies, isPending, vacancies, isEmpty } = useData();
 
 	const handleSetSorts = (value: SortsType) => {
 		setCurrentSort(value);
@@ -56,8 +51,8 @@ const Vacnacies = () => {
 								<Loader />
 							) : (
 								<VacancyContent
-									vacancyItems={visibleItems}
-									isEmptyData={!visibleItems.length}
+									vacancyItems={vacancies}
+									isEmptyData={isEmpty}
 									handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
 								/>
 							)}
