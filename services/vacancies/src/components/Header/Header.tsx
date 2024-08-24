@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { Search } from "./components/Search";
 import { HeaderTitle, HeaderWrapper } from "./styled";
-
-interface HeaderProps {
-	className?: string;
-}
+import { HeaderProps } from "./types";
 
 export const Header: FC<HeaderProps> = ({ className }) => {
 	return (

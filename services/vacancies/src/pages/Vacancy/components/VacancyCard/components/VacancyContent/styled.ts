@@ -6,6 +6,9 @@ export const ContentBlock = styled("div")(({ theme }) =>
 		flexDirection: "column",
 		borderRight: "1px solid",
 		borderColor: theme.colors.secondary,
+		[`${theme.media.small}`]: {
+			border: "none",
+		},
 	}),
 );
 
@@ -13,6 +16,7 @@ export const TitleBlock = styled("div")(({ theme }) =>
 	css({
 		display: "flex",
 		justifyContent: "space-between",
+		flexWrap: "wrap",
 		alignItems: "center",
 		borderBottom: "1px solid",
 		padding: "10px 10px 20px 10px",

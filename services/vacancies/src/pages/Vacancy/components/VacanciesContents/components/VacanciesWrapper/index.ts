@@ -1,0 +1,1 @@
+export { VacanciesWrapper } from "./VacanciesWrapper";

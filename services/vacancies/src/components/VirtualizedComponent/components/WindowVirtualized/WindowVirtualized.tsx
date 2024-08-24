@@ -21,7 +21,8 @@ export const WindowVirtualized: FC<VirtualizedData> = ({
 						rowCount={elemntsLenght}
 						rowHeight={elementhsHeight}
 						rowRenderer={({ style, index }) => {
-							const props = customProps ? { ...items[index], ...customProps } : { ...items[index] };
+							const newProps = customProps?.(index);
+							const props = newProps ? { ...items[index], ...newProps } : { ...items[index] };
 							return (
 								<div style={{ ...style, padding: "5px" }}>
 									<ComponentForRender {...props} />

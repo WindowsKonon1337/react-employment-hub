@@ -1,10 +1,25 @@
 import styled, { css } from "styled-components";
 
-export const SideContentBlock = styled("div")({
-	display: "flex",
-	justifyContent: "space-between",
-	flexDirection: "column",
-});
+export const SideContentBlock = styled("div")(({ theme }) =>
+	css({
+		position: "relative",
+		display: "flex",
+		justifyContent: "space-between",
+		flexDirection: "column",
+		[`${theme.media.small}`]: {
+			gap: 10,
+			padding: 8,
+			"&::before": {
+				position: "absolute",
+				width: "100%",
+				height: 1,
+				left: 0,
+				background: theme.colors.secondary,
+				content: '" "',
+			},
+		},
+	}),
+);
 
 export const InfoCompanyBlock = styled("div")(({ theme }) =>
 	css({
@@ -14,6 +29,10 @@ export const InfoCompanyBlock = styled("div")(({ theme }) =>
 		gap: 15,
 		borderBottom: "1px solid",
 		borderColor: theme.colors.secondary,
+		[`${theme.media.small}`]: {
+			padding: 0,
+			border: "none",
+		},
 	}),
 );
 
@@ -29,10 +48,24 @@ export const CompanyInfoTitle = styled(InfoTitle)({
 	fontSize: 18,
 });
 
-export const SalaryBlock = styled(InfoCompanyBlock)({
-	padding: 0,
-	border: "none",
-});
+export const SalaryBlock = styled(InfoCompanyBlock)(({ theme }) =>
+	css({
+		padding: 0,
+		position: "relative",
+		border: "none",
+		[`${theme.media.small}`]: {
+			padding: 8,
+			"&::before": {
+				position: "absolute",
+				width: "100%",
+				height: 1,
+				left: 0,
+				background: theme.colors.secondary,
+				content: '" "',
+			},
+		},
+	}),
+);
 
 export const ComponentInfoBlock = styled("div")({
 	display: "flex",

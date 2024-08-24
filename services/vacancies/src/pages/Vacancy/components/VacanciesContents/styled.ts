@@ -7,7 +7,7 @@ export const VacanciesContainer = styled("div")({
 	flexDirection: "column",
 	overflowY: "auto",
 	overflowX: "hidden",
-	height: "85vh",
+	height: "100vh",
 	gap: 15,
 	"&::-webkit-scrollbar": {
 		height: 8,
