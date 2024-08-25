@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DropDownList, Loader, Title } from "@packages/shared/src/components";
 
 import { useFiltersContext } from "@/state";
@@ -17,7 +17,10 @@ const Vacnacies = () => {
 
 	const { data, isLoading } = useFiltersQuery();
 
-	const { handleGetVacancies, isPending, vacancies, isEmpty } = useData();
+	const { vacancies, isEmpty, isFullLoading, isUploadMoreData, setIsOnlyPageChange } = useData({
+		filters,
+		pageInfo,
+	});
 
 	const handleSetSorts = (value: SortsType) => {
 		setCurrentSort(value);
@@ -28,10 +31,6 @@ const Vacnacies = () => {
 			},
 		]);
 	};
-
-	useEffect(() => {
-		handleGetVacancies({ filters: filters.filters, pageInfo: pageInfo.pageInfo });
-	}, [filters, pageInfo]);
 
 	return (
 		<>
@@ -45,18 +44,27 @@ const Vacnacies = () => {
 						<DropDownList listValues={SortsData} title="Choise sorts" handleChange={handleSetSorts} />
 					</TopBlock>
 					<ContentWrapper>
-						<div>{data && data.filters.length && <Filters data={data.filters} />}</div>
-						<VacanciesBlock>
-							{isPending ? (
-								<Loader />
-							) : (
-								<VacancyContent
-									vacancyItems={vacancies}
-									isEmptyData={isEmpty}
-									handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
-								/>
-							)}
-						</VacanciesBlock>
+						{data.filters.length > 0 ? (
+							<>
+								<Filters data={data.filters} />
+								<VacanciesBlock>
+									{isFullLoading ? (
+										<Loader />
+									) : (
+										<VacancyContent
+											vacancyItems={vacancies}
+											isEmptyData={isEmpty}
+											isUploadMoreData={isUploadMoreData}
+											setIsOnlyPageUpdate={setIsOnlyPageChange}
+											handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
+										/>
+									)}
+								</VacanciesBlock>
+							</>
+						) : (
+							// TODO: вынести заглушку в отдельный компонент и переиспользовать
+							<div>Кажется неудаось получить данные</div>
+						)}
 					</ContentWrapper>
 				</ContentBlock>
 			)}

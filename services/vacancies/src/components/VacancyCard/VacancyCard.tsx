@@ -59,11 +59,14 @@ export const VacancyCard: FC<VacnacyCardProps> = ({
 				</TitleBlock>
 				<LikedBtn onClick={handleLiked}>{hasLiked ? <HeartLiked /> : <Heart />}</LikedBtn>
 			</Container>
-			<TagsWrapper>
-				{tags.map((tag, idx) => (
-					<Tag key={`Tag_${idx}`} data={tag} />
-				))}
-			</TagsWrapper>
+			{tags[0] !== null && (
+				<TagsWrapper>
+					{tags.map((tag, idx) => (
+						<Tag key={`Tag_${idx}`} data={tag} />
+					))}
+				</TagsWrapper>
+			)}
+
 			<Container>{description}</Container>
 			<BottomContent>
 				<Title>

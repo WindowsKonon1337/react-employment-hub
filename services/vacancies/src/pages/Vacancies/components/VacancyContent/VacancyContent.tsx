@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { UplaodMoreBtn } from "@packages/shared/src/components";
+import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
 
 import { TypeOfVirtualized, VacancyCard, VirtualizedComponent } from "@/components";
 
@@ -8,12 +8,21 @@ import { EmptySection } from "./components";
 
 export const VacancyContent: FC<VacancyContentProps> = ({
 	handleUpdateCurrentPage,
+	setIsOnlyPageUpdate,
 	vacancyItems,
 	isEmptyData,
+	isUploadMoreData,
 }) => {
+	console.log(vacancyItems);
+
 	if (isEmptyData || !vacancyItems?.length) {
 		return <EmptySection />;
 	}
+
+	const handleUpdatePage = () => {
+		handleUpdateCurrentPage();
+		setIsOnlyPageUpdate(true);
+	};
 
 	return (
 		<>
@@ -28,7 +37,7 @@ export const VacancyContent: FC<VacancyContentProps> = ({
 					},
 				}}
 			/>
-			<UplaodMoreBtn handleClick={handleUpdateCurrentPage} />
+			{isUploadMoreData ? <Loader /> : <UplaodMoreBtn handleClick={handleUpdatePage} />}
 		</>
 	);
 };

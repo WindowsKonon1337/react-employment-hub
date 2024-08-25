@@ -24,7 +24,7 @@ export const WindowVirtualized: FC<VirtualizedData> = ({
 							const newProps = customProps?.(index);
 							const props = newProps ? { ...items[index], ...newProps } : { ...items[index] };
 							return (
-								<div style={{ ...style, padding: "5px" }}>
+								<div style={{ ...style, padding: "5px" }} key={props.id}>
 									<ComponentForRender {...props} />
 								</div>
 							);

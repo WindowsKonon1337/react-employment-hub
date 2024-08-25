@@ -18,8 +18,8 @@ export const useData = () => {
 	const { mutate: handleGetVacancies, isPending } = useMutation({
 		mutationKey: ["getSimilarVacancy"],
 		mutationFn: () => VacancyService.getVacancies({ filters: filters.filters, pageInfo: pageInfo }),
-		onSuccess: (vacnaciesData) => {
-			setCurrentData((prev) => (prev.length ? [...prev, ...vacnaciesData] : vacnaciesData));
+		onSuccess: ({ data }) => {
+			setCurrentData((prev) => (prev.length ? [...prev, ...data] : data));
 		},
 	});
 

@@ -16,9 +16,11 @@ const useGetFilters = () => {
 export const useFiltersQuery = () => {
 	const { filters } = useFiltersContext();
 
-	const { data, isLoading } = useGetFilters();
+	const { data: filtresData, isLoading } = useGetFilters();
 
-	const newData = data ? [...data.filters] : [];
+	const { data } = filtresData || {};
+
+	const newData = data?.filters ? [...data.filters] : [];
 
 	if (filters.filters.length > 0) {
 		data?.filters.forEach((item, idx) => {
