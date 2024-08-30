@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { Loader, Text } from "@packages/shared/src/components";
+import { Loader, PlugSection } from "@packages/shared/src/components";
 
-import ErrorImg from "public/img/error/error.png";
 import { VacancyService } from "@/api/services";
 
-import { EmptyBlock, VacancyContainer } from "./styled";
+import { VacancyContainer } from "./styled";
 import { VacanciesContents, VacancyCard } from "./components";
 
 const Vacancy = () => {
@@ -35,11 +34,7 @@ const Vacancy = () => {
 			) : vacancyData ? (
 				<VacancyCard {...vacancyData} />
 			) : (
-				// TODO: заглушки вынести в отедльный компонент и преиспользовать
-				<EmptyBlock>
-					<img src={ErrorImg} alt="errorImage" width="350px" />
-					<Text>Something went wrong when uploading the data</Text>
-				</EmptyBlock>
+				<PlugSection typePlug="error" plugText="Something went wrong when uploading the data" />
 			)}
 		</VacancyContainer>
 	);

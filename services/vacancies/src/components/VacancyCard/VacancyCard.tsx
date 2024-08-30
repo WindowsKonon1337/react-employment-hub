@@ -18,21 +18,21 @@ import {
 	Amount,
 	TagsWrapper,
 } from "./styled";
-import { VacnacyCardProps } from "./types";
+import { VacancyCardProps } from "./types";
 import { getSalaryCurrency } from "./utils";
 
-export const VacancyCard: FC<VacnacyCardProps> = ({
-	companyTitle,
-	countCandidates,
-	description,
-	salary,
-	isLiked,
-	postedTime,
-	tags,
-	id,
-	vacancyTitle,
-	className,
-}) => {
+export const VacancyCard: FC<VacancyCardProps> = ({ data, className }) => {
+	const {
+		companyTitle,
+		countCandidates,
+		description,
+		id,
+		isLiked,
+		postedTime,
+		salary,
+		tags,
+		vacancyTitle,
+	} = data || {};
 	const [hasLiked, setHasLiked] = useState(isLiked);
 	const { amount, currency, inTime } = salary;
 

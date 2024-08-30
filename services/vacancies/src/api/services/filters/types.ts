@@ -15,5 +15,4 @@ export interface PagePaginationData {
 
 export interface FiltersResponseData {
 	filters: FiltersData[] | [];
-	pageInfo?: PagePaginationData | null;
 }

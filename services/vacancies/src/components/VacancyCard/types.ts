@@ -10,7 +10,7 @@ export interface SalaryData {
 	inTime: SalaryInTime;
 }
 
-export interface VacnacyCardProps {
+export interface VacancyCardData {
 	vacancyTitle: string;
 	companyTitle: string;
 	countCandidates: number;
@@ -20,5 +20,9 @@ export interface VacnacyCardProps {
 	postedTime: string;
 	id: string;
 	tags: TagData[];
+}
+
+export interface VacancyCardProps {
+	data: VacancyCardData;
 	className?: string;
 }

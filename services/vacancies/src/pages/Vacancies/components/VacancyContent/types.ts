@@ -1,10 +1,11 @@
-import { VacnacyCardProps } from "@/components";
 import { Dispatch, SetStateAction } from "react";
+
+import { VacancyCardData } from "@/components";
 
 export interface VacancyContentProps {
 	setIsOnlyPageUpdate: Dispatch<SetStateAction<boolean>>;
 	isEmptyData: boolean;
-	vacancyItems?: VacnacyCardProps[] | null;
+	vacancyItems?: VacancyCardData[] | null;
 	isUploadMoreData?: boolean;
 	handleUpdateCurrentPage: () => void;
 }

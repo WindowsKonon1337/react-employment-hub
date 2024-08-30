@@ -68,7 +68,6 @@ export const useFiltersQuery = () => {
 	}
 
 	const currentData: FiltersResponseData = {
-		pageInfo: data?.pageInfo,
 		filters: newData,
 	};
 

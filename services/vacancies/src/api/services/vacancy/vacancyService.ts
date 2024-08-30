@@ -1,17 +1,17 @@
 import { instance } from "@/api/axiosConfig";
-import { VacnacyCardProps } from "@/components/VacancyCard/types";
+import { VacancyCardData } from "@/components/VacancyCard/types";
 
 import { BaseResponseParams } from "@/api";
 
-import { VacancyProps } from "./types";
-import { FiltersResponseData } from "../filters";
+import { VacancyProps, VacancyResponseData } from "./types";
 
 export const VacancyService = {
 	getVacancies: async ({
 		filters,
-	}: FiltersResponseData): Promise<BaseResponseParams<VacnacyCardProps[] | []>> =>
+		params,
+	}: VacancyResponseData): Promise<BaseResponseParams<VacancyCardData[] | []>> =>
 		// TODO: оставить на vacancies
-		instance.post("/vacancies/filters/search", { filters }),
+		instance.post(`/vacancies/filters/search?${params}`, { filters }),
 	// getVacancies: async (filters: FiltersResponseData): Promise<VacnacyCardProps[] | []> => [
 	// 	{
 	// 		companyTitle: "CompanyTitle1",

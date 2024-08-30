@@ -1,5 +1,5 @@
 import { FiltersResponseData } from "@/api/services";
-import { PageInfoState } from "@/reducer/types";
+import { PageInfoState } from "@/reducer";
 
 export interface UseDataParams {
 	filters: FiltersResponseData;

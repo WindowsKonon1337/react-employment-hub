@@ -8,9 +8,3 @@ export const VacancyContainer = styled("div")({
 	gridTemplateColumns: "1fr",
 	gap: 20,
 });
-
-export const EmptyBlock = styled("div")({
-	display: "flex",
-	flexDirection: "column",
-	alignItems: "center",
-});

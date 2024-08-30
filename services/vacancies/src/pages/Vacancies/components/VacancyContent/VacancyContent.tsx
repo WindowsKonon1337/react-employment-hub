@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
+import { Loader, PlugSection, UplaodMoreBtn } from "@packages/shared/src/components";
 
 import { TypeOfVirtualized, VacancyCard, VirtualizedComponent } from "@/components";
 
 import { VacancyContentProps } from "./types";
-import { EmptySection } from "./components";
 
 export const VacancyContent: FC<VacancyContentProps> = ({
 	handleUpdateCurrentPage,
@@ -16,7 +15,7 @@ export const VacancyContent: FC<VacancyContentProps> = ({
 	console.log(vacancyItems);
 
 	if (isEmptyData || !vacancyItems?.length) {
-		return <EmptySection />;
+		return <PlugSection typePlug="emptyData" plugText="Nothing was found for your query" />;
 	}
 
 	const handleUpdatePage = () => {

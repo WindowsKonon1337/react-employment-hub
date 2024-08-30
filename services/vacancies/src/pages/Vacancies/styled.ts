@@ -1,4 +1,5 @@
 import { Header } from "@/components";
+import { PlugSection } from "@packages/shared/src/components";
 import styled, { css } from "styled-components";
 
 export const ContentBlock = styled("div")({
@@ -41,4 +42,8 @@ export const VacanciesBlock = styled("div")({
 	justifyContent: "center",
 	flexWrap: "wrap",
 	gap: 10,
+});
+
+export const EmptyDataSection = styled(PlugSection)({
+	marginTop: 70,
 });

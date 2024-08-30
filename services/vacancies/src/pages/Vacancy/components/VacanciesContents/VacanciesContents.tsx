@@ -1,15 +1,13 @@
 import { FC } from "react";
-import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
+import { Loader, PlugSection, UplaodMoreBtn } from "@packages/shared/src/components";
 
-import { EmptySection } from "@/pages/Vacancies/components/VacancyContent/components";
+import { TypeOfVirtualized, useGetScrollElement, VirtualizedComponent } from "@/components";
 
 import { VacanciesContainer, VacancyCardItem } from "./styled";
 import { VacanciesContentProps } from "./types";
 import { useData } from "./utils";
-import { TypeOfVirtualized, useGetScrollElement, VirtualizedComponent } from "@/components";
 import { VacanciesWrapper } from "./components";
 
-// 146
 export const VacanciesContents: FC<VacanciesContentProps> = ({ id }) => {
 	const { data, handleUpdateCurrentPage, isPending, pageInfo } = useData();
 
@@ -17,10 +15,8 @@ export const VacanciesContents: FC<VacanciesContentProps> = ({ id }) => {
 
 	const { scrollTop, setScrollTop, handleOnScroll } = useGetScrollElement<HTMLDivElement>();
 
-	console.log(scrollTop);
-
 	if (!data.length && !isPending) {
-		return <EmptySection />;
+		return <PlugSection typePlug="emptyData" />;
 	}
 
 	return (

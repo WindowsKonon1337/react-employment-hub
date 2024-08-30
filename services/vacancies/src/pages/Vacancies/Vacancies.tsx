@@ -5,7 +5,14 @@ import { useFiltersContext } from "@/state";
 import { SortsType, usePageInfo } from "@/reducer";
 import { Filters } from "@/components";
 
-import { ContentBlock, ContentWrapper, HeaderBlock, TopBlock, VacanciesBlock } from "./styled";
+import {
+	ContentBlock,
+	ContentWrapper,
+	EmptyDataSection,
+	HeaderBlock,
+	TopBlock,
+	VacanciesBlock,
+} from "./styled";
 import { SortsData } from "./data";
 import { useData, useFiltersQuery } from "./utils";
 import { VacancyContent } from "./components";
@@ -32,6 +39,10 @@ const Vacnacies = () => {
 		]);
 	};
 
+	if (!data.filters.length && !isLoading) {
+		return <EmptyDataSection typePlug="emptyData" />;
+	}
+
 	return (
 		<>
 			<HeaderBlock />
@@ -44,27 +55,20 @@ const Vacnacies = () => {
 						<DropDownList listValues={SortsData} title="Choise sorts" handleChange={handleSetSorts} />
 					</TopBlock>
 					<ContentWrapper>
-						{data.filters.length > 0 ? (
-							<>
-								<Filters data={data.filters} />
-								<VacanciesBlock>
-									{isFullLoading ? (
-										<Loader />
-									) : (
-										<VacancyContent
-											vacancyItems={vacancies}
-											isEmptyData={isEmpty}
-											isUploadMoreData={isUploadMoreData}
-											setIsOnlyPageUpdate={setIsOnlyPageChange}
-											handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
-										/>
-									)}
-								</VacanciesBlock>
-							</>
-						) : (
-							// TODO: вынести заглушку в отдельный компонент и переиспользовать
-							<div>Кажется неудаось получить данные</div>
-						)}
+						<Filters data={data.filters} />
+						<VacanciesBlock>
+							{isFullLoading ? (
+								<Loader />
+							) : (
+								<VacancyContent
+									vacancyItems={vacancies}
+									isEmptyData={isEmpty}
+									isUploadMoreData={isUploadMoreData}
+									setIsOnlyPageUpdate={setIsOnlyPageChange}
+									handleUpdateCurrentPage={() => handleUpdateCurrentPage(pageInfo.pageInfo.page + 1)}
+								/>
+							)}
+						</VacanciesBlock>
 					</ContentWrapper>
 				</ContentBlock>
 			)}
