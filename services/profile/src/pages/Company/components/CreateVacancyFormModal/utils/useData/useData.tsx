@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
 
 import { VacanciesService } from "@/api/services";
-import { Error } from "@/global";
+import { Error } from "global";
 
 import { CreateVacancyParams } from "../../types";
 

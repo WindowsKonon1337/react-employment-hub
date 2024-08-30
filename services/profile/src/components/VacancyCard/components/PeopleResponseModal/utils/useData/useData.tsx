@@ -2,7 +2,7 @@ import { PeopleResponseService } from "@/api/services";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import { Error } from "@/global";
+import { Error } from "global";
 
 import { UseDataParams } from "./types";
 

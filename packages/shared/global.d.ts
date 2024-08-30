@@ -10,3 +10,8 @@ declare module "*.mdx" {
 	let MDXComponent: (props) => JSX.Element;
 	export default MDXComponent;
 }
+
+declare type GenericData<T, D, A = unknown> = {
+	type: T;
+	data: D;
+} & A;

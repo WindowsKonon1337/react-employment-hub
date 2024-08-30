@@ -1,7 +1,13 @@
 import { FC } from "react";
-import { Loader, PlugSection, UplaodMoreBtn } from "@packages/shared/src/components";
+import {
+	Loader,
+	PlugSection,
+	UplaodMoreBtn,
+	VirtualizedComponent,
+	TypeOfVirtualized,
+} from "@packages/shared/src/components";
 
-import { TypeOfVirtualized, useGetScrollElement, VirtualizedComponent } from "@/components";
+import { useGetScrollElement } from "@/components";
 
 import { VacanciesContainer, VacancyCardItem } from "./styled";
 import { VacanciesContentProps } from "./types";
@@ -19,6 +25,8 @@ export const VacanciesContents: FC<VacanciesContentProps> = ({ id }) => {
 		return <PlugSection typePlug="emptyData" />;
 	}
 
+	console.log(data);
+
 	return (
 		<VacanciesWrapper>
 			<VacanciesContainer onScroll={handleOnScroll}>
@@ -30,12 +38,13 @@ export const VacanciesContents: FC<VacanciesContentProps> = ({ id }) => {
 							ComponentForRender: VacancyCardItem,
 							items: data,
 							elemntsLenght: data.length,
-							elementhsHeight: 200,
+							elementhsHeight: 250,
 							scrollTop: scrollTop,
 							setScrollTop: setScrollTop,
 							customProps: (index: number) => ({
 								$isCheck: data[index].id === id,
 							}),
+							nameWrapperForData: "data",
 						},
 					}}
 				/>

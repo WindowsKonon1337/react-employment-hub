@@ -1,8 +1,6 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
 
-import { Error } from "@/global";
 import { PeopleResponseService } from "@/api/services";
 
 import { ResponseParams } from "../../components/Response/types";

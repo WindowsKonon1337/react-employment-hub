@@ -13,7 +13,7 @@ import {
 
 // TODO: вынести в либу и переиспользовать
 import { ContentRow } from "@/components/CompanyCard/styled";
-import { Error } from "@/global";
+import { Error } from "global";
 import { CompanyService, CreateCompanyQueryData } from "@/api/services";
 import { Container } from "@/components";
 

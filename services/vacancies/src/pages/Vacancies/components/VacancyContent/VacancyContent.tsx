@@ -1,7 +1,13 @@
 import { FC } from "react";
-import { Loader, PlugSection, UplaodMoreBtn } from "@packages/shared/src/components";
+import {
+	Loader,
+	PlugSection,
+	UplaodMoreBtn,
+	VirtualizedComponent,
+	TypeOfVirtualized,
+} from "@packages/shared/src/components";
 
-import { TypeOfVirtualized, VacancyCard, VirtualizedComponent } from "@/components";
+import { VacancyCard } from "@/components";
 
 import { VacancyContentProps } from "./types";
 
@@ -12,8 +18,6 @@ export const VacancyContent: FC<VacancyContentProps> = ({
 	isEmptyData,
 	isUploadMoreData,
 }) => {
-	console.log(vacancyItems);
-
 	if (isEmptyData || !vacancyItems?.length) {
 		return <PlugSection typePlug="emptyData" plugText="Nothing was found for your query" />;
 	}
@@ -33,6 +37,7 @@ export const VacancyContent: FC<VacancyContentProps> = ({
 						elementhsHeight: 200,
 						elemntsLenght: vacancyItems.length,
 						ComponentForRender: VacancyCard,
+						nameWrapperForData: "data",
 					},
 				}}
 			/>

@@ -1,6 +1,11 @@
 import { useEffect } from "react";
-import { Loader, Title, UplaodMoreBtn } from "@packages/shared/src/components";
-import { useVirtualizedScroll } from "@packages/shared/src/hooks";
+import {
+	Loader,
+	Title,
+	TypeOfVirtualized,
+	UplaodMoreBtn,
+	VirtualizedComponent,
+} from "@packages/shared/src/components";
 
 import { Container } from "@/components";
 
@@ -10,8 +15,6 @@ import { Response } from "./components";
 
 const Responses = () => {
 	const { handleGetData, isPending, responsesCard, handleUpalodeMoreData } = useData();
-
-	const { visibleItems } = useVirtualizedScroll({ items: responsesCard ?? [], itemHeight: 113 });
 
 	useEffect(() => {
 		handleGetData();
@@ -24,9 +27,18 @@ const Responses = () => {
 				<Loader />
 			) : (
 				<ContentContainer>
-					{visibleItems?.map((responseCard, idx) => (
-						<Response data={responseCard.data} status={responseCard.status} key={idx} />
-					))}
+					{/* TODO: реализовать через GRID - > создать новый компонент для виртуализации */}
+					<VirtualizedComponent
+						settings={{
+							type: TypeOfVirtualized.window,
+							data: {
+								ComponentForRender: Response,
+								elementhsHeight: 120,
+								elemntsLenght: responsesCard.length,
+								items: responsesCard,
+							},
+						}}
+					/>
 					<UplaodMoreBtn title="load more" handleClick={handleUpalodeMoreData} />
 				</ContentContainer>
 			)}

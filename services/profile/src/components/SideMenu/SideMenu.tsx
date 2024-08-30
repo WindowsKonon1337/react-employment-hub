@@ -6,7 +6,7 @@ import { SideMenuProps } from "./types";
 import { MenuLink } from "./components";
 import { linkData } from "./linkData";
 
-export const SideMenu: FC<SideMenuProps> = ({ links }) => {
+export const SideMenu: FC<SideMenuProps> = ({ links, className }) => {
 	const [currentLinks, setCurrentLinks] = useState(linkData);
 
 	useEffect(() => {
@@ -19,7 +19,7 @@ export const SideMenu: FC<SideMenuProps> = ({ links }) => {
 		console.log("logout");
 	};
 	return (
-		<MenuWrapper>
+		<MenuWrapper className={className}>
 			<LinksBlock>
 				{currentLinks.map((link) => (
 					<MenuLink linkPath={link.linkPath} title={link.title} key={`MenuLink_${link.title}`} />

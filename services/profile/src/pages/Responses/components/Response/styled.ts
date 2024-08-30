@@ -11,7 +11,7 @@ export const VacancyContainer = styled(Link)({
 	width: "100%",
 	textDecoration: "none",
 	outline: "none",
-	display: "inline",
+	display: "block",
 });
 
 export const ResponseBlock = styled(VacancyCard)<{ $status: VacancyStatus }>(({ $status, theme }) =>

@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 import { VacanciesService } from "@/api/services";
 import { VacancyCard, VacancyCardData } from "@/components";
-import { Error } from "@/global";
+import { Error } from "global";
 
 import { VacanciesContainer } from "./styled";
 import { VacancyProps } from "./types";

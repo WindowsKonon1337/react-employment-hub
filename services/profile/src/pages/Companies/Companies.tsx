@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
 
 import { CompanyService } from "@/api/services";
-import { Error } from "@/global";
+import { Error } from "global";
 
 import { CompanyCard, CompanyCardData } from "@/components";
 

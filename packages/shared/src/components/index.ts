@@ -9,3 +9,4 @@ export * from "./TextAreaInput";
 export * from "./InputImageFile";
 export * from "./Text";
 export * from "./PlugSection";
+export * from "./VirtualizedComponent";

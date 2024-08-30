@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 // @ts-ignore
 import TrashCan from "@packages/shared/src/assets/delete/trash.svg";
 
-import { Error } from "@/global";
+import { Error } from "global";
 import { CompanyService } from "@/api/services";
 
 // вынести модалки повторяющиеся на верхний уровень

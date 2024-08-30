@@ -23,6 +23,7 @@ export const VacanciesContainer = styled("div")({
 export const VacancyCardItem = styled(VacancyCard)<{ $isCheck: boolean }>(({ $isCheck, theme }) =>
 	css({
 		border: "2px solid",
+		height: 230,
 		borderColor: $isCheck ? theme.colors.active : theme.colors.secondary,
 	}),
 );

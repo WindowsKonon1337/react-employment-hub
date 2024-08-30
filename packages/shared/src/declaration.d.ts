@@ -6,3 +6,8 @@ declare module "*.svg" {
 	const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
 	export default SVG;
 }
+
+declare type GenericData<T, D, A = unknown> = {
+	type: T;
+	data: D;
+} & A;

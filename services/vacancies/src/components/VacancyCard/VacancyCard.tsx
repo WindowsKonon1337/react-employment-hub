@@ -34,7 +34,9 @@ export const VacancyCard: FC<VacancyCardProps> = ({ data, className }) => {
 		vacancyTitle,
 	} = data || {};
 	const [hasLiked, setHasLiked] = useState(isLiked);
-	const { amount, currency, inTime } = salary;
+	const { amount, currency, inTime } = salary || {};
+
+	console.log(data);
 
 	const { mutate } = useMutation({
 		mutationFn: async () => VacancyService.liked(),
@@ -59,12 +61,8 @@ export const VacancyCard: FC<VacancyCardProps> = ({ data, className }) => {
 				</TitleBlock>
 				<LikedBtn onClick={handleLiked}>{hasLiked ? <HeartLiked /> : <Heart />}</LikedBtn>
 			</Container>
-			{tags[0] !== null && (
-				<TagsWrapper>
-					{tags.map((tag, idx) => (
-						<Tag key={`Tag_${idx}`} data={tag} />
-					))}
-				</TagsWrapper>
+			{tags?.[0] !== null && (
+				<TagsWrapper>{tags?.map((tag, idx) => <Tag key={`Tag_${idx}`} data={tag} />)}</TagsWrapper>
 			)}
 
 			<Container>{description}</Container>

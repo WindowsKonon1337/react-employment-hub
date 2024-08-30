@@ -1,94 +1,29 @@
-import { FC, useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { TextInput } from "@packages/shared/src/components/TextInput";
-import { InputImageFile, SetFileParams } from "@packages/shared/src/components";
+import { FC } from "react";
+import { Controller } from "react-hook-form";
+import { InputImageFile } from "@packages/shared/src/components";
 
-import { ProfileRequestInfoData } from "@/api/services";
-
-import { FormBlock, NotificationBlock, RowContainer } from "./styled";
+import { FormBlock, Input, NotificationBlock, RowContainer } from "./styled";
 import { ProfileFormProps } from "./types";
-
-type Inputs = {
-	email: string;
-	name: string;
-	lastName: string;
-	phone: string;
-	profileImage: SetFileParams;
-};
+import { useForm } from "./utils";
 
 export const ProfileForm: FC<ProfileFormProps> = ({ data, handleApplyData, handleResetData }) => {
 	const {
 		control,
+		errors,
+		handleCancelData,
+		handleConfirmData,
 		handleSubmit,
-		reset,
+		isChangeValue,
 		register,
-		getValues,
-		watch,
-		formState: { errors, isValid },
-	} = useForm<Inputs>();
-
-	const [profileImg, setProfileImgPath] = useState<SetFileParams>({
-		file: null,
-		filePath: data?.profileImg,
-	});
-
-	const [isChangeValue, setIsChangeValue] = useState(false);
-
-	const watchAllFields = watch();
-
-	const handleCancelData = () => {
-		setIsChangeValue(false);
-
-		reset();
-		setProfileImgPath({ file: null, filePath: data.profileImg });
-
-		if (handleResetData) {
-			handleResetData();
-		}
-	};
-
-	useEffect(() => {
-		const values = getValues();
-		console.log(data.profileImg, profileImg.filePath);
-		if (
-			data &&
-			(data?.email !== values.email ||
-				data.lastName !== values.lastName ||
-				data.name !== values.name ||
-				data.phone !== values.phone ||
-				data.profileImg !== profileImg.filePath)
-		) {
-			setIsChangeValue(true);
-		} else {
-			setIsChangeValue(false);
-		}
-	}, [watchAllFields, data, getValues, profileImg.filePath]);
-
-	const handleConfirmData = () => {
-		console.log(isValid);
-		if (isValid) {
-			const values = getValues();
-
-			const currentData: ProfileRequestInfoData = {
-				...values,
-				profileImg: profileImg.file ?? null,
-			};
-
-			const formData = new FormData();
-
-			const newData = Object.entries(currentData);
-
-			newData.forEach((newDataItem) => formData.append(newDataItem[0], newDataItem[1]));
-
-			handleApplyData(formData as unknown as ProfileRequestInfoData);
-		}
-	};
+		profileImg,
+		setProfileImgPath,
+	} = useForm({ handleApplyData, handleResetData, initialData: data });
 
 	return (
 		<>
 			<FormBlock onSubmit={handleSubmit(handleConfirmData)}>
 				<RowContainer>
-					<InputImageFile setFile={setProfileImgPath} imgPath={profileImg.filePath ?? null} />
+					<InputImageFile setFile={setProfileImgPath} imgPath={profileImg.filePath} />
 				</RowContainer>
 				<RowContainer>
 					<Controller
@@ -96,7 +31,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ data, handleApplyData, handl
 						control={control}
 						defaultValue={data.name}
 						render={() => (
-							<TextInput
+							<Input
 								label="Name"
 								errorText={errors.name?.message}
 								isNotValid={!!errors.name?.message}
@@ -110,7 +45,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ data, handleApplyData, handl
 						control={control}
 						defaultValue={data.lastName}
 						render={() => (
-							<TextInput
+							<Input
 								label="Last name"
 								errorText={errors.lastName?.message}
 								isNotValid={!!errors.lastName?.message}
@@ -126,7 +61,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ data, handleApplyData, handl
 						control={control}
 						defaultValue={data.email}
 						render={() => (
-							<TextInput
+							<Input
 								label="Email"
 								defaultValue={data.name}
 								errorText={
@@ -145,7 +80,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ data, handleApplyData, handl
 						name="phone"
 						control={control}
 						defaultValue={data.phone}
-						render={() => <TextInput label="Phone" defaultValue={data.name} {...register("phone")} />}
+						render={() => <Input label="Phone" defaultValue={data.name} {...register("phone")} />}
 					/>
 				</RowContainer>
 				{isChangeValue && (

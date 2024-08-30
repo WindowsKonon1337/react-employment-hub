@@ -5,7 +5,7 @@ export const MenuWrapper = styled("div")(({ theme }) =>
 		display: "flex",
 		flexDirection: "column",
 		height: "100%",
-		paddingTop: 20,
+		paddingTop: 40,
 		justifyContent: "space-between",
 		borderRight: "1px solid",
 		borderColor: theme.colors.secondary,
