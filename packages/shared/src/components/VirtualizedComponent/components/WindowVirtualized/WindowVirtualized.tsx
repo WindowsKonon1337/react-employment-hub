@@ -21,14 +21,14 @@ export const WindowVirtualized: FC<VirtualizedData> = ({
 						width={width}
 						rowCount={elemntsLenght}
 						rowHeight={elementhsHeight}
-						rowRenderer={({ style, index }) => {
+						rowRenderer={({ style, index, key }) => {
 							const newProps = customProps?.(index);
 							const currentProps = nameWrapperForData
 								? { [nameWrapperForData]: items[index] }
 								: { ...items[index] };
 							const props = newProps ? { ...currentProps, ...newProps } : currentProps;
 							return (
-								<div style={{ ...style, padding: "5px" }} key={props.id}>
+								<div style={{ ...style, padding: "5px" }} key={key}>
 									<ComponentForRender {...props} />
 								</div>
 							);

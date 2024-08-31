@@ -1,7 +1,7 @@
 import { instance } from "@/api/axiosConfig";
+import { ResponseParams } from "@/pages/Responses";
 
 import { PeopleResponseParams } from "./types";
-import { ResponseParams } from "@/pages/Responses/components";
 
 export const PeopleResponseService = {
 	// getResponseHistory: async (page: number): Promise<ResponseParams> => instance.get(`/vacancies/response/local/${page}`),\
@@ -324,7 +324,7 @@ export const PeopleResponseService = {
 		},
 		{
 			data: {
-				title: "test",
+				title: "end",
 				description: "tst",
 				id: "1",
 				tags: [{ label: "1", value: "1" }],

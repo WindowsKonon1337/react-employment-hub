@@ -1,12 +1,13 @@
-import { CustomContainerVirtualizedProps } from "./components";
+import { CustomContainerVirtualizedProps, GridWindowVirtuzliedParams } from "./components";
 
 export enum TypeOfVirtualized {
 	/**
 	 * Тип виртуализации - в зависимости от него, определяет на чей скролл обращаем внимание
 	 * @default window
 	 */
-	"window" = "window",
-	"customContainer" = '"customContainer"',
+	window = "window",
+	gridWindow = "gridWindow",
+	customContainer = "customContainer",
 }
 
 export interface VirtualizedData {
@@ -31,6 +32,8 @@ export interface VirtualizedData {
 }
 
 type VirtualizedComponentType =
+	// @ts-ignore
+	| GenericData<TypeOfVirtualized.gridWindow, GridWindowVirtuzliedParams>
 	// @ts-ignore
 	| GenericData<TypeOfVirtualized.window, VirtualizedData>
 	// @ts-ignore

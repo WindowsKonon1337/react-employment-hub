@@ -33,6 +33,7 @@ export const SideMenuWrapper = styled("div")<{ $isOpen: boolean }>(({ theme, $is
 
 export const BarsMenuBlock = styled(BarsMenu)(({ theme }) =>
 	css({
+		cursor: "pointer",
 		display: "none",
 		position: "absolute",
 		zIndex: 100,
@@ -46,6 +47,7 @@ export const BarsMenuBlock = styled(BarsMenu)(({ theme }) =>
 
 export const CloseBuregerMenuBtn = styled(CloseIcon)(({ theme }) =>
 	css({
+		cursor: "pointer",
 		display: "none",
 		[`${theme.media.medium}`]: {
 			display: "block",

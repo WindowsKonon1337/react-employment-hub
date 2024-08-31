@@ -1,6 +1,5 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useVirtualizedScroll } from "@packages/shared/src/hooks";
 import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -52,11 +51,11 @@ export const Vacancy: FC<VacancyProps> = ({ companyId, className }) => {
 		},
 	});
 
-	const { visibleItems } = useVirtualizedScroll<VacancyCardData>({
-		items: currentData,
-		itemHeight: 115,
-		itemsInRow: currentItemInRow,
-	});
+	// const { visibleItems } = useVirtualizedScroll<VacancyCardData>({
+	// 	items: currentData,
+	// 	itemHeight: 115,
+	// 	itemsInRow: currentItemInRow,
+	// });
 
 	useEffect(() => {
 		mutate(currentPage);
@@ -89,14 +88,14 @@ export const Vacancy: FC<VacancyProps> = ({ companyId, className }) => {
 	return (
 		<>
 			<VacanciesContainer className={className} ref={containerRef} $itemsInRow={currentItemInRow}>
-				{visibleItems?.map((vacancyItem, idx) => (
+				{/* {visibleItems?.map((vacancyItem, idx) => (
 					<VacancyCard
 						key={idx}
 						data={{ ...vacancyItem }}
 						handleUpdate={handleUpdateData}
 						handleDelete={handleDleteItem}
 					/>
-				))}
+				))} */}
 				<Toaster />
 			</VacanciesContainer>
 			{isPending ? <Loader /> : <UplaodMoreBtn handleClick={handleChangeValue} />}

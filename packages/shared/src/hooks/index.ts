@@ -1,2 +1,2 @@
-export * from "./useVirtualizedScroll";
 export * from "./useOutsideClick";
+export * from "./usePageInfo";
