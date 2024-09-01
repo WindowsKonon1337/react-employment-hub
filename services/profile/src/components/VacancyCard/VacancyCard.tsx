@@ -6,11 +6,12 @@ import { Title } from "@packages/shared/src/components";
 import TrashCan from "@packages/shared/src/assets/delete/trash.svg";
 
 import { Error } from "global";
+import { DeleteModal } from "@/components";
 import { VacanciesService, VacancyQueryCardData } from "@/api/services";
 
 import { Container, ContentBlock, DeleteBtn, Text, UpdatedBtn } from "./styled";
 import { VacancyCardData, VacancyCardProps } from "./types";
-import { DeleteModal, PeopleResponseModal, UpdateModal } from "./components";
+import { PeopleResponseModal, UpdateModal } from "./components";
 
 export const VacancyCard: FC<VacancyCardProps> = ({
 	data,

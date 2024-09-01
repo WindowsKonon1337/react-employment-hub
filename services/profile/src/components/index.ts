@@ -3,4 +3,5 @@ export * from "./CreateCompanyForm";
 export * from "./VacancyCard";
 export * from "./ModalContainer";
 export * from "./CompanyCard";
+export * from "./DeleteModal";
 export * from "./UI";

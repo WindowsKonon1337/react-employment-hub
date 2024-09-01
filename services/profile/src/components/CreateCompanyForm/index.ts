@@ -1,2 +1,2 @@
 export { CreateCompanyForm } from "./CreateCompanyForm";
-export type { CreateCompanyFormValues } from "./types";
+export type { CreateCompanyFormValues } from "./utils";

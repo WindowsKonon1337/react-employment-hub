@@ -29,6 +29,10 @@ export interface VirtualizedData {
 	 * Объект дополнительных параметром, которые должны быть переданы компоненту
 	 */
 	customProps?: (index: number) => any;
+	/**
+	 * Дополнительные ситили для контейнера в который помещаются элементы
+	 */
+	stylesContentContainer?: any;
 }
 
 type VirtualizedComponentType =

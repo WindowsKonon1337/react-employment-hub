@@ -55,6 +55,7 @@ const Responses = () => {
 								rowCount: Math.ceil(responsesCard.length / currentItemInRow),
 								rowHeight: 120,
 								items: responsesCard || [],
+								stylesContentContainer: { margin: "0 auto" },
 							},
 						}}
 					/>

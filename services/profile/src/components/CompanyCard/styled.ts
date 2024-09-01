@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 const AVATAR_WIDTH = 80;
 const AVATAR_HEIGHT = 80;
-const COMPANY_CONTAINER_WIDTH = 780;
+const COMPANY_CONTAINER_WIDTH = 580;
 
 // базово вынести в либу
 export const CompanyContainer = styled(Link)(({ theme }) =>

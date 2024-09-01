@@ -1,60 +1,69 @@
-import { useEffect, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import toast, { Toaster } from "react-hot-toast";
-import { Loader, UplaodMoreBtn } from "@packages/shared/src/components";
+import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
+import {
+	Loader,
+	PlugSection,
+	TypeOfVirtualized,
+	UplaodMoreBtn,
+	useGetItemsInRow,
+	VirtualizedComponent,
+} from "@packages/shared/src/components";
 
-import { CompanyService } from "@/api/services";
-import { Error } from "global";
-
-import { CompanyCard, CompanyCardData } from "@/components";
+import { CompanyCard, Container } from "@/components";
 
 import { CompaniesContainer } from "./styled";
+import { useData } from "./utils";
 
 const Companies = () => {
-	const [currentPage, setCurrentPage] = useState(0);
-	const [comapniesCards, setCompaniesCards] = useState<CompanyCardData[] | []>([]);
+	const {
+		handleGetCompany,
+		handleGetLocalCompanies,
+		isChangePageDataPending,
+		isFullPagePending,
+		comapniesCards,
+	} = useData();
 
-	const { mutate, isPending } = useMutation({
-		mutationFn: async (page: number) => CompanyService.getAll(page),
-		onSuccess: (data) => {
-			if (comapniesCards.length > 0) {
-				setCompaniesCards((prev) => (data.length ? [...prev, ...data] : [...prev]));
-			} else {
-				console.log("упал сюда");
-				setCompaniesCards(data);
-			}
-		},
-		onError: (error: Error) => {
-			toast.error(error.response?.data.message ?? "Something went wrong");
-		},
+	const { containerRef, currentColumnWidth, currentItemInRow } = useGetItemsInRow<HTMLDivElement>({
+		columnWidth: 580,
+		gapNumber: 25,
+		itemWidth: 580,
 	});
 
 	useEffect(() => {
-		mutate(currentPage);
+		handleGetLocalCompanies(0);
 	}, []);
 
-	if (isPending && !comapniesCards.length) {
+	if (isFullPagePending) {
 		return <Loader />;
 	}
 
-	if (!isPending && !comapniesCards.length) {
-		return null;
+	if (!comapniesCards.length && !isFullPagePending) {
+		return <PlugSection typePlug="emptyData" />;
 	}
 
-	if (comapniesCards.length)
-		return (
-			<CompaniesContainer>
-				{comapniesCards.map((cardData, idx) => (
-					<CompanyCard key={`CompanyCard_${cardData.id}`} data={{ ...cardData, id: idx.toString() }} />
-				))}
-				{isPending ? (
-					<Loader />
-				) : (
-					<UplaodMoreBtn handleClick={() => setCurrentPage((prev) => prev + 1)} />
-				)}
-				<Toaster />
+	return (
+		<Container>
+			<CompaniesContainer ref={containerRef}>
+				<VirtualizedComponent
+					settings={{
+						type: TypeOfVirtualized.gridWindow,
+						data: {
+							stylesContentContainer: { margin: "0 auto" },
+							columnCount: currentItemInRow,
+							columnWidth: currentColumnWidth,
+							ComponentForRender: CompanyCard,
+							items: comapniesCards || [],
+							rowCount: Math.floor(comapniesCards.length / currentItemInRow),
+							rowHeight: 220,
+							nameWrapperForData: "data",
+						},
+					}}
+				/>
+				{isChangePageDataPending ? <Loader /> : <UplaodMoreBtn handleClick={handleGetCompany} />}
 			</CompaniesContainer>
-		);
+			<Toaster />
+		</Container>
+	);
 };
 
 export default Companies;

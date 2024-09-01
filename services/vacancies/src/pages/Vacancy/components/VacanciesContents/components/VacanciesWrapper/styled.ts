@@ -4,12 +4,14 @@ export const VacanciesContentsContainer = styled("div")<{ $isOpen: boolean }>(
 	({ theme, $isOpen }) =>
 		css({
 			postion: "relative",
-			top: -50,
+			top: 0,
 			padding: "0 15px",
-			position: "absolute",
+			position: "fixed",
 			transform: `translateX(${$isOpen ? "-30px" : "-1000px"})`,
 			transition: "all 0.2s ease",
 			width: 320,
+			minHeight: "100vh",
+			height: "100%",
 			background: theme.colors.main,
 			zIndex: 1000,
 		}),

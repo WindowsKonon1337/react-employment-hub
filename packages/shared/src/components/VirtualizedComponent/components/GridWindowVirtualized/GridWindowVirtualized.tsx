@@ -11,6 +11,7 @@ export const GridWindowVirtuzlied = ({
 	items,
 	customProps,
 	nameWrapperForData,
+	stylesContentContainer,
 }: GridWindowVirtuzliedParams) => {
 	return (
 		<WindowScroller>
@@ -32,7 +33,6 @@ export const GridWindowVirtuzlied = ({
 								const currentProps = nameWrapperForData
 									? { [nameWrapperForData]: items[itemIndex] }
 									: { ...items[itemIndex] };
-								// console.log("items", items);
 								const props = newProps ? { ...currentProps, ...newProps } : currentProps;
 								return (
 									<div style={{ ...style, padding: "5px" }} key={key}>
@@ -41,6 +41,7 @@ export const GridWindowVirtuzlied = ({
 								);
 							}}
 							scrollTop={scrollTop}
+							containerStyle={stylesContentContainer}
 						/>
 					)}
 				</AutoSizer>

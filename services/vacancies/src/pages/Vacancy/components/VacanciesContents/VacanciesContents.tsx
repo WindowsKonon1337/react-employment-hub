@@ -5,9 +5,8 @@ import {
 	UplaodMoreBtn,
 	VirtualizedComponent,
 	TypeOfVirtualized,
+	useGetScrollElement,
 } from "@packages/shared/src/components";
-
-import { useGetScrollElement } from "@/components";
 
 import { VacanciesContainer, VacancyCardItem } from "./styled";
 import { VacanciesContentProps } from "./types";
@@ -22,10 +21,12 @@ export const VacanciesContents: FC<VacanciesContentProps> = ({ id }) => {
 	const { scrollTop, setScrollTop, handleOnScroll } = useGetScrollElement<HTMLDivElement>();
 
 	if (!data.length && !isPending) {
-		return <PlugSection typePlug="emptyData" />;
+		return (
+			<VacanciesWrapper>
+				<PlugSection typePlug="emptyData" />
+			</VacanciesWrapper>
+		);
 	}
-
-	console.log(data);
 
 	return (
 		<VacanciesWrapper>
