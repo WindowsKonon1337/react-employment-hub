@@ -6,7 +6,7 @@ import profileRoute from "profile/router";
 import vacanciesRoute from "vacancies/router";
 import { Layout } from "@packages/shared";
 
-import { LoginPage, RegistrationLazy } from "@/Page";
+import { LoginPageLazy, RegistrationLazy } from "@/Page";
 import { App } from "@/App";
 import { Suspense } from "react";
 
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
 		element: (
 			<Layout>
 				<Suspense fallback={<div>Loading...</div>}>
-					<LoginPage />
+					<LoginPageLazy />
 				</Suspense>
 			</Layout>
 		),

@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const ContainrBlock = styled("div")({
+export const ContainerBlock = styled("div")({
 	marginTop: 50,
 });

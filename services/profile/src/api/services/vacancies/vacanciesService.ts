@@ -125,8 +125,8 @@ export const VacanciesService = {
 	// update: async (id: string, data: VacancyQueryCardData): Promise<VacancyQueryCardData> =>
 	// 	instance.post("/vacancies/update", data, { params: [{ id }] }),
 	update: async (id: string, data: VacancyQueryCardData): Promise<VacancyQueryCardData> => ({
-		description: "test etste",
-		id: "test1",
+		description: "test",
+		id: "test2",
 		tags: ["test"],
 		title: "test45",
 		salary: { amount: "200", currency: "euros", inTime: "hour" },

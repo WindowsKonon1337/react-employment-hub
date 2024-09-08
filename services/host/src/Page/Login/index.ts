@@ -1,1 +1,1 @@
-export { LoginPage } from "./Login.lazy";
+export { LoginPageLazy } from "./Login.lazy";

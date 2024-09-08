@@ -48,6 +48,7 @@ export const RightSideContent = styled("div")({
 
 export const ContentRow = styled("div")({
 	display: "flex",
+	flexWrap: "wrap",
 	gap: 20,
 });
 

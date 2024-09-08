@@ -10,6 +10,7 @@ import { Container } from "@/components";
 
 import { UpdateCompanyFormProps } from "./types";
 import { useForm } from "./utils";
+import { FormContainer } from "./styled";
 
 export const UpdateCompanyForm: FC<UpdateCompanyFormProps> = ({ data, id }) => {
 	const {
@@ -28,7 +29,7 @@ export const UpdateCompanyForm: FC<UpdateCompanyFormProps> = ({ data, id }) => {
 	return (
 		<Container>
 			<InputImageFile imgPath={companyImg.filePath} setFile={setCompanyImg} />
-			<form onSubmit={handleSubmit(handleUpdateData)}>
+			<FormContainer onSubmit={handleSubmit(handleUpdateData)}>
 				<ContentRow>
 					<Controller
 						name="companyTitle"
@@ -82,7 +83,7 @@ export const UpdateCompanyForm: FC<UpdateCompanyFormProps> = ({ data, id }) => {
 						/>
 					)}
 				/>
-			</form>
+			</FormContainer>
 			{isChangeData && (
 				<NotificationBlock
 					title="Change company info"

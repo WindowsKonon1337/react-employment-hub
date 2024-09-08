@@ -20,6 +20,7 @@ export const Container = styled("div")(({ theme }) =>
 export const ContentBlock = styled("div")({
 	display: "flex",
 	alignItems: "center",
+	gap: 15,
 	justifyContent: "space-between",
 });
 
@@ -36,6 +37,11 @@ export const DeleteBtn = styled("button")({
 	border: "none",
 });
 
-export const UpdatedBtn = styled(Button)({
-	width: BTN_WIDTH,
-});
+export const UpdatedBtn = styled(Button)(({ theme }) =>
+	css({
+		width: BTN_WIDTH,
+		[`${theme.media.small}`]: {
+			padding: "5px 10px",
+		},
+	}),
+);

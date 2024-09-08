@@ -1,8 +1,8 @@
 import { FC } from "react";
 
 import { ContainerProps } from "./types";
-import { ContainrBlock } from "./styled";
+import { ContainerBlock } from "./styled";
 
 export const Container: FC<ContainerProps> = ({ children, className }) => (
-	<ContainrBlock className={className}>{children}</ContainrBlock>
+	<ContainerBlock className={className}>{children}</ContainerBlock>
 );

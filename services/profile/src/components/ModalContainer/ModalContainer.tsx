@@ -1,5 +1,6 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useOutsideClick } from "@packages/shared/src/hooks";
 
 // @ts-ignore
 import CloseIcon from "@packages/shared/src/assets/delete/close.svg";
@@ -13,26 +14,19 @@ export const ModalContainer: FC<ModalContainerProps> = ({
 	children,
 	className,
 }) => {
-	const modalRef = useRef<HTMLDivElement>(null);
+	const { isOpen, refContainer, setIsOpen } = useOutsideClick<HTMLDivElement>({
+		isOpenValue: isModalOpen,
+	});
 
 	useEffect(() => {
-		const handleClickOutsie = (e: MouseEvent) => {
-			if (modalRef?.current && e?.target && !modalRef.current.contains(e?.target as HTMLElement)) {
-				console.log("click inside");
-				setCloseModal?.(false);
-			}
-		};
-
-		document.addEventListener("mousedown", handleClickOutsie);
-
-		return () => document.removeEventListener("mousedown", handleClickOutsie);
-	}, []);
+		setCloseModal?.(isOpen);
+	}, [isOpen]);
 
 	return (
 		<>
 			{createPortal(
-				<ModalWrapper $isOpen={isModalOpen} ref={modalRef} className={className}>
-					<CloseBtn onClick={() => setCloseModal?.(false)}>
+				<ModalWrapper $isOpen={isOpen} ref={refContainer} className={className}>
+					<CloseBtn onClick={() => setIsOpen?.(false)}>
 						<CloseIcon />
 					</CloseBtn>
 					<ContentBlock>{children}</ContentBlock>

@@ -1,17 +1,14 @@
 import { FC, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import toast, { Toaster } from "react-hot-toast";
 import { Title } from "@packages/shared/src/components";
 // @ts-ignore
 import TrashCan from "@packages/shared/src/assets/delete/trash.svg";
 
-import { Error } from "global";
 import { DeleteModal } from "@/components";
-import { VacanciesService, VacancyQueryCardData } from "@/api/services";
 
 import { Container, ContentBlock, DeleteBtn, Text, UpdatedBtn } from "./styled";
-import { VacancyCardData, VacancyCardProps } from "./types";
+import { VacancyCardProps } from "./types";
 import { PeopleResponseModal, UpdateModal } from "./components";
+import { useData } from "./utils";
 
 export const VacancyCard: FC<VacancyCardProps> = ({
 	data,
@@ -20,48 +17,14 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 	handleUpdate,
 	isOnlyRead = false,
 }) => {
-	const { description, id, title, countOfResponse } = data;
+	const { description, id, title, countOfResponse } = data || {};
 	const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 	const [isPeopleResponseModalOpen, setIsPeopleResponseModalOpen] = useState(false);
 
-	const { mutate: updateModal } = useMutation({
-		mutationKey: ["updatedVacancy"],
-		mutationFn: async ({ id, cardData }: { id: string; cardData: VacancyQueryCardData }) =>
-			VacanciesService.update(id, cardData),
-		onSuccess: (data) => {
-			toast.success("Your vacancy succes updated");
-			const newData: VacancyCardData = {
-				...data,
-				tags: data.tags.map((tag) => ({ label: tag, value: tag })),
-			};
-			handleUpdate?.(id, newData);
-		},
-		onError: (error: Error) => {
-			toast.error(error.response?.data.message ?? "Something went wrong");
-		},
-	});
+	const { onDelete, onUpdate } = useData({ id, handleDelete, handleUpdate });
 
-	const { mutate: deleteModal } = useMutation({
-		mutationFn: async (id: string) => VacanciesService.delete(id),
-		onSuccess: () => {
-			toast.success("Your vacancy succes delete");
-			handleDelete?.(id);
-		},
-		onError: (error: Error) => {
-			toast.error(error.response?.data.message ?? "Something went wrong");
-		},
-	});
-
-	const onDelete = () => {
-		deleteModal(id);
-	};
-
-	const onUpdate = (id: string, cardData: VacancyQueryCardData) => {
-		updateModal({ id, cardData });
-	};
-
-	const isIDsabledBtn = (countOfResponse && countOfResponse < 1) || !countOfResponse;
+	const isIDsabledBtn = !countOfResponse || !countOfResponse;
 
 	return (
 		<Container className={className}>
@@ -105,7 +68,6 @@ export const VacancyCard: FC<VacancyCardProps> = ({
 			{!isOnlyRead && isPeopleResponseModalOpen && (
 				<PeopleResponseModal vacancyId={id} setCloseModal={setIsPeopleResponseModalOpen} />
 			)}
-			<Toaster />
 		</Container>
 	);
 };

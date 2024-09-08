@@ -21,7 +21,12 @@ export const TitleInput = styled(TextInput)(() =>
 	}),
 );
 
-export const InputBlock = styled("div")({
-	display: "flex",
-	gap: 20,
-});
+export const InputBlock = styled("div")(({ theme }) =>
+	css({
+		display: "flex",
+		gap: 20,
+		[`${theme.media.medium}`]: {
+			flexWrap: "wrap",
+		},
+	}),
+);
