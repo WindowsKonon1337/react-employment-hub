@@ -22,8 +22,8 @@ const webpackConfig = (env: EnvProps) => {
 		public: path.resolve(__dirname, "public"),
 	};
 
-	const PROFILE_REMOTE_URL = env.PROFILE_REMOTE_URL ?? "http://localhost:5001";
-	const VACANCIES_REMOTE_URL = env.VACANCIES_REMOTE_URL ?? "http://localhost:5002";
+	const PROFILE_REMOTE_URL = env.PROFILE_REMOTE_URL ?? "http://profile:5001";
+	const VACANCIES_REMOTE_URL = env.VACANCIES_REMOTE_URL ?? "http://vacancies:5002";
 
 	const config: webpack.Configuration = buildWebpack({
 		port: env.port ?? 5000,
